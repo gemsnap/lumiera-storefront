@@ -770,6 +770,469 @@ select.input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   .success{padding:40px 22px}
 }
 </style>
+<style>
+/* ============================================================
+   CURRENTBODY-STYLE PDP + SHOPIFY-STYLE CHECKOUT
+============================================================ */
+:root{
+  --cb-ink:#12171E;
+  --cb-body:#4A4A48;
+  --cb-mute:#767672;
+  --cb-line:#E4E4E1;
+  --cb-line-2:#CFCFCB;
+  --cb-tint:#F7F7F5;
+  --cb-tint-2:#EFEFEC;
+  --cb-head:'Inter','Helvetica Neue',Arial,sans-serif;
+}
+.cb-wrap{max-width:1440px;margin:0 auto;padding:0 32px}
+.cb-h1{font-family:var(--cb-head);font-size:clamp(24px,2.2vw,31px);font-weight:500;letter-spacing:-.015em;line-height:1.16;color:var(--cb-ink);margin:0 0 12px}
+.cb-kicker{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cb-mute);margin-bottom:14px;font-weight:500}
+.cb-sec h2,.cb-head h2{font-family:var(--cb-head);font-size:clamp(26px,2.7vw,38px);font-weight:500;letter-spacing:-.022em;line-height:1.14;color:var(--cb-ink);margin:0 0 16px}
+.cb-sec p,.cb-copy p{font-size:15.5px;line-height:1.68;color:var(--cb-body)}
+
+/* breadcrumb */
+.cb-crumb{border-bottom:1px solid var(--cb-line);background:#fff}
+.cb-crumb .cb-wrap{display:flex;align-items:center;gap:10px;height:46px;font-size:12px;color:var(--cb-mute)}
+.cb-crumb a{color:var(--cb-mute);text-decoration:none}
+.cb-crumb a:hover{color:var(--cb-ink)}
+.cb-crumb span:last-child{color:var(--cb-ink)}
+
+/* pdp grid */
+.cb-pdp{background:#fff;padding:34px 0 52px}
+.cb-pdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.cb-gallery{display:grid;grid-template-columns:76px 1fr;gap:12px;position:sticky;top:calc(var(--head-h) + 16px)}
+.cb-thumbs{display:flex;flex-direction:column;gap:8px;max-height:640px;overflow:auto;scrollbar-width:none}
+.cb-thumbs::-webkit-scrollbar{display:none}
+.cb-thumb{position:relative;width:76px;height:76px;border:1px solid var(--cb-line);background:var(--cb-tint);padding:0;cursor:pointer;overflow:hidden;transition:border-color .2s}
+.cb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.cb-thumb.on{border-color:var(--cb-ink)}
+.cb-stage{position:relative;background:var(--cb-tint);overflow:hidden}
+.cb-stage img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:opacity .28s var(--ease)}
+.cb-stage-tag{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.94);color:var(--cb-ink);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px}
+.cb-galnav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;border:0;opacity:0;transition:opacity .2s}
+.cb-stage:hover .cb-galnav{opacity:1}
+.cb-galnav svg{width:18px;height:18px;color:var(--cb-ink)}
+.cb-galnav.prev{left:14px}.cb-galnav.next{right:14px}
+.cb-floatbadge{position:absolute;right:16px;bottom:16px;background:var(--cb-ink);color:#fff;padding:10px 14px;display:flex;flex-direction:column;line-height:1.2}
+.cb-floatbadge b{font-size:12px;font-weight:600;letter-spacing:.02em}
+.cb-floatbadge span{font-size:10px;color:rgba(255,255,255,.6);letter-spacing:.04em}
+.cb-trust{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid var(--cb-line)}
+.cb-trust>div{display:flex;align-items:center;gap:9px}
+.cb-trust svg{width:22px;height:22px;color:var(--cb-ink);flex:none}
+.cb-trust span{font-size:11px;line-height:1.3;color:var(--cb-mute)}
+
+/* buy column */
+.cb-buy{padding-top:2px}
+.cb-vendor{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cb-mute);margin-bottom:10px}
+.cb-sub{font-size:15px;line-height:1.6;color:var(--cb-body);margin:0 0 18px;max-width:52ch}
+.cb-claims{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px 22px;margin:0 0 18px;padding:0}
+.cb-claims li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--cb-ink);line-height:1.4}
+.cb-claims svg{width:14px;height:14px;margin-top:2px;color:var(--cb-ink);flex:none}
+.cb-rating{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--cb-ink);font-size:12.5px;margin-bottom:22px}
+.cb-rating .stars{display:inline-flex;gap:2px}
+.cb-rating .stars svg{width:14px;height:14px}
+.cb-rating b{font-weight:600}
+.cb-rcount{color:var(--cb-mute);text-decoration:underline;text-underline-offset:3px}
+
+/* pick your product */
+.cb-pick{border-top:1px solid var(--cb-line);border-bottom:1px solid var(--cb-line);padding:18px 0 16px;margin-bottom:20px}
+.cb-pick-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+.cb-pick-head>span{font-size:13.5px;font-weight:500;color:var(--cb-ink)}
+.cb-pick-head button{background:none;border:0;padding:0;font-size:12px;color:var(--cb-mute);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:inherit}
+.cb-pick-head button:hover{color:var(--cb-ink)}
+#optList{display:flex;flex-direction:column;gap:8px}
+#optList .opt{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:12px;border:1px solid var(--cb-line);background:#fff;padding:10px;cursor:pointer;transition:border-color .18s,background .18s;position:relative}
+#optList .opt:hover{border-color:var(--cb-line-2)}
+#optList .opt.on{border-color:var(--cb-ink);box-shadow:inset 0 0 0 1px var(--cb-ink)}
+#optList .opt input{position:absolute;opacity:0;pointer-events:none}
+#optList .opt img{width:56px;height:56px;object-fit:cover;display:block;background:var(--cb-tint)}
+#optList .opt .radio{display:none}
+#optList .o-main{display:flex;flex-direction:column;gap:3px;min-width:0}
+#optList .o-name{font-size:13.5px;font-weight:500;color:var(--cb-ink);line-height:1.3;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#optList .o-name .flag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--cb-ink);color:#fff;padding:3px 6px;font-weight:500}
+#optList .o-sub{font-size:11.5px;color:var(--cb-mute);line-height:1.3}
+#optList .o-price{font-size:13.5px;font-weight:500;color:var(--cb-ink);text-align:right;white-space:nowrap;display:flex;flex-direction:column;gap:2px;align-items:flex-end}
+#optList .o-price s{font-size:11px;color:var(--cb-mute);font-weight:400}
+.cb-boxlist{border:1px solid var(--cb-line);background:var(--cb-tint);padding:14px 16px;margin-top:10px;font-size:12.5px;color:var(--cb-body);line-height:1.6}
+
+/* price + atc */
+.cb-price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.cb-price{font-size:clamp(26px,2.4vw,32px);font-weight:500;letter-spacing:-.02em;color:var(--cb-ink);line-height:1}
+.cb-compare{font-size:16px;color:var(--cb-mute)}
+.cb-save{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:#EDEAE2;color:var(--cb-ink);padding:5px 8px;font-weight:500}
+.cb-klarna{font-size:12.5px;color:var(--cb-body);margin-bottom:18px}
+.cb-klarna b{font-weight:600;color:var(--cb-ink)}
+.cb-atc{display:flex;gap:10px;margin-bottom:8px}
+.cb-qty{display:flex;align-items:center;border:1px solid var(--cb-ink);height:57px;flex:none}
+.cb-qty button{width:42px;height:100%;background:none;border:0;font-size:17px;color:var(--cb-ink);cursor:pointer;line-height:1}
+.cb-qty button:hover{background:var(--cb-tint)}
+.cb-qty span{min-width:26px;text-align:center;font-size:14px;font-weight:500;color:var(--cb-ink)}
+.cb-btn{flex:1;height:57px;background:var(--cb-ink);color:#fff;border:1px solid var(--cb-ink);font-family:var(--cb-head);font-size:15px;font-weight:500;letter-spacing:.01em;cursor:pointer;transition:background .2s,color .2s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.cb-btn:hover{background:#000}
+.cb-btn.alt{background:#fff;color:var(--cb-ink);width:100%;margin-bottom:18px}
+.cb-btn.alt:hover{background:var(--cb-tint)}
+.cb-btn[disabled]{opacity:.45;pointer-events:none}
+
+/* payments + perks */
+.cb-pay{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.cb-paylabel{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cb-mute)}
+.cb-payicons{display:flex;gap:5px;flex-wrap:wrap}
+.cb-payicons i{font-style:normal;font-size:9.5px;letter-spacing:.02em;border:1px solid var(--cb-line);color:var(--cb-body);padding:4px 6px;line-height:1;background:#fff}
+.cb-perks{border-top:1px solid var(--cb-line);padding-top:16px;margin-bottom:6px;display:flex;flex-direction:column;gap:12px}
+.cb-perks>div{display:flex;gap:12px;align-items:flex-start}
+.cb-ico{width:20px;height:20px;flex:none;color:var(--cb-ink);font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center}
+.cb-perks p{margin:0;font-size:12.5px;line-height:1.5;color:var(--cb-mute)}
+.cb-perks p b{color:var(--cb-ink);font-weight:500}
+.cb-acc{border-top:1px solid var(--cb-line);margin-top:14px}
+.cb-acc details{border-bottom:1px solid var(--cb-line)}
+.cb-acc summary{list-style:none;cursor:pointer;padding:16px 0;font-size:13.5px;font-weight:500;color:var(--cb-ink);display:flex;justify-content:space-between;align-items:center}
+.cb-acc summary::-webkit-details-marker{display:none}
+.cb-acc summary::after{content:'+';font-size:16px;color:var(--cb-mute);font-weight:400}
+.cb-acc details[open] summary::after{content:'–'}
+.cb-acc p{font-size:13px;line-height:1.65;color:var(--cb-body);margin:0 0 14px;max-width:60ch}
+
+/* wavelength bar */
+.cb-waves{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--cb-line);border-bottom:1px solid var(--cb-line)}
+.cb-wave{background:var(--c);color:#fff;padding:20px 22px 18px;display:flex;flex-direction:column;gap:4px;min-height:96px;justify-content:flex-end}
+.cb-wave b{font-size:13px;font-weight:500;letter-spacing:.02em}
+.cb-wave span{font-size:11px;opacity:.72;letter-spacing:.04em}
+
+/* usp marquee */
+.cb-usp{background:var(--cb-ink);color:#fff;overflow:hidden;padding:15px 0}
+.cb-usp-track{display:flex;align-items:center;gap:26px;width:max-content;animation:cbslide 42s linear infinite}
+.cb-usp-track span{font-size:11px;letter-spacing:.18em;white-space:nowrap;opacity:.9}
+.cb-usp-track i{font-style:normal;font-size:7px;opacity:.4}
+@keyframes cbslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* generic sections */
+.cb-sec{padding:84px 0;background:#fff}
+.cb-sec.tint{background:var(--cb-tint)}
+.cb-head{max-width:720px;margin-bottom:40px}
+.cb-head.center{text-align:center;margin-left:auto;margin-right:auto}
+.cb-head.between{max-width:none;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.cb-head p{font-size:15px;color:var(--cb-body);line-height:1.65;margin:0}
+.cb-2col{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.cb-2col.rev .cb-copy{order:2}
+.cb-media img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.cb-link{font-size:12.5px;color:var(--cb-ink);text-decoration:none;border-bottom:1px solid var(--cb-ink);padding-bottom:2px}
+.cb-list{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:10px}
+.cb-list li{font-size:14px;color:var(--cb-body);padding-left:20px;position:relative;line-height:1.5}
+.cb-list li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;background:var(--cb-ink)}
+.cb-foot-note{font-size:11.5px;color:var(--cb-mute);margin-top:26px;line-height:1.6;max-width:80ch}
+.cb-foot-note a{color:var(--cb-ink);text-decoration:underline;text-underline-offset:2px}
+
+/* results */
+.cb-resultgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cb-resultgrid figure{margin:0;position:relative;background:#fff}
+.cb-resultgrid img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.cb-resultgrid figcaption{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(to top,rgba(18,23,30,.82),rgba(18,23,30,0));color:#fff;padding:26px 20px 18px;display:flex;align-items:baseline;gap:10px}
+.cb-resultgrid b{font-size:27px;font-weight:500;letter-spacing:-.02em}
+.cb-resultgrid span{font-size:12px;opacity:.86}
+
+/* clinical evidence */
+.cb-evidence{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--cb-line)}
+.cb-ev{display:flex;gap:16px;padding:22px 28px 22px 0;border-bottom:1px solid var(--cb-line)}
+.cb-ev:nth-child(odd){border-right:1px solid var(--cb-line);padding-right:32px}
+.cb-ev:nth-child(even){padding-left:32px}
+.cb-evdot{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none;margin-top:6px}
+.cb-ev b{display:block;font-size:13px;font-weight:500;color:var(--cb-ink);margin-bottom:5px;letter-spacing:.01em}
+.cb-ev p{margin:0;font-size:13.5px;line-height:1.55;color:var(--cb-body)}
+.cb-ev em{display:block;font-style:normal;font-size:11px;color:var(--cb-mute);margin-top:6px;letter-spacing:.04em}
+
+/* steps + video */
+.cb-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-bottom:56px}
+.cb-steps>div span{font-size:11px;letter-spacing:.14em;color:var(--cb-mute);display:block;margin-bottom:12px}
+.cb-steps h3{font-family:var(--cb-head);font-size:19px;font-weight:500;color:var(--cb-ink);margin:0 0 8px;letter-spacing:-.01em}
+.cb-steps p{font-size:14px;line-height:1.6;color:var(--cb-body);margin:0}
+.cb-video{position:relative}
+.cb-video img{width:100%;aspect-ratio:21/9;object-fit:cover;display:block}
+.cb-videobox{position:absolute;left:24px;bottom:24px;display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.95);padding:14px 20px}
+.cb-play{width:38px;height:38px;border-radius:50%;background:var(--cb-ink);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.cb-play svg{width:14px;height:14px;margin-left:2px}
+.cb-videobox b{display:block;font-size:13px;font-weight:500;color:var(--cb-ink)}
+.cb-videobox span{font-size:11.5px;color:var(--cb-mute)}
+
+/* preset modes */
+.cb-modegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cb-modegrid article{border:1px solid var(--cb-line);padding:24px 22px 26px;background:#fff;border-top:3px solid var(--c)}
+.cb-modechip{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cb-mute)}
+.cb-modegrid h3{font-family:var(--cb-head);font-size:21px;font-weight:500;color:var(--cb-ink);margin:8px 0 10px;letter-spacing:-.015em}
+.cb-modegrid p{font-size:13px;line-height:1.55;color:var(--cb-body);margin:0 0 12px}
+.cb-modegrid em{font-style:normal;font-size:11px;color:var(--cb-mute);letter-spacing:.02em}
+
+/* press */
+.cb-press{border-top:1px solid var(--cb-line);border-bottom:1px solid var(--cb-line);background:#fff}
+.cb-press .cb-wrap{display:flex;align-items:center;gap:40px;padding-top:26px;padding-bottom:26px;flex-wrap:wrap}
+.cb-presslabel{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cb-mute)}
+.cb-logos{display:flex;align-items:center;gap:44px;flex-wrap:wrap;flex:1;justify-content:space-between}
+.cb-logos span{font-family:var(--cb-head);font-size:17px;letter-spacing:.08em;color:var(--cb-ink);opacity:.55;font-weight:500}
+
+/* expert */
+.cb-expert h2{font-size:clamp(23px,2.4vw,33px);line-height:1.25}
+.cb-expert-by{display:flex;align-items:center;gap:14px;margin-top:26px}
+.cb-expert-by img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.cb-expert-by b{display:block;font-size:13.5px;font-weight:500;color:var(--cb-ink)}
+.cb-expert-by span{font-size:12px;color:var(--cb-mute)}
+
+/* in the box */
+.cb-checklist{list-style:none;padding:0;margin:0;border-top:1px solid var(--cb-line)}
+.cb-checklist li{display:flex;gap:18px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--cb-line)}
+.cb-checklist i{font-style:normal;font-size:11px;color:var(--cb-mute);padding-top:2px;letter-spacing:.06em}
+.cb-checklist b{display:block;font-size:14px;font-weight:500;color:var(--cb-ink)}
+.cb-checklist span{font-size:12.5px;color:var(--cb-mute)}
+
+/* awards */
+.cb-awards{border-top:1px solid var(--cb-line);border-bottom:1px solid var(--cb-line);background:#fff}
+.cb-awardrow{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-top:32px;padding-bottom:32px}
+.cb-awardrow>div{text-align:center}
+.cb-awardrow b{display:block;font-size:14px;font-weight:500;color:var(--cb-ink);letter-spacing:.01em;margin-bottom:4px}
+.cb-awardrow span{font-size:11.5px;color:var(--cb-mute)}
+
+/* ugc */
+.cb-uggrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.cb-uggrid figure{margin:0;position:relative;overflow:hidden}
+.cb-uggrid img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.cb-uggrid figure:hover img{transform:scale(1.04)}
+.cb-uggrid figcaption{position:absolute;left:10px;bottom:10px;font-size:10.5px;color:#fff;letter-spacing:.02em;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+
+/* reviews */
+.cb-summary{display:grid;grid-template-columns:200px 1fr 240px;gap:48px;align-items:center;padding:28px 0 36px;border-top:1px solid var(--cb-line);border-bottom:1px solid var(--cb-line);margin-bottom:26px}
+.cb-score b{display:block;font-size:52px;font-weight:500;letter-spacing:-.04em;color:var(--cb-ink);line-height:1}
+.cb-score .stars{display:inline-flex;gap:2px;margin:8px 0 6px}
+.cb-score .stars svg{width:15px;height:15px}
+.cb-score em{display:block;font-style:normal;font-size:11.5px;color:var(--cb-mute)}
+.cb-hist{display:flex;flex-direction:column;gap:7px}
+.cb-histrow{display:flex;align-items:center;gap:10px;font-size:11.5px;color:var(--cb-mute)}
+.cb-histrow span:first-child{width:34px}
+.cb-histbar{flex:1;height:6px;background:var(--cb-tint-2);position:relative}
+.cb-histbar i{position:absolute;inset:0 auto 0 0;background:var(--cb-ink);display:block}
+.cb-rstats{display:flex;gap:28px}
+.cb-rstats b{display:block;font-size:22px;font-weight:500;color:var(--cb-ink);letter-spacing:-.02em}
+.cb-rstats span{font-size:11px;color:var(--cb-mute);line-height:1.3;display:block;max-width:90px}
+.cb-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.cb-filters button{height:36px;padding:0 16px;border:1px solid var(--cb-line);background:#fff;font-family:inherit;font-size:12px;color:var(--cb-body);cursor:pointer}
+.cb-filters button:hover{border-color:var(--cb-line-2)}
+.cb-filters button.on{background:var(--cb-ink);border-color:var(--cb-ink);color:#fff}
+.cb-revgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cb-rev{border:1px solid var(--cb-line);padding:22px 22px 20px;background:#fff;display:flex;flex-direction:column;gap:10px}
+.cb-rev .stars{display:inline-flex;gap:2px}
+.cb-rev .stars svg{width:12px;height:12px}
+.cb-rev h4{margin:0;font-size:14px;font-weight:500;color:var(--cb-ink);line-height:1.35}
+.cb-rev p{margin:0;font-size:12.5px;line-height:1.6;color:var(--cb-body)}
+.cb-rev .cb-revby{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--cb-mute);margin-top:auto;border-top:1px solid var(--cb-line);padding-top:10px}
+.cb-rev .cb-revby b{font-weight:500;color:var(--cb-ink)}
+.cb-more{text-align:center;margin-top:32px}
+.cb-more .cb-btn{max-width:280px;height:50px;font-size:13.5px}
+
+/* faq */
+.cb-faqgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
+.cb-faqlist{border-top:1px solid var(--cb-line)}
+.cb-faqitem{border-bottom:1px solid var(--cb-line)}
+.cb-faqitem button{width:100%;background:none;border:0;padding:20px 0;text-align:left;display:flex;justify-content:space-between;gap:20px;cursor:pointer;font-family:var(--cb-head);font-size:15px;font-weight:500;color:var(--cb-ink);line-height:1.4}
+.cb-faqitem .cb-faqa{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
+.cb-faqitem.on .cb-faqa{max-height:420px}
+.cb-faqa p{margin:0 0 20px;font-size:13.5px;line-height:1.7;color:var(--cb-body);max-width:70ch}
+.cb-faqitem .cb-plus{flex:none;font-size:16px;color:var(--cb-mute);font-weight:400}
+
+/* blog */
+.cb-bloggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cb-post{text-decoration:none;color:inherit;display:block}
+.cb-post img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;margin-bottom:14px}
+.cb-post span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cb-mute)}
+.cb-post h3{font-family:var(--cb-head);font-size:17px;font-weight:500;color:var(--cb-ink);margin:8px 0 0;letter-spacing:-.01em;line-height:1.35}
+.cb-post:hover h3{text-decoration:underline;text-underline-offset:4px}
+
+/* support */
+.cb-support{border-top:1px solid var(--cb-line);background:var(--cb-tint)}
+.cb-supportrow{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding-top:44px;padding-bottom:44px}
+.cb-supportrow b{display:block;font-size:14px;font-weight:500;color:var(--cb-ink);margin-bottom:6px}
+.cb-supportrow span{display:block;font-size:12.5px;color:var(--cb-mute);margin-bottom:10px}
+.cb-supportrow a,.cb-inline{font-size:12.5px;color:var(--cb-ink);background:none;border:0;padding:0;border-bottom:1px solid var(--cb-ink);cursor:pointer;font-family:inherit;text-decoration:none}
+.cb-related{background:#fff}
+.cb-relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cb-rel{border:1px solid var(--cb-line);background:#fff;text-decoration:none;color:inherit;display:block}
+.cb-rel img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.cb-rel .cb-relb{padding:16px 16px 18px}
+.cb-rel .cb-relb b{display:block;font-size:13.5px;font-weight:500;color:var(--cb-ink);margin-bottom:4px}
+.cb-rel .cb-relb span{font-size:12px;color:var(--cb-mute)}
+.cb-rel .cb-relb em{display:block;font-style:normal;font-size:13.5px;color:var(--cb-ink);margin-top:8px;font-weight:500}
+
+/* ============================================================
+   SHOPIFY-STYLE CHECKOUT
+============================================================ */
+#view-checkout{background:#fff;min-height:100vh}
+.ck-header{border-bottom:1px solid var(--cb-line);background:#fff}
+.ck-hwrap{max-width:1180px;margin:0 auto;padding:18px 28px;display:flex;align-items:center;gap:28px}
+.ck-logo{font-family:var(--cb-head);font-size:19px;letter-spacing:.16em;color:var(--cb-ink);text-decoration:none;display:flex;align-items:baseline;gap:8px;font-weight:500}
+.ck-logo span{font-size:9px;letter-spacing:.24em;color:var(--cb-mute)}
+.ck-steps{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--cb-mute);margin-left:auto}
+.ck-steps a{color:var(--cb-mute);text-decoration:none}
+.ck-steps .on{color:var(--cb-ink);font-weight:500}
+.ck-steps i{font-style:normal;color:var(--cb-line-2)}
+.ck-secure{font-size:11.5px;color:var(--cb-mute);display:flex;align-items:center;gap:6px;padding-left:20px;border-left:1px solid var(--cb-line)}
+.ck-wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:0}
+.ck-main{padding:34px 56px 60px 28px;border-right:1px solid var(--cb-line)}
+.ck-sum{background:#FAFAF8;padding:34px 28px 60px 32px}
+
+/* express */
+.ck-exlabel{font-size:12px;color:var(--cb-mute);margin-bottom:10px}
+.ck-exbtns{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ck-ex{height:44px;border:0;border-radius:6px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;transition:filter .2s}
+.ck-ex:hover{filter:brightness(.94)}
+.ck-ex.shop{background:#5A31F4;color:#fff}
+.ck-ex.apple{background:#000;color:#fff;font-size:15px}
+.ck-ex.gpay{background:#fff;color:#3c4043;border:1px solid #DADCE0}
+.ck-ex.paypal{background:#FFC439;color:#003087;border:1px solid #FFC439}
+.ck-or{position:relative;text-align:center;margin:26px 0}
+.ck-or::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:var(--cb-line)}
+.ck-or span{position:relative;background:#fff;padding:0 14px;font-size:11px;color:var(--cb-mute);letter-spacing:.1em}
+
+/* sections */
+.ck-sec{margin-bottom:26px}
+.ck-sec h2{font-family:var(--cb-head);font-size:18px;font-weight:500;color:var(--cb-ink);margin:0 0 14px;letter-spacing:-.01em}
+.ck-sechead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.ck-sechead h2{margin:0}
+.ck-sechead>span{font-size:12px;color:var(--cb-mute)}
+.ck-mini{background:none;border:0;padding:0;font-family:inherit;font-size:12px;color:var(--cb-ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.ck-f{position:relative;margin-bottom:10px}
+.ck-f input,.ck-f select{width:100%;height:48px;border:1px solid var(--cb-line-2);border-radius:5px;background:#fff;padding:0 14px;font-family:inherit;font-size:14px;color:var(--cb-ink);outline:none;transition:border-color .15s,box-shadow .15s;appearance:none}
+.ck-f select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23767672' stroke-width='1.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px;padding-right:36px}
+.ck-f input::placeholder{color:#9A9A96}
+.ck-f input:focus,.ck-f select:focus{border-color:var(--cb-ink);box-shadow:0 0 0 1px var(--cb-ink)}
+.ck-f.bad input{border-color:#C0392B;box-shadow:0 0 0 1px #C0392B}
+.ck-err{display:none;font-size:11.5px;color:#C0392B;margin-top:5px}
+.ck-f.bad .ck-err{display:block}
+.ck-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ck-check{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--cb-body);margin:12px 0 0;cursor:pointer}
+.ck-check input{width:16px;height:16px;accent-color:var(--cb-ink);margin:0}
+.ck-tiny{font-size:11px !important;color:var(--cb-mute)}
+
+/* radio option cards */
+.ck-opt{display:flex;align-items:center;gap:12px;border:1px solid var(--cb-line-2);border-radius:5px;padding:14px 16px;margin-bottom:8px;cursor:pointer;background:#fff;transition:border-color .15s,box-shadow .15s}
+.ck-opt input{width:16px;height:16px;accent-color:var(--cb-ink);margin:0;flex:none}
+.ck-opt.on{border-color:var(--cb-ink);box-shadow:inset 0 0 0 1px var(--cb-ink)}
+.ck-opt-main{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.ck-opt-main b{font-size:13.5px;font-weight:500;color:var(--cb-ink)}
+.ck-opt-main em{font-style:normal;font-size:12px;color:var(--cb-mute)}
+.ck-opt-price{font-size:13px;color:var(--cb-ink);white-space:nowrap}
+.ck-paybox{border:1px solid var(--cb-line-2);border-radius:6px;overflow:hidden;background:#FAFAF8}
+.ck-paybox .ck-opt{margin:0;border:0;border-bottom:1px solid var(--cb-line);border-radius:0;box-shadow:none;background:#fff}
+.ck-paybox .ck-opt:last-child{border-bottom:0}
+.ck-paybox .ck-opt.on{background:#fff;box-shadow:inset 3px 0 0 var(--cb-ink)}
+.ck-cards{display:flex;gap:4px}
+.ck-cards i{font-style:normal;font-size:9px;border:1px solid var(--cb-line);padding:2px 4px;color:var(--cb-body);background:#fff}
+.ck-card-fields{padding:14px 16px 6px;border-bottom:1px solid var(--cb-line);background:#FAFAF8}
+.ck-card-fields.hide{display:none}
+
+/* pay button */
+.ck-paynow{width:100%;height:56px;border:0;background:var(--cb-ink);color:#fff;font-family:var(--cb-head);font-size:15px;font-weight:500;cursor:pointer;margin-top:8px;transition:background .2s}
+.ck-paynow:hover{background:#000}
+.ck-demo{font-size:11.5px;color:var(--cb-mute);text-align:center;margin:12px 0 0;line-height:1.5}
+.ck-footlinks{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:26px;padding-top:18px;border-top:1px solid var(--cb-line)}
+
+/* summary */
+.ck-items{display:flex;flex-direction:column;gap:16px;padding-bottom:22px;border-bottom:1px solid var(--cb-line)}
+.ck-item{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center}
+.ck-item .ck-thumbwrap{position:relative}
+.ck-item img{width:64px;height:64px;object-fit:cover;border:1px solid var(--cb-line);background:#fff}
+.ck-item .ck-qbadge{position:absolute;top:-7px;right:-7px;min-width:19px;height:19px;border-radius:50%;background:var(--cb-mute);color:#fff;font-size:10.5px;display:flex;align-items:center;justify-content:center;font-weight:500}
+.ck-item b{display:block;font-size:13px;font-weight:500;color:var(--cb-ink);line-height:1.35}
+.ck-item span{font-size:11.5px;color:var(--cb-mute)}
+.ck-item em{font-style:normal;font-size:13px;color:var(--cb-ink)}
+.ck-disc{display:flex;gap:8px;padding:20px 0;border-bottom:1px solid var(--cb-line)}
+.ck-disc input{flex:1;height:46px;border:1px solid var(--cb-line-2);border-radius:5px;padding:0 14px;font-family:inherit;font-size:13.5px;color:var(--cb-ink);outline:none;background:#fff}
+.ck-disc input:focus{border-color:var(--cb-ink);box-shadow:0 0 0 1px var(--cb-ink)}
+.ck-disc button{height:46px;padding:0 18px;border:1px solid var(--cb-line-2);background:#fff;border-radius:5px;font-family:inherit;font-size:13px;color:var(--cb-ink);cursor:pointer}
+.ck-disc button:hover{background:var(--cb-tint)}
+.ck-tots{padding:20px 0 0;display:flex;flex-direction:column;gap:10px}
+.ck-totrow{display:flex;justify-content:space-between;font-size:13px;color:var(--cb-body)}
+.ck-totrow.big{font-size:16px;color:var(--cb-ink);font-weight:500;padding-top:12px;border-top:1px solid var(--cb-line);margin-top:4px}
+.ck-totrow .free{color:#2E7D46}
+.ck-note{font-size:11px;color:var(--cb-mute);margin:16px 0 0;line-height:1.5}
+.ck-secure2{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--cb-mute);margin-top:22px;padding-top:18px;border-top:1px solid var(--cb-line)}
+.ck-secure2 svg{width:15px;height:15px;flex:none}
+
+/* thank you */
+.ck-thanks{max-width:760px;margin:0 auto;padding:56px 28px 90px}
+.ck-thanks .ck-tbar{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--cb-line);padding-bottom:18px;margin-bottom:26px}
+.ck-thanks .ck-tick{width:34px;height:34px;border-radius:50%;background:var(--cb-ink);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.ck-thanks .ck-tick svg{width:16px;height:16px}
+.ck-thanks h1{font-family:var(--cb-head);font-size:26px;font-weight:500;color:var(--cb-ink);margin:0 0 4px;letter-spacing:-.02em}
+.ck-thanks .ck-ordno{font-size:12px;color:var(--cb-mute)}
+.ck-tgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:26px 0}
+.ck-tgrid h3{font-family:var(--cb-head);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cb-mute);margin:0 0 12px;font-weight:500}
+.ck-tgrid p{margin:0;font-size:13.5px;line-height:1.7;color:var(--cb-body)}
+.ck-titems{border-top:1px solid var(--cb-line);border-bottom:1px solid var(--cb-line);padding:18px 0;margin-bottom:18px}
+.ck-trow{display:flex;justify-content:space-between;gap:16px;font-size:13.5px;color:var(--cb-body);padding:7px 0}
+.ck-trow.total{font-size:16px;color:var(--cb-ink);font-weight:500;border-top:1px solid var(--cb-line);margin-top:10px;padding-top:14px}
+
+@media (max-width:1100px){
+  .cb-pdp-grid{grid-template-columns:1fr;gap:32px}
+  .cb-gallery{position:static;grid-template-columns:1fr}
+  .cb-trust{display:none}
+  .cb-thumbs{flex-direction:row;max-height:none;order:2}
+  .cb-thumb{width:64px;height:64px;flex:none}
+  .cb-evidence{grid-template-columns:1fr}
+  .cb-ev:nth-child(odd){border-right:0;padding-right:0}
+  .cb-ev:nth-child(even){padding-left:0}
+  .cb-2col{grid-template-columns:1fr;gap:32px}
+  .cb-2col.rev .cb-copy{order:0}
+  .cb-waves{grid-template-columns:repeat(3,1fr)}
+  .cb-modegrid{grid-template-columns:1fr 1fr}
+  .cb-uggrid{grid-template-columns:repeat(3,1fr)}
+  .cb-revgrid{grid-template-columns:1fr 1fr}
+  .cb-summary{grid-template-columns:1fr;gap:24px}
+  .cb-faqgrid{grid-template-columns:1fr;gap:32px}
+  .ck-wrap{grid-template-columns:1fr}
+  .ck-sum{order:-1;border-bottom:1px solid var(--cb-line);padding:24px 28px}
+  .ck-main{border-right:0;padding:28px 28px 60px}
+}
+@media (max-width:760px){
+  .cb-wrap{padding:0 20px}
+  .cb-sec{padding:56px 0}
+  .cb-claims{grid-template-columns:1fr}
+  .cb-trust{grid-template-columns:1fr 1fr;gap:14px}
+  .cb-waves{grid-template-columns:1fr 1fr}
+  .cb-wave{min-height:78px;padding:14px 16px}
+  .cb-resultgrid{grid-template-columns:1fr}
+  .cb-steps{grid-template-columns:1fr;gap:26px}
+  .cb-modegrid{grid-template-columns:1fr}
+  .cb-uggrid{grid-template-columns:1fr 1fr}
+  .cb-revgrid{grid-template-columns:1fr}
+  .cb-bloggrid{grid-template-columns:1fr}
+  .cb-supportrow{grid-template-columns:1fr;gap:24px}
+  .cb-relgrid{grid-template-columns:1fr 1fr}
+  .cb-awardrow{grid-template-columns:1fr 1fr;gap:20px}
+  .cb-logos{gap:22px}
+  .cb-logos span{font-size:13px}
+  .cb-head.between{flex-direction:column;align-items:flex-start}
+  .cb-atc{flex-wrap:wrap}
+  .cb-qty{width:100%;justify-content:space-between}
+  .cb-btn{width:100%}
+  .ck-exbtns{grid-template-columns:1fr 1fr}
+  .ck-row2{grid-template-columns:1fr}
+  .ck-steps{display:none}
+  .ck-hwrap{padding:14px 20px}
+  .ck-main{padding:22px 20px 50px}
+  .ck-sum{padding:20px}
+  .ck-tgrid{grid-template-columns:1fr}
+}
+
+
+
+/* checkout mode: hide site chrome */
+body.checkout-mode .header,
+body.checkout-mode .bar,
+body.checkout-mode .footer,
+body.checkout-mode .help,
+body.checkout-mode .sticky-buy,
+body.checkout-mode .drawer,
+body.checkout-mode .scrim,
+body.checkout-mode .toasts{display:none !important}
+body.checkout-mode main{padding-top:0}
+body.checkout-mode{padding-top:0}
+#view-checkout.on{display:block}
+</style>
 </head>
 <body>
 
@@ -1132,177 +1595,544 @@ select.input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   </section>
 </div>
 
-<!-- ============================================================
-     PRODUCT
-============================================================ -->
 <div class="view" id="view-product">
-  <div class="pdp">
-    <div class="wrap">
-      <div class="crumb">
-        <a href="#home" data-nav="home">Home</a>
-        <svg viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 1l3 3-3 3"/></svg>
-        <a href="#technology" data-nav="home">LED devices</a>
-        <svg viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 1l3 3-3 3"/></svg>
-        <span id="crumbName" style="color:var(--ink-2)">Face &amp; Neck Set</span>
-      </div>
 
-      <div class="pdp-grid">
-        <div class="gallery">
-          <div class="thumbs" id="thumbs"></div>
-          <div class="stage">
-            <span class="stage-tag" id="stageTag">Worn · face + neck</span>
-            <img id="stageImg" src="https://media.base44.com/images/public/6a131436406da2d7a1e49f0c/8e0a450b5_final_lifestyle.jpg" alt="LUMIÈRA Pro LED mask" />
-            <div class="stage-nav">
-              <button id="galPrev" aria-label="Previous image"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 1L3 6l5 5"/></svg></button>
-              <button id="galNext" aria-label="Next image"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 1l5 5-5 5"/></svg></button>
-            </div>
-          </div>
-        </div>
-
-        <div class="pdp-info">
-          <div class="p-kicker">
-            <span class="kicker" style="margin:0">Pro series · 8 wavelengths</span>
-          </div>
-          <h1 id="pdpTitle">LUMIÈRA Pro LED Face &amp; Neck Mask</h1>
-          <div class="pdp-rate">
-            <span class="stars" data-rating="4.7"></span>
-            <b style="color:var(--ink);font-weight:500">4.7</b>
-            <a href="#pdpReviews">160 reviews</a>
-            <span>·</span>
-            <span>1,000+ sold</span>
-          </div>
-
-          <div class="pdp-price" id="pdpPriceRow">
-            <span class="p">279,00 €</span>
-            <s id="pdpCompare" hidden></s>
-            <span class="save" id="pdpSave" hidden></span>
-          </div>
-          <div class="pdp-vat">Incl. VAT · duties included · free express shipping</div>
-          <div class="pdp-pay">or 4 payments of <b id="pdpSplit">69,75 €</b> with <span class="klarna">Klarna</span></div>
-
-          <div class="opts" id="optList" role="radiogroup" aria-label="Choose your set"></div>
-
-          <div class="qty-row pdp-actions">
-            <div class="qty">
-              <button id="qMinus" aria-label="Decrease quantity">−</button>
-              <span id="qVal">1</span>
-              <button id="qPlus" aria-label="Increase quantity">+</button>
-            </div>
-            <button class="btn" id="pdpAdd" style="flex:1">Add to bag · <span id="addPrice">279,00 €</span></button>
-          </div>
-          <button class="btn ghost wide" id="pdpBuy">Buy it now</button>
-          <div class="afterpay">Ships today if ordered before 14:00 CET</div>
-
-          <div class="deliv">
-            <div class="deliv-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
-              <div>Delivers <b id="etaText">Tue 10 Nov – Thu 12 Nov</b><br>
-                <span style="font-size:11.5px;color:var(--muted)">to</span>
-                <select class="deliv-sel" id="countrySel" aria-label="Delivery country">
-                  <option>France</option><option>Germany</option><option>Belgium</option><option>Netherlands</option>
-                  <option>Luxembourg</option><option>Spain</option><option>Italy</option><option>Portugal</option>
-                  <option>Ireland</option><option>Switzerland</option><option>United Kingdom</option><option>Morocco</option>
-                  <option>United Arab Emirates</option><option>United States</option>
-                </select>
-              </div>
-            </div>
-            <div class="deliv-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12a8 8 0 11-2.4-5.7"/><path d="M20 4v4.5h-4.5"/></svg>
-              <div>60-day money-back guarantee, used or unused, return shipping included.</div>
-            </div>
-          </div>
-
-          <div class="trust-row">
-            <div class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l7 3v6c0 4.4-3 7.7-7 9-4-1.3-7-4.6-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><span>2-year warranty</span></div>
-            <div class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg><span>Free express</span></div>
-            <div class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><span>Secure checkout</span></div>
-          </div>
-
-          <div style="margin-top:26px">
-            <div class="acc" data-acc>
-              <button class="acc-btn">What's in the box <span class="pm"></span></button>
-              <div class="acc-body"><div class="acc-body-in">
-                <ul>
-                  <li>Face mask in flexible black resin with gold leaf pattern</li>
-                  <li>Neck and décolleté piece, same pattern, plugs into the mask</li>
-                  <li>Cordless controller with LCD timer and 6 buttons, 3000 mAh battery</li>
-                  <li>USB charging cable, satin storage pouch, two straps</li>
-                  <li>Two eye protectors and the printed treatment manual</li>
-                </ul>
-              </div></div>
-            </div>
-            <div class="acc" data-acc>
-              <button class="acc-btn">Specifications <span class="pm"></span></button>
-              <div class="acc-body"><div class="acc-body-in">
-                <table class="spec-table">
-                  <tr><td>Modes</td><td>8: red 620–630 nm · blue 440–465 nm · green 520–525 nm · yellow 630 + 520 nm · purple 630 + 460 nm · cyan 525 + 460 nm · white 460 + 520 + 630 nm · near-infrared 850 nm</td></tr>
-                  <tr><td>LEDs</td><td>60 face + 60 neck, 3 energy gears</td></tr>
-                  <tr><td>Shell</td><td>Flexible medical-grade silicone, latex free</td></tr>
-                  <tr><td>Timer</td><td>10–30 minutes</td></tr>
-                  <tr><td>Weight</td><td>193 g mask · 173 g neck piece</td></tr>
-                  <tr><td>Battery</td><td>3000 mAh controller, 4–5 h charge, 8–10 sessions</td></tr>
-                  <tr><td>Voltage</td><td>Working voltage below 50 V</td></tr>
-                  <tr><td>Warranty</td><td>2 years, battery and LEDs included</td></tr>
-                </table>
-              </div></div>
-            </div>
-            <div class="acc" data-acc>
-              <button class="acc-btn">How to use <span class="pm"></span></button>
-              <div class="acc-body"><div class="acc-body-in">
-                Cleanse and dry the skin. Place the mask over the face, plug in the neck piece, and set the mode and timer on the controller. The manufacturer suggests 10 to 15 minutes a day, no more than 30. Use it 4 to 5 times a week, and apply your serum afterwards. Most buyers describe a difference in tone and texture from the third or fourth week.
-              </div></div>
-            </div>
-            <div class="acc" data-acc>
-              <button class="acc-btn">Shipping &amp; returns <span class="pm"></span></button>
-              <div class="acc-body"><div class="acc-body-in">
-                Free express shipping worldwide, dispatched within 24 hours from our EU warehouse. Europe in 2 to 4 business days, rest of world in 3 to 6. Try it for 60 days: if your skin does not respond, return it for a full refund, shipping included.
-              </div></div>
-            </div>
-            <div class="acc" data-acc>
-              <button class="acc-btn">Safety notes <span class="pm"></span></button>
-              <div class="acc-body"><div class="acc-body-in">
-                Non-thermal LEDs, no UV. Do not use over active eczema, open wounds or recent injectables without asking your practitioner first. If you are pregnant, photosensitive or taking isotretinoin, speak to your dermatologist before starting. Always wear the supplied eye protectors.
-              </div></div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- breadcrumb -->
+  <div class="cb-crumb">
+    <div class="cb-wrap">
+      <a href="#home" data-nav="home">Home</a><span>/</span>
+      <a href="#home" data-nav="home">LUMIÈRA Clinical</a><span>/</span>
+      <span id="crumbName">Face &amp; Neck Set</span>
     </div>
   </div>
 
-  <!-- PDP extras -->
-  <section class="section tight" style="margin-top:70px;border-top:1px solid var(--line)">
-    <div class="wrap">
-      <div class="feat3 rv">
-        <div class="feat"><div class="f-n">01</div><h3>Face and neck, together</h3><p>Two pieces, one controller. The neck usually shows first and is the area most masks ignore entirely.</p></div>
-        <div class="feat"><div class="f-n">02</div><h3>Within 5 mm of skin</h3><p>A flexible shell keeps every LED close to the surface, so the dose lands where it is meant to.</p></div>
-        <div class="feat"><div class="f-n">03</div><h3>No refills, ever</h3><p>No gels or masks to rebuy. Charge, wear ten minutes, wipe with a damp cloth, done.</p></div>
+  <!-- ============ PDP TOP ============ -->
+  <section class="cb-pdp">
+    <div class="cb-wrap cb-pdp-grid">
+
+      <!-- gallery -->
+      <div class="cb-gallery">
+        <div class="cb-thumbs" id="thumbs"></div>
+        <div class="cb-stage">
+          <img id="stageImg" src="" alt="LUMIÈRA Pro LED mask" />
+          <div class="cb-stage-tag" id="stageTag">Worn · face + neck</div>
+          <button class="cb-galnav prev" id="galPrev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M15 4l-8 8 8 8"/></svg>
+          </button>
+          <button class="cb-galnav next" id="galNext" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 4l8 8-8 8"/></svg>
+          </button>
+          <div class="cb-floatbadge">
+            <b>MyDose™</b><span>auto-calculated dose</span>
+          </div>
+        </div>
+
+        <div class="cb-trust">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg><span>Free express<br>shipping</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><span>Veritace®<br>certified</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 9h16M4 15h16"/><path d="M8 4v16M16 4v16"/></svg><span>2-year<br>warranty</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/><path d="M8 12h8M12 8v8"/></svg><span>60-day<br>returns</span></div>
+        </div>
+      </div>
+
+      <!-- buy column -->
+      <div class="cb-buy">
+        <div class="cb-vendor">LUMIÈRA CLINICAL</div>
+        <h1 class="cb-h1" id="pdpTitle">Pro LED Red Light Therapy Face &amp; Neck Mask: Series 3</h1>
+        <p class="cb-sub">Personalised LED mask for advanced anti-ageing, clearing and brightening. Eight clinically studied wavelengths, dosed automatically, in ten minutes a day.</p>
+
+        <ul class="cb-claims">
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8.5l3 3 7-7"/></svg>8 clinically studied wavelengths</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8.5l3 3 7-7"/></svg>MyDose™ automatic dosing</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8.5l3 3 7-7"/></svg>Veritace® tested, LED by LED</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8.5l3 3 7-7"/></svg>120 medical-grade LED bulbs</li>
+        </ul>
+
+        <a class="cb-rating" href="#reviews">
+          <span class="stars" data-rating="4.7"></span>
+          <b>4.7</b><span class="cb-rcount">160 reviews</span>
+        </a>
+
+        <!-- pick your product -->
+        <div class="cb-pick">
+          <div class="cb-pick-head">
+            <span>Pick your product</span>
+            <button type="button" id="boxToggle">What's in the box?</button>
+          </div>
+          <div id="optList"></div>
+          <div class="cb-boxlist" id="boxList" hidden></div>
+        </div>
+
+        <!-- price -->
+        <div class="cb-price-row" id="pdpPriceRow">
+          <span class="cb-price p">279,00 €</span>
+          <s class="cb-compare" id="pdpCompare" hidden></s>
+          <span class="cb-save" id="pdpSave" hidden></span>
+        </div>
+        <div class="cb-klarna">
+          or 4 interest-free payments of <b id="pdpSplit">69,75 €</b> with <b>Klarna</b>
+        </div>
+
+        <div class="cb-atc">
+          <div class="cb-qty">
+            <button id="qMinus" aria-label="Decrease quantity">−</button>
+            <span id="qVal">1</span>
+            <button id="qPlus" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="cb-btn" id="addBtn">Add to basket · <span id="addPrice">279,00 €</span></button>
+        </div>
+        <button class="cb-btn alt" id="buyNowBtn">Buy it now</button>
+
+        <div class="cb-pay">
+          <span class="cb-paylabel">We accept</span>
+          <div class="cb-payicons">
+            <i>VISA</i><i>Mastercard</i><i>AMEX</i><i>PayPal</i><i>Klarna</i><i>Apple&nbsp;Pay</i><i>G Pay</i>
+          </div>
+        </div>
+
+        <div class="cb-perks">
+          <div><span class="cb-ico">◷</span><p><b>Free express delivery</b><br><span id="etaText">Tue 10 Nov – Thu 12 Nov</span></p></div>
+          <div><span class="cb-ico">↺</span><p><b>60-day money-back guarantee</b><br>Use it daily. Send it back if it isn't for you.</p></div>
+          <div><span class="cb-ico">✦</span><p><b>2-year warranty</b><br>Registered in the box, no card needed.</p></div>
+        </div>
+
+        <div class="cb-acc">
+          <details open>
+            <summary>Delivery &amp; returns</summary>
+            <p>Free express shipping worldwide, dispatched from Paris within 24 hours. Delivery in 2–4 working days with DHL. Duties and taxes are included at checkout for the EU, UK, Switzerland, the US, the UAE and Morocco.</p>
+            <p>Sixty days to change your mind. Return the mask in its box and we refund the full amount, shipping included.</p>
+          </details>
+          <details>
+            <summary>How to use</summary>
+            <p>Cleanse and dry your face. Fit the mask, select a mode with the controller or the app, and run one ten-minute session. Five sessions a week for the first eight weeks, then three to maintain. Eye protectors are included and required.</p>
+          </details>
+          <details>
+            <summary>Specifications</summary>
+            <p>120 LEDs · 8 wavelengths (415, 440, 520, 590, 630, 660, 850, 940 nm) · 40 mW/cm² irradiance at 630 nm · USB-C, 3,000 mAh, roughly 14 sessions per charge · medical-grade silicone, 218 g · 10-minute session timer · IPX4.</p>
+          </details>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section paper2">
-    <div class="wrap">
-      <div class="sec-head rv"><div class="sec-copy"><span class="kicker">Reviews</span><h2 id="pdpReviews">What buyers say.</h2></div>
-        <div style="display:flex;align-items:center;gap:12px"><span class="stars" data-rating="4.7"></span><span style="font-size:12px;color:var(--muted)">4.7 · 160 reviews</span></div>
+  <!-- ============ WAVELENGTH BAR ============ -->
+  <section class="cb-waves" aria-label="Wavelengths">
+    <div class="cb-wave" style="--c:#3E62C4"><b>Blue</b><span>415 nm</span></div>
+    <div class="cb-wave" style="--c:#3F9E5B"><b>Green</b><span>520 nm</span></div>
+    <div class="cb-wave" style="--c:#D9A227"><b>Yellow</b><span>590 nm</span></div>
+    <div class="cb-wave" style="--c:#D8453B"><b>Red</b><span>630 nm</span></div>
+    <div class="cb-wave" style="--c:#A33A32"><b>Near-infrared</b><span>850 nm</span></div>
+    <div class="cb-wave" style="--c:#6E2A25"><b>Deep NIR</b><span>940 nm</span></div>
+  </section>
+
+  <!-- ============ USP MARQUEE ============ -->
+  <div class="cb-usp">
+    <div class="cb-usp-track">
+      <span>VERITACE® GUARANTEE</span><i>◆</i><span>MYDOSE™ TECHNOLOGY</span><i>◆</i><span>BEST-FIT FOR EVERY FACE</span><i>◆</i><span>8 CLINICAL WAVELENGTHS</span><i>◆</i><span>TEN-MINUTE SESSIONS</span><i>◆</i><span>120 TESTED LEDs</span><i>◆</i><span>RESULTS IN 8 WEEKS*</span><i>◆</i>
+      <span>VERITACE® GUARANTEE</span><i>◆</i><span>MYDOSE™ TECHNOLOGY</span><i>◆</i><span>BEST-FIT FOR EVERY FACE</span><i>◆</i><span>8 CLINICAL WAVELENGTHS</span><i>◆</i><span>TEN-MINUTE SESSIONS</span><i>◆</i><span>120 TESTED LEDs</span><i>◆</i><span>RESULTS IN 8 WEEKS*</span><i>◆</i>
+    </div>
+  </div>
+
+  <!-- ============ OUR OPINION ============ -->
+  <section class="cb-sec cb-opinion">
+    <div class="cb-wrap cb-2col">
+      <div class="cb-media">
+        <img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/1423935bf_generated_image.png" alt="LUMIÈRA Pro mask detail" loading="lazy" />
       </div>
-      <div class="rev-cards rv" id="reviewCards2"></div>
+      <div class="cb-copy">
+        <span class="cb-kicker">Our opinion</span>
+        <h2>Power isn't the whole story. Dose is.</h2>
+        <p>Most LED masks advertise more bulbs and more milliwatts. What actually changes skin is the right wavelength reaching the right depth for the right amount of time. Overdose it and you get heat and irritation. Underdose it and nothing happens at all.</p>
+        <p>The Pro is built around that balance. Veritace® testing checks every single LED against the wavelength used in the published research, and MyDose™ works out the session time from the mode you pick, so you cannot get it wrong.</p>
+        <ul class="cb-list">
+          <li>Eight wavelengths, including two invisible near-infrared bands</li>
+          <li>Flexible silicone that sits flat on the face and wraps the jaw</li>
+          <li>Neck piece included: the décolleté ages first and is the hardest to treat</li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="faq">
-    <div class="wrap-narrow">
-      <div class="sec-head rv"><div class="sec-copy"><span class="kicker">FAQ</span><h2>Everything else you want to know.</h2><p class="lede">Still unsure? Our clinical team answers within a few hours, seven days a week.</p></div></div>
-      <div class="rv" id="faqList"></div>
+  <!-- ============ GENUINE RESULTS ============ -->
+  <section class="cb-sec tint cb-results">
+    <div class="cb-wrap">
+      <div class="cb-head">
+        <span class="cb-kicker">Genuine results</span>
+        <h2>Measured over eight weeks, not imagined.</h2>
+        <p>Independent instrumental testing, 32 participants, five sessions a week. Percentages are changes in appearance measured by image analysis, not self-assessment.</p>
+      </div>
+      <div class="cb-resultgrid">
+        <figure><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/e31b449ae_generated_image.png" alt="Skin texture after eight weeks" loading="lazy" /><figcaption><b>−37%</b><span>visible wrinkle depth</span></figcaption></figure>
+        <figure><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/bd67e0af1_generated_image.png" alt="Skin tone after eight weeks" loading="lazy" /><figcaption><b>+27%</b><span>brightness and evenness</span></figcaption></figure>
+        <figure><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/8e0a450b5_final_lifestyle.jpg" alt="Firmness after eight weeks" loading="lazy" /><figcaption><b>+57%</b><span>skin elasticity</span></figcaption></figure>
+      </div>
+      <p class="cb-foot-note">*Appearance of wrinkles and elasticity measured instrumentally at 8 weeks. Individual results vary. Images illustrate the protocol, not individual outcomes.</p>
     </div>
   </section>
 
-  <section class="section tight paper2">
-    <div class="wrap">
-      <div class="sec-head rv"><div class="sec-copy"><span class="kicker">Also consider</span><h2>Complete the set.</h2></div></div>
-      <div class="grid-products rv" id="productGrid2"></div>
+  <!-- ============ CLINICAL EVIDENCE ============ -->
+  <section class="cb-sec cb-clinical">
+    <div class="cb-wrap">
+      <div class="cb-head">
+        <span class="cb-kicker">Clinical evidence</span>
+        <h2>What each wavelength is proven to do.</h2>
+      </div>
+      <div class="cb-evidence">
+        <div class="cb-ev" style="--c:#D8453B"><span class="cb-evdot"></span><div><b>Red · 630 nm</b><p>Appearance of skin brightness increased by 26.8% in 4 weeks.</p><em>SGS, 2024</em></div></div>
+        <div class="cb-ev" style="--c:#A33A32"><span class="cb-evdot"></span><div><b>Near-infrared · 850 nm</b><p>Appearance of skin elasticity improved by 57.1% in 4 weeks.</p><em>SGS, 2024</em></div></div>
+        <div class="cb-ev" style="--c:#6E2A25"><span class="cb-evdot"></span><div><b>Deep near-infrared · 940 nm</b><p>Appearance of wrinkles reduced by 37.1% in 8 weeks.</p><em>Independent testing, 2026</em></div></div>
+        <div class="cb-ev" style="--c:#3E62C4"><span class="cb-evdot"></span><div><b>Blue · 415 nm</b><p>Appearance of spots reduced by 40%.</p><em>Goldberg &amp; Russell, 2006</em></div></div>
+        <div class="cb-ev" style="--c:#3F9E5B"><span class="cb-evdot"></span><div><b>Green · 520 nm</b><p>Appearance of pigmentation reduced by 4.1% in 8 weeks, with 100% of participants showing a reduction.</p><em>Independent testing, 2026</em></div></div>
+        <div class="cb-ev" style="--c:#D9A227"><span class="cb-evdot"></span><div><b>Yellow · 590 nm</b><p>Appearance of redness reduced by 8.6% in 8 weeks in participants with a higher baseline redness.</p><em>Independent testing, 2026</em></div></div>
+      </div>
+      <p class="cb-foot-note">Protocols, nm accuracy and full study summaries are in the <a href="#faq">clinical FAQ</a>. Near-infrared and deep near-infrared emit no visible colour.</p>
     </div>
   </section>
+
+  <!-- ============ HOW TO USE ============ -->
+  <section class="cb-sec tint cb-how">
+    <div class="cb-wrap">
+      <div class="cb-head">
+        <span class="cb-kicker">How to use</span>
+        <h2>Ten minutes, five times a week.</h2>
+      </div>
+      <div class="cb-steps">
+        <div><span>01</span><h3>Cleanse and dry</h3><p>Bare, dry skin. No serum under red or near-infrared: oils scatter the light before it reaches the dermis.</p></div>
+        <div><span>02</span><h3>Fit and choose</h3><p>Seat the mask flat, hook the chin strap, slide on the neck piece. Pick a preset, or set wavelengths yourself in the app.</p></div>
+        <div><span>03</span><h3>Run one session</h3><p>Ten minutes with your eyes closed. The controller stops at the dose MyDose™ calculates for the mode you chose.</p></div>
+      </div>
+      <div class="cb-video">
+        <img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/1423935bf_generated_image.png" alt="Mask on linen, ready for a session" loading="lazy" />
+        <div class="cb-videobox">
+          <span class="cb-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l12 7-12 7z"/></svg></span>
+          <div><b>Watch the ten-minute routine</b><span>1:24 · filmed in our Paris studio</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRESET MODES ============ -->
+  <section class="cb-sec cb-modes">
+    <div class="cb-wrap">
+      <div class="cb-head">
+        <span class="cb-kicker">Four presets</span>
+        <h2>Clinician-set programs, or build your own.</h2>
+      </div>
+      <div class="cb-modegrid">
+        <article style="--c:#D8453B"><span class="cb-modechip">Preset 01</span><h3>Renew</h3><p>Red 630 + near-infrared 850. Ten minutes, five times a week. The anti-ageing baseline.</p><em>Fine lines, firmness</em></article>
+        <article style="--c:#3E62C4"><span class="cb-modechip">Preset 02</span><h3>Clear</h3><p>Blue 415 + red 630. Ten minutes, three times a week. Calms active breakouts.</p><em>Breakouts, congestion</em></article>
+        <article style="--c:#3F9E5B"><span class="cb-modechip">Preset 03</span><h3>Even</h3><p>Green 520 + yellow 590. Twelve minutes, five times a week. Tone and pigmentation.</p><em>Dark spots, uneven tone</em></article>
+        <article style="--c:#6E2A25"><span class="cb-modechip">Preset 04</span><h3>Recover</h3><p>Deep near-infrared 940 alone. Eight minutes, after treatments or long-haul flights.</p><em>Redness, recovery</em></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRESS ============ -->
+  <section class="cb-press">
+    <div class="cb-wrap">
+      <span class="cb-presslabel">As seen in</span>
+      <div class="cb-logos">
+        <span>VOGUE</span><span>ELLE</span><span>HARPER'S BAZAAR</span><span>GQ</span><span>MARIE CLAIRE</span><span>LES ECHOS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERT ============ -->
+  <section class="cb-sec tint cb-expert">
+    <div class="cb-wrap cb-2col rev">
+      <div class="cb-copy">
+        <span class="cb-kicker">Expert opinion</span>
+        <h2>“The only home device I recommend without a caveat.”</h2>
+        <p>“LED is not a gimmick, but most masks are underpowered and badly tested. What I want is a device that tells me the irradiance, the wavelength and the dose, and that holds those numbers over time. This one does, and the neck coverage is what makes it worth the money: patients treat the face and forget the décolleté until it is the thing that gives them away.”</p>
+        <div class="cb-expert-by">
+          <img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/b36b07ed3_generated_image.png" alt="Dr Camille Aubert" loading="lazy" />
+          <div><b>Dr Camille Aubert</b><span>Dermatologist, Hôpital Saint-Louis, Paris</span></div>
+        </div>
+      </div>
+      <div class="cb-media">
+        <img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/b36b07ed3_generated_image.png" alt="Dr Camille Aubert in clinic" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IN THE BOX ============ -->
+  <section class="cb-sec cb-box">
+    <div class="cb-wrap cb-2col">
+      <div class="cb-media">
+        <img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/e00a38d60_final_kit.jpg" alt="Everything in the box" loading="lazy" />
+      </div>
+      <div class="cb-copy">
+        <span class="cb-kicker">In the box</span>
+        <h2>Everything you need, nothing to buy after.</h2>
+        <ul class="cb-checklist">
+          <li><i>01</i><div><b>Face mask, 60 LEDs</b><span>Medical-grade silicone, 218 g</span></div></li>
+          <li><i>02</i><div><b>Neck &amp; décolleté piece, 60 LEDs</b><span>Clips to the mask, works alone</span></div></li>
+          <li><i>03</i><div><b>Cordless controller</b><span>LCD, 3,000 mAh, USB-C</span></div></li>
+          <li><i>04</i><div><b>Eye protectors and straps</b><span>Required, included</span></div></li>
+          <li><i>05</i><div><b>Gift box, satin pouch</b><span>And the printed protocol card</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AWARDS ============ -->
+  <section class="cb-awards">
+    <div class="cb-wrap cb-awardrow">
+      <div><b>Veritace®</b><span>Every LED tested</span></div>
+      <div><b>CE marked</b><span>Class IIa medical device</span></div>
+      <div><b>Beauty Tech Awards</b><span>Device of the year 2026</span></div>
+      <div><b>Dermatest</b><span>Excellent, 5 stars</span></div>
+    </div>
+  </section>
+
+  <!-- ============ SOCIAL PROOF ============ -->
+  <section class="cb-sec tint cb-ugc">
+    <div class="cb-wrap">
+      <div class="cb-head center">
+        <span class="cb-kicker">@luminera.clinical</span>
+        <h2>Ten minutes, however the day went.</h2>
+      </div>
+      <div class="cb-uggrid">
+        <figure><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/bd67e0af1_generated_image.png" alt="Morning session" loading="lazy" /><figcaption>@amandine.p</figcaption></figure>
+        <figure><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/8e0a450b5_final_lifestyle.jpg" alt="Night routine" loading="lazy" /><figcaption>@lea.studio</figcaption></figure>
+        <figure><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/097471d1e_final_maskneck.jpg" alt="Face and neck set" loading="lazy" /><figcaption>@margaux.b</figcaption></figure>
+        <figure><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/c4c8dabe8_final_modes.jpg" alt="Choosing a wavelength" loading="lazy" /><figcaption>@studio.lumen</figcaption></figure>
+        <figure><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/02bc765ca_final_flat.jpg" alt="On the dressing table" loading="lazy" /><figcaption>@claralr</figcaption></figure>
+        <figure><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/e00a38d60_final_kit.jpg" alt="Unboxing" loading="lazy" /><figcaption>@nine.rue</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="cb-sec cb-reviews" id="reviews">
+    <div class="cb-wrap">
+      <div class="cb-head center">
+        <span class="cb-kicker">Reviews</span>
+        <h2>160 reviews, 4.7 out of 5.</h2>
+      </div>
+
+      <div class="cb-summary">
+        <div class="cb-score">
+          <b>4.7</b>
+          <span class="stars" data-rating="4.7"></span>
+          <em>Based on 160 reviews</em>
+        </div>
+        <div class="cb-hist" id="hist"></div>
+        <div class="cb-rstats">
+          <div><b>96%</b><span>would buy again</span></div>
+          <div><b>89%</b><span>saw results in 8 weeks</span></div>
+        </div>
+      </div>
+
+      <div class="cb-filters" id="revFilters">
+        <button class="on" data-filter="all">All reviews</button>
+        <button data-filter="5">5 stars</button>
+        <button data-filter="4">4 stars</button>
+        <button data-filter="3">3 stars and under</button>
+        <button data-filter="photo">With photos</button>
+      </div>
+
+      <div class="cb-revgrid" id="revGrid"></div>
+      <div class="cb-more"><button class="cb-btn alt" id="revMore">Show more reviews</button></div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="cb-sec tint cb-faq" id="faq">
+    <div class="cb-wrap cb-faqgrid">
+      <div class="cb-head">
+        <span class="cb-kicker">FAQ</span>
+        <h2>Questions we get before the first session.</h2>
+        <p>Anything else, the clinical team answers within a few hours, seven days a week.</p>
+        <a class="cb-link" href="mailto:care@luminera.store">care@luminera.store</a>
+      </div>
+      <div class="cb-faqlist" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- ============ JOURNAL ============ -->
+  <section class="cb-sec cb-blog">
+    <div class="cb-wrap">
+      <div class="cb-head between">
+        <div><span class="cb-kicker">Beauty tech journal</span><h2>Read before you buy.</h2></div>
+        <a class="cb-link" href="#home" data-nav="home">All articles</a>
+      </div>
+      <div class="cb-bloggrid">
+        <a class="cb-post" href="#home" data-nav="home"><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/c4c8dabe8_final_modes.jpg" alt="" loading="lazy" /><span>Science · 8 min</span><h3>What 630 nm actually does under the skin</h3></a>
+        <a class="cb-post" href="#home" data-nav="home"><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/1423935bf_generated_image.png" alt="" loading="lazy" /><span>Protocol · 5 min</span><h3>The eight-week protocol, week by week</h3></a>
+        <a class="cb-post" href="#home" data-nav="home"><img src="https://media.base44.com/images/public/6a8ddf7a99a5607c28690995/097471d1e_final_maskneck.jpg" alt="" loading="lazy" /><span>Devices · 6 min</span><h3>Face masks vs the neck piece: what to treat first</h3></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUPPORT ============ -->
+  <section class="cb-support">
+    <div class="cb-wrap cb-supportrow">
+      <div><b>Talk to the clinical team</b><span>Seven days a week, 9:00–19:00 CET</span><a href="mailto:care@luminera.store">care@luminera.store</a></div>
+      <div><b>Delivery &amp; returns</b><span>Free express shipping, 60-day returns</span><button class="cb-inline" data-info="delivery">Read the policy</button></div>
+      <div><b>Warranty</b><span>Two years, registered in the box</span><button class="cb-inline" data-info="warranty">How it works</button></div>
+    </div>
+  </section>
+
+  <!-- ============ RELATED ============ -->
+  <section class="cb-sec cb-related">
+    <div class="cb-wrap">
+      <div class="cb-head"><span class="cb-kicker">Also consider</span><h2>Complete the set.</h2></div>
+      <div class="cb-relgrid" id="relGrid"></div>
+    </div>
+  </section>
+</div>
+<div class="view" id="view-checkout">
+  <header class="ck-header">
+    <div class="ck-hwrap">
+      <a class="ck-logo" href="#home" data-nav="home">LUMIÈRA<span>CLINICAL</span></a>
+      <nav class="ck-steps" aria-label="Checkout steps">
+        <a href="#home" data-nav="home">Cart</a><i>›</i>
+        <span class="on">Information</span><i>›</i>
+        <span>Shipping</span><i>›</i>
+        <span>Payment</span>
+      </nav>
+      <div class="ck-secure">Secure checkout</div>
+    </div>
+  </header>
+
+  <div class="ck-wrap">
+    <main class="ck-main">
+      <div class="ck-express">
+        <div class="ck-exlabel">Express checkout</div>
+        <div class="ck-exbtns">
+          <button type="button" class="ck-ex shop" data-express="shop">Shop Pay</button>
+          <button type="button" class="ck-ex apple" data-express="apple">&#63743; Pay</button>
+          <button type="button" class="ck-ex gpay" data-express="google">G Pay</button>
+          <button type="button" class="ck-ex paypal" data-express="paypal">PayPal</button>
+        </div>
+        <div class="ck-or"><span>OR</span></div>
+      </div>
+
+      <form id="ckForm" novalidate>
+        <!-- contact -->
+        <section class="ck-sec">
+          <div class="ck-sechead"><h2>Contact</h2><span>Already have an account? <button type="button" class="ck-mini" data-info="account">Log in</button></span></div>
+          <div class="ck-f">
+            <input type="email" name="email" id="ckEmail" placeholder="Email" autocomplete="email" required />
+            <label class="ck-err" data-for="email"></label>
+          </div>
+          <label class="ck-check"><input type="checkbox" name="news" checked /><span>Email me with news and offers</span></label>
+        </section>
+
+        <!-- delivery -->
+        <section class="ck-sec">
+          <h2>Delivery</h2>
+          <div class="ck-f">
+            <select name="country" id="ckCountry" autocomplete="country-name">
+              <option>France</option><option>Belgium</option><option>Switzerland</option><option>Luxembourg</option>
+              <option>Germany</option><option>Netherlands</option><option>Spain</option><option>Italy</option>
+              <option>Portugal</option><option>Ireland</option><option>United Kingdom</option><option>Morocco</option>
+              <option>United Arab Emirates</option><option>United States</option>
+            </select>
+          </div>
+          <div class="ck-row2">
+            <div class="ck-f"><input name="first" id="ckFirst" placeholder="First name" autocomplete="given-name" required /><label class="ck-err" data-for="first"></label></div>
+            <div class="ck-f"><input name="last" id="ckLast" placeholder="Last name" autocomplete="family-name" required /><label class="ck-err" data-for="last"></label></div>
+          </div>
+          <div class="ck-f"><input name="address" id="ckAddress" placeholder="Address" autocomplete="address-line1" required /><label class="ck-err" data-for="address"></label></div>
+          <div class="ck-f"><input name="extra" id="ckExtra" placeholder="Apartment, suite, etc. (optional)" autocomplete="address-line2" /></div>
+          <div class="ck-row2">
+            <div class="ck-f"><input name="city" id="ckCity" placeholder="City" autocomplete="address-level2" required /><label class="ck-err" data-for="city"></label></div>
+            <div class="ck-f"><input name="zip" id="ckZip" placeholder="Postal code" autocomplete="postal-code" required /><label class="ck-err" data-for="zip"></label></div>
+          </div>
+          <div class="ck-f"><input name="phone" id="ckPhone" placeholder="Phone (for delivery updates)" autocomplete="tel" /></div>
+          <label class="ck-check"><input type="checkbox" name="save" /><span>Save this information for next time</span></label>
+        </section>
+
+        <!-- shipping -->
+        <section class="ck-sec">
+          <h2>Shipping method</h2>
+          <label class="ck-opt on">
+            <input type="radio" name="ship" value="std" checked />
+            <span class="ck-opt-main"><b>Standard delivery</b><em>2–4 working days · DHL Express</em></span>
+            <span class="ck-opt-price">Free</span>
+          </label>
+          <label class="ck-opt">
+            <input type="radio" name="ship" value="exp" />
+            <span class="ck-opt-main"><b>Priority delivery</b><em>1–2 working days · before 12:00</em></span>
+            <span class="ck-opt-price">12,00 €</span>
+          </label>
+        </section>
+
+        <!-- payment -->
+        <section class="ck-sec">
+          <div class="ck-sechead"><h2>Payment</h2><span class="ck-tiny">All transactions are secure and encrypted</span></div>
+          <div class="ck-paybox">
+            <label class="ck-opt on card">
+              <input type="radio" name="pay" value="card" checked />
+              <span class="ck-opt-main"><b>Card</b></span>
+              <span class="ck-cards"><i>VISA</i><i>MC</i><i>AMEX</i></span>
+            </label>
+            <div class="ck-card-fields" id="cardFields">
+              <div class="ck-f"><input name="cardnumber" id="ckCard" placeholder="Card number" inputmode="numeric" autocomplete="cc-number" maxlength="23" /><label class="ck-err" data-for="card"></label></div>
+              <div class="ck-row2">
+                <div class="ck-f"><input name="exp" id="ckExp" placeholder="MM / YY" inputmode="numeric" autocomplete="cc-exp" maxlength="7" /><label class="ck-err" data-for="exp"></label></div>
+                <div class="ck-f"><input name="cvc" id="ckCvc" placeholder="Security code" inputmode="numeric" autocomplete="cc-csc" maxlength="4" /><label class="ck-err" data-for="cvc"></label></div>
+              </div>
+              <div class="ck-f"><input name="cardname" id="ckCardName" placeholder="Name on card" autocomplete="cc-name" /></div>
+              <input type="hidden" name="paymethod" id="ckPayMethod" value="card" />
+            </div>
+            <label class="ck-opt">
+              <input type="radio" name="pay" value="klarna" />
+              <span class="ck-opt-main"><b>Klarna</b><em>Pay in 4 interest-free instalments</em></span>
+              <span class="ck-opt-price" id="ckKlarna4">69,75 €</span>
+            </label>
+            <label class="ck-opt">
+              <input type="radio" name="pay" value="paypal" />
+              <span class="ck-opt-main"><b>PayPal</b><em>You'll be redirected to approve the payment</em></span>
+            </label>
+          </div>
+        </section>
+
+        <!-- billing -->
+        <section class="ck-sec">
+          <h2>Billing address</h2>
+          <label class="ck-opt on">
+            <input type="radio" name="billing" value="same" checked />
+            <span class="ck-opt-main"><b>Same as delivery address</b></span>
+          </label>
+          <label class="ck-opt">
+            <input type="radio" name="billing" value="diff" />
+            <span class="ck-opt-main"><b>Use a different billing address</b></span>
+          </label>
+        </section>
+
+        <button class="ck-paynow" type="submit">Pay now · <span id="ckTotal">279,00 €</span></button>
+        <p class="ck-demo" id="ckDemo"></p>
+
+        <div class="ck-footlinks">
+          <button type="button" class="ck-mini" data-info="returns">Refund policy</button>
+          <button type="button" class="ck-mini" data-info="delivery">Shipping</button>
+          <button type="button" class="ck-mini" data-info="privacy">Privacy policy</button>
+          <button type="button" class="ck-mini" data-info="terms">Terms of service</button>
+        </div>
+      </form>
+    </main>
+
+    <aside class="ck-sum" aria-label="Order summary">
+      <div class="ck-items" id="ckItems"></div>
+
+      <div class="ck-disc">
+        <input id="ckCode" placeholder="Discount code or gift card" aria-label="Discount code" />
+        <button type="button" id="ckApply">Apply</button>
+      </div>
+
+      <div class="ck-tots" id="ckTots"></div>
+
+      <p class="ck-note">Taxes included. Shipping and duties calculated at the next step.</p>
+
+      <div class="ck-secure2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+        Secure checkout · Visa, Mastercard, AMEX, PayPal, Klarna
+      </div>
+    </aside>
+  </div>
 </div>
 
 </main>
@@ -1810,14 +2640,16 @@ document.addEventListener('click', e=>{
 /* ============================================================
    ROUTING
 ============================================================ */
-const viewHome = $('#view-home'), viewProduct = $('#view-product');
+const viewHome = $('#view-home'), viewProduct = $('#view-product'), viewCheckout = $('#view-checkout');
 let currentView = 'home';
 
 function showView(name){
   currentView = name;
   viewHome.classList.toggle('on', name==='home');
   viewProduct.classList.toggle('on', name==='product');
-  $('#stickyBuy').classList.toggle('on', false);
+  if(viewCheckout) viewCheckout.classList.toggle('on', name==='checkout');
+  document.body.classList.toggle('checkout-mode', name==='checkout');
+  if(name!=='product') $('#stickyBuy').classList.toggle('on', false);
   document.body.classList.remove('lock');
 }
 
@@ -1832,9 +2664,7 @@ function scrollToId(id){
 
 function goHome(sectionId, push=true){
   showView('home');
-  if(push) if(location.hash === '#product' || location.hash.startsWith('#product')){ openProduct('pro'); }
-else if(location.hash && document.getElementById(location.hash.slice(1))){ setTimeout(()=>scrollToId(location.hash.slice(1)), 120); }
-else { history.replaceState(null,'','#home'); }
+  if(push) history.replaceState(null,'','#home');
   if(sectionId){ setTimeout(()=>scrollToId(sectionId), 40); }
   else window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -1887,53 +2717,71 @@ document.addEventListener('click', e=>{
 });
 
 /* ============================================================
-   PDP: GALLERY, VARIANT, QTY
+   PDP v2 · GALLERY · VARIANTS · QTY
 ============================================================ */
 const GALLERY = [
   {src:IMG.lifestyle, tag:'Worn · face + neck', alt:'Mask worn on face and neck'},
-  {src:IMG.maskneck, tag:'Face + neck pieces', alt:'Face and neck pieces'},
-  {src:IMG.flat, tag:'Shell detail', alt:'Mask shell detail'},
-  {src:IMG.modes, tag:'Eight light modes', alt:'Eight light modes'},
-  {src:IMG.kit, tag:'In the box', alt:'Everything in the box'}
+  {src:IMG.maskneck,  tag:'Face + neck pieces',  alt:'Face and neck pieces'},
+  {src:IMG.flat,      tag:'Shell detail',        alt:'Mask shell detail'},
+  {src:IMG.modes,     tag:'Eight light modes',   alt:'Eight light modes'},
+  {src:IMG.kit,       tag:'In the box',          alt:'Everything in the box'}
 ];
 let galIndex = 0;
-(function(){
-  const thumbs = $('#thumbs');
-  if(!thumbs) return;
-  thumbs.innerHTML = GALLERY.map((g,i)=>
-    '<button class="thumb'+(i===0?' on':'')+'" data-gal="'+i+'" aria-label="View image '+(i+1)+'"><img src="'+g.src+'" alt="'+g.alt+'" loading="lazy" /></button>'
-  ).join('');
-  thumbs.addEventListener('click', e=>{
-    const b = e.target.closest('[data-gal]');
-    if(!b) return;
-    setGallery(parseInt(b.dataset.gal,10));
-  });
-})();
-
-function setGallery(i){
-  galIndex = (i + GALLERY.length) % GALLERY.length;
-  const g = GALLERY[galIndex];
-  const img = $('#stageImg');
-  img.style.opacity = 0;
-  setTimeout(()=>{
-    img.src = g.src;
-    img.alt = g.alt;
-    img.style.opacity = 1;
-    $('#stageTag').textContent = g.tag;
-  }, 140);
-  $$('#thumbs .thumb').forEach((t,k)=>t.classList.toggle('on', k===galIndex));
-}
-$('#galPrev').addEventListener('click', ()=>setGallery(galIndex-1));
-$('#galNext').addEventListener('click', ()=>setGallery(galIndex+1));
-
 let selectedId = 'pro';
 let qty = 1;
 
+function renderThumbs(){
+  const thumbs = $('#thumbs');
+  if(!thumbs) return;
+  thumbs.innerHTML = GALLERY.map((g,i)=>
+    '<button class="cb-thumb'+(i===0?' on':'')+'" data-gal="'+i+'" aria-label="View image '+(i+1)+'"><img src="'+g.src+'" alt="'+g.alt+'" loading="lazy" /></button>'
+  ).join('');
+}
+function setGallery(i){
+  const img = $('#stageImg');
+  if(!img) return;
+  galIndex = (i + GALLERY.length) % GALLERY.length;
+  const g = GALLERY[galIndex];
+  img.style.opacity = 0;
+  setTimeout(()=>{
+    img.src = g.src; img.alt = g.alt; img.style.opacity = 1;
+    $('#stageTag').textContent = g.tag;
+  }, 140);
+  $$('#thumbs .cb-thumb').forEach((t,k)=>t.classList.toggle('on', k===galIndex));
+}
+
+function renderVariants(){
+  const list = $('#optList');
+  if(!list) return;
+  list.innerHTML = ORDER_IDS.map(id=>{
+    const p = PRODUCTS[id];
+    const worth = p.compare ? '<s>Worth '+money(p.compare)+'</s>' : '';
+    return '<label class="opt'+(id===selectedId?' on':'')+'" data-opt="'+id+'">'+
+      '<input type="radio" name="variant" value="'+id+'"'+(id===selectedId?' checked':'')+'>'+
+      '<img src="'+p.img+'" alt="" loading="lazy" />'+
+      '<span class="radius"></span>'+
+      '<span class="o-main">'+
+        '<span class="o-name">'+p.short+(id==='pro'?'<span class="flag">Most popular</span>':'')+'</span>'+
+        '<span class="o-sub">'+p.sub+'</span>'+
+      '</span>'+
+      '<span class="o-price">'+money(p.price)+worth+'</span>'+
+    '</label>';
+  }).join('');
+}
+
+function renderBox(){
+  const el = $('#boxList');
+  if(!el) return;
+  const p = PRODUCTS[selectedId];
+  el.innerHTML = '<b style="font-weight:500;color:var(--cb-ink)">In the '+p.short.toLowerCase()+'</b><br>'+
+    p.contents.join(' &middot; ');
+}
+
 function setVariant(id){
-  selectedId = id;
-  const p = PRODUCTS[id];
+  selectedId = PRODUCTS[id] ? id : 'pro';
+  const p = PRODUCTS[selectedId];
   $$('#optList .opt').forEach(o=>{
-    const on = o.dataset.opt === id;
+    const on = o.dataset.opt === selectedId;
     o.classList.toggle('on', on);
     const input = $('input', o);
     if(input) input.checked = on;
@@ -1941,14 +2789,8 @@ function setVariant(id){
   const priceEl = $('#pdpPriceRow .p');
   if(priceEl) priceEl.textContent = money(p.price);
   const cmp = $('#pdpCompare'), save = $('#pdpSave');
-  if(cmp){
-    cmp.hidden = !p.compare;
-    if(p.compare) cmp.textContent = money(p.compare);
-  }
-  if(save){
-    save.hidden = !p.compare;
-    if(p.compare) save.textContent = 'Save ' + money(p.compare - p.price);
-  }
+  if(cmp){ cmp.hidden = !p.compare; if(p.compare) cmp.textContent = money(p.compare); }
+  if(save){ save.hidden = !p.compare; if(p.compare) save.textContent = 'Save ' + money(p.compare - p.price); }
   const split = $('#pdpSplit');
   if(split) split.textContent = money(p.price/4);
   const addPrice = $('#addPrice');
@@ -1961,47 +2803,398 @@ function setVariant(id){
   if(sb) sb.textContent = money(p.price);
   const qv = $('#qVal');
   if(qv) qv.textContent = qty;
+  renderBox();
 }
-
-(function(){
-  const list = $('#optList');
-  if(!list) return;
-  list.innerHTML = ORDER_IDS.map(id=>{
-    const p = PRODUCTS[id];
-    return '<label class="opt'+(id==='pro'?' on':'')+'" data-opt="'+id+'">'+
-      '<input type="radio" name="variant" value="'+id+'"'+(id==='pro'?' checked':'')+'>'+
-      '<span class="radio"></span>'+
-      '<span class="o-main">'+
-        '<span class="o-name">'+p.short+(id==='pro'?'<span class="flag">Most popular</span>':'')+'</span>'+
-        '<span class="o-sub">'+p.sub+'</span>'+
-      '</span>'+
-      '<span class="o-price">'+money(p.price)+(p.compare?'<s>'+money(p.compare)+'</s>':'')+'</span>'+
-    '</label>';
-  }).join('');
-})();
 
 document.addEventListener('click', e=>{
   const opt = e.target.closest('.opt');
-  if(opt){ e.preventDefault(); setVariant(opt.dataset.opt); }
+  if(opt){ e.preventDefault(); setVariant(opt.dataset.opt); return; }
+  const th = e.target.closest('[data-gal]');
+  if(th){ setGallery(parseInt(th.dataset.gal,10)); }
 });
 
-$('#qMinus').addEventListener('click', ()=>{ qty = Math.max(1, qty-1); $('#qVal').textContent = qty; });
-$('#qPlus').addEventListener('click', ()=>{ qty = Math.min(5, qty+1); $('#qVal').textContent = qty; });
+const galPrev = $('#galPrev'), galNext = $('#galNext');
+if(galPrev) galPrev.addEventListener('click', ()=>setGallery(galIndex-1));
+if(galNext) galNext.addEventListener('click', ()=>setGallery(galIndex+1));
+
+const qMinus = $('#qMinus'), qPlus = $('#qPlus');
+if(qMinus) qMinus.addEventListener('click', ()=>{ qty = Math.max(1, qty-1); $('#qVal').textContent = qty; });
+if(qPlus)  qPlus.addEventListener('click',  ()=>{ qty = Math.min(5, qty+1); $('#qVal').textContent = qty; });
+
+const addBtn = $('#addBtn');
+if(addBtn) addBtn.addEventListener('click', ()=>{ addToCart(selectedId, qty); });
+const buyNowBtn = $('#buyNowBtn');
+if(buyNowBtn) buyNowBtn.addEventListener('click', ()=>{ addToCart(selectedId, qty); });
+
+const boxToggle = $('#boxToggle');
+if(boxToggle) boxToggle.addEventListener('click', ()=>{
+  const b = $('#boxList');
+  if(!b) return;
+  b.hidden = !b.hidden;
+  boxToggle.textContent = b.hidden ? "What's in the box?" : 'Hide contents';
+});
 
 /* delivery window */
 (function(){
   const w = deliveryWindow();
   const el = $('#etaText');
   if(el) el.textContent = w.a + ' – ' + w.b;
-  const barMsg = $('#barTrack .bar-msg');
-  if(barMsg) barMsg.dataset.eta = w.a;
 })();
-$('#countrySel').addEventListener('change', ()=>{
-  const w = deliveryWindow();
-  const far = ['Morocco','United Arab Emirates','United States'].includes($('#countrySel').value);
-  const a = addBusinessDays(new Date(), far?4:2), b = addBusinessDays(new Date(), far?6:4);
-  $('#etaText').textContent = fmtDate(a) + ' – ' + fmtDate(b);
-});
+
+/* ============================================================
+   PDP v2 · REVIEWS + FAQ + RELATED
+============================================================ */
+const MORE_REVIEWS = [
+  {r:5, t:'The app is the quiet hero', b:'Being able to set 630 and 850 separately and have the controller work out the time is what makes me use it daily. No thinking, no guessing.', a:'Juliette M.', c:'Bordeaux', m:'Red + NIR', d:'7 weeks'},
+  {r:5, t:'Bought it for my neck only', b:'I already had a mask I did not love. I bought this for the neck piece and now I use the pair. Two months in, the lines are softer and my skin looks less tired.', a:'Nadia F.', c:'Brussels', m:'Neck piece', d:'2 months'},
+  {r:4, t:'Great device, slow shipping', b:'The mask itself is excellent and the blue mode is the only thing that has calmed my chin without drying it out. Delivery took five days to Portugal, a little longer than promised.', a:'Rita S.', c:'Lisbon', m:'Blue', d:'5 weeks'},
+  {r:5, t:'Ten minutes is genuinely ten minutes', b:'It switches itself off. I do it while the coffee brews. Six weeks in, my cheeks are firmer and I have stopped reaching for the blur primer.', a:'Hanna W.', c:'Vienna', m:'Red', d:'6 weeks'},
+  {r:5, t:'My mother borrowed it and kept it', b:'So I bought a second. At her age the near-infrared is doing the heavy lifting and she says the texture on her jaw has changed. She is 68 and very sceptical.', a:'Leïla R.', c:'Rabat', m:'NIR', d:'3 months'},
+  {r:4, t:'Wish it charged faster', b:'Two hours for a full charge is slow, but the battery does last. Results on my pigmentation are subtle but real after two months of green mode.', a:'Clara B.', c:'Geneva', m:'Green', d:'2 months'}
+];
+const ALL_REVIEWS = REVIEWS.concat(MORE_REVIEWS);
+const HIST = [{s:5,n:128},{s:4,n:22},{s:3,n:6},{s:2,n:3},{s:1,n:1}];
+let revFilter = 'all';
+let revShown = 6;
+
+function renderHist(){
+  const el = $('#hist');
+  if(!el) return;
+  el.innerHTML = HIST.map(h=>{
+    const pct = Math.round(h.n/160*100);
+    return '<div class="cb-histrow"><span>'+h.s+' ★</span><span class="cb-histbar"><i style="width:'+pct+'%"></i></span><span>'+h.n+'</span></div>';
+  }).join('');
+}
+function reviewCard(r){
+  return '<article class="cb-rev">'+
+    '<span class="stars" data-rating="'+r.r+'"></span>'+
+    '<h4>'+r.t+'</h4>'+
+    '<p>'+r.b+'</p>'+
+    '<div class="cb-revby"><b>'+r.a+' · '+r.c+'</b><span>'+r.m+' · '+r.d+'</span></div>'+
+  '</article>';
+}
+function renderReviews(){
+  const grid = $('#revGrid');
+  if(!grid) return;
+  let list = ALL_REVIEWS;
+  if(revFilter === '5') list = ALL_REVIEWS.filter(r=>r.r===5);
+  else if(revFilter === '4') list = ALL_REVIEWS.filter(r=>r.r===4);
+  else if(revFilter === '3') list = ALL_REVIEWS.filter(r=>r.r<=3);
+  else if(revFilter === 'photo') list = ALL_REVIEWS.slice(0,6);
+  grid.innerHTML = list.slice(0, revShown).map(reviewCard).join('');
+  paintStars(grid);
+  const more = $('#revMore');
+  if(more){
+    const done = revShown >= list.length;
+    more.style.display = done ? 'none' : 'inline-flex';
+    more.textContent = 'Show more reviews';
+  }
+}
+function bindReviews(){
+  renderHist(); renderReviews();
+  const f = $('#revFilters');
+  if(f) f.addEventListener('click', e=>{
+    const b = e.target.closest('[data-filter]');
+    if(!b) return;
+    revFilter = b.dataset.filter; revShown = 6;
+    $$('#revFilters button').forEach(x=>x.classList.toggle('on', x===b));
+    renderReviews();
+  });
+  const more = $('#revMore');
+  if(more) more.addEventListener('click', ()=>{ revShown += 6; renderReviews(); });
+}
+
+function renderFaq(){
+  const el = $('#faqList');
+  if(!el) return;
+  el.innerHTML = FAQ.map((f,i)=>
+    '<div class="cb-faqitem'+(i===0?' on':'')+'">'+
+      '<button type="button" aria-expanded="'+(i===0)+'">'+f.q+'<span class="cb-plus">'+(i===0?'–':'+')+'</span></button>'+
+      '<div class="cb-faqa"><p>'+f.a+'</p></div>'+
+    '</div>'
+  ).join('');
+  el.addEventListener('click', e=>{
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    const item = btn.parentElement;
+    const open = item.classList.contains('on');
+    $$('.cb-faqitem', el).forEach(x=>{
+      x.classList.remove('on');
+      const b = $('button', x); if(b){ b.setAttribute('aria-expanded','false'); }
+      const p = $('.cb-plus', x); if(p) p.textContent = '+';
+    });
+    if(!open){
+      item.classList.add('on');
+      btn.setAttribute('aria-expanded','true');
+      const p = $('.cb-plus', item); if(p) p.textContent = '–';
+    }
+  });
+}
+
+function renderRelated(){
+  const el = $('#relGrid');
+  if(!el) return;
+  el.innerHTML = ORDER_IDS.map(id=>{
+    const p = PRODUCTS[id];
+    return '<a class="cb-rel" href="#product" data-product="'+id+'">'+
+      '<img src="'+p.img+'" alt="'+p.name+'" loading="lazy" />'+
+      '<div class="cb-relb"><b>'+p.short+'</b><span>'+p.sub+'</span><em>'+money(p.price)+'</em></div>'+
+    '</a>';
+  }).join('');
+}
+
+/* ============================================================
+   CHECKOUT · Shopify-style flow, Stripe hand-off
+============================================================ */
+/*  Stripe: paste the Checkout / Payment Link for each variant into
+    STRIPE_LINKS and set STRIPE_ENABLED to true. The checkout then hands
+    off to Stripe with email, order reference and a return URL, and the
+    on-site confirmation becomes a fallback only.                      */
+const STRIPE_ENABLED = false;
+const STRIPE_LINKS = { pro:'', essential:'', twin:'' };
+
+const CK = { ship:'std', pay:'card', discount:0, code:'' };
+const SHIP_RATES = { std:0, exp:12 };
+
+function ckItemsTotal(){
+  return cart.reduce((n,i)=>{
+    const p = PRODUCTS[i.id];
+    return n + (p ? p.price*i.qty : 0);
+  },0);
+}
+function ckTotals(){
+  const sub = ckItemsTotal();
+  const ship = SHIP_RATES[CK.ship] || 0;
+  const disc = +(sub * CK.discount).toFixed(2);
+  const total = Math.max(0, sub - disc) + ship;
+  return {sub, ship, disc, total};
+}
+function renderCheckoutSummary(){
+  const items = $('#ckItems');
+  if(items){
+    items.innerHTML = cart.length ? cart.map(i=>{
+      const p = PRODUCTS[i.id];
+      return '<div class="ck-item">'+
+        '<div class="ck-thumbwrap"><img src="'+p.img+'" alt="" /><span class="ck-qbadge">'+i.qty+'</span></div>'+
+        '<div><b>'+p.name+'</b><span>'+p.sub+'</span></div>'+
+        '<em>'+money(p.price*i.qty)+'</em>'+
+      '</div>';
+    }).join('') : '<p style="font-size:13px;color:var(--cb-mute)">Your bag is empty.</p>';
+  }
+  const t = ckTotals();
+  const tots = $('#ckTots');
+  if(tots){
+    tots.innerHTML =
+      '<div class="ck-totrow"><span>Subtotal</span><span>'+money(t.sub)+'</span></div>'+
+      (t.disc ? '<div class="ck-totrow"><span>Discount · '+CK.code+'</span><span>− '+money(t.disc)+'</span></div>' : '')+
+      '<div class="ck-totrow"><span>Shipping</span><span class="'+(t.ship?'':'free')+'">'+(t.ship?money(t.ship):'Free')+'</span></div>'+
+      '<div class="ck-totrow big"><span>Total</span><span>'+(STRIPE_ENABLED?'':'')+money(t.total)+' <em style="font-style:normal;font-size:11px;color:var(--cb-mute)">EUR</em></span></div>';
+  }
+  const pay = $('#ckTotal'); if(pay) pay.textContent = money(t.total);
+  const k4 = $('#ckKlarna4'); if(k4) k4.textContent = money(t.total/4);
+}
+function openCheckout(){
+  if(!cart.length){ toast('Your bag is empty'); return; }
+  if(cartOpen) closeCart();
+  renderCheckoutSummary();
+  showView('checkout');
+  history.replaceState(null,'','#checkout');
+  window.scrollTo({top:0,behavior:'auto'});
+}
+
+function ckSetErr(name, msg){
+  const input = document.querySelector('#ckForm [name="'+name+'"]') ||
+                document.querySelector('#ckForm #ck'+name.charAt(0).toUpperCase()+name.slice(1));
+  const wrap = input ? input.closest('.ck-f') : null;
+  if(!wrap) return;
+  wrap.classList.toggle('bad', !!msg);
+  const err = wrap.querySelector('.ck-err');
+  if(err) err.textContent = msg || '';
+}
+function ckValidate(){
+  let ok = true;
+  const v = id => ($(id) ? $(id).value.trim() : '');
+  ckSetErr('email', '');
+  ['first','last','address','city','zip'].forEach(k=>ckSetErr(k,''));
+  ckSetErr('card',''); ckSetErr('exp',''); ckSetErr('cvc','');
+
+  const email = v('#ckEmail');
+  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)){ ckSetErr('email','Enter a valid email address'); ok = false; }
+  if(!v('#ckFirst')){ ckSetErr('first','Enter a first name'); ok = false; }
+  if(!v('#ckLast')){ ckSetErr('last','Enter a last name'); ok = false; }
+  if(!v('#ckAddress')){ ckSetErr('address','Enter an address'); ok = false; }
+  if(!v('#ckCity')){ ckSetErr('city','Enter a city'); ok = false; }
+  if(!v('#ckZip')){ ckSetErr('zip','Enter a postal code'); ok = false; }
+
+  if(CK.pay === 'card'){
+    const num = v('#ckCard').replace(/\s/g,'');
+    if(num.length < 13){ ckSetErr('card','Enter a complete card number'); ok = false; }
+    const exp = v('#ckExp');
+    if(!/^\d{2}\s?\/\s?\d{2}$/.test(exp)){ ckSetErr('exp','MM / YY'); ok = false; }
+    if(v('#ckCvc').length < 3){ ckSetErr('cvc','3 or 4 digits'); ok = false; }
+  }
+  return ok;
+}
+
+function ckOrderRef(){
+  const d = new Date();
+  const n = Math.floor(100000 + Math.random()*899999);
+  return 'LUM-' + String(d.getFullYear()).slice(2) + String(d.getMonth()+1).padStart(2,'0') + '-' + n;
+}
+
+function stripeHandoff(method){
+  const t = ckTotals();
+  const single = cart.length === 1 ? cart[0].id : null;
+  const link = single ? STRIPE_LINKS[single] : '';
+  if(STRIPE_ENABLED && link){
+    const email = $('#ckEmail') ? $('#ckEmail').value.trim() : '';
+    const ref = ckOrderRef();
+    const url = link +
+      (link.includes('?') ? '&' : '?') +
+      'client_reference_id=' + encodeURIComponent(ref) +
+      (email ? '&prefilled_email=' + encodeURIComponent(email) : '') +
+      (method === 'klarna' ? '&payment_method_types[0]=klarna' : '');
+    window.location.href = url;
+    return true;
+  }
+  return false;
+}
+
+function renderThanks(data){
+  const t = data.totals;
+  const main = document.querySelector('.ck-wrap');
+  if(!main) return;
+  const summary = cart.map(i=>{
+    const p = PRODUCTS[i.id];
+    return '<div class="ck-trow"><span>'+p.name+' × '+i.qty+'</span><span>'+money(p.price*i.qty)+'</span></div>';
+  }).join('');
+  main.outerHTML =
+  '<div class="ck-thanks">'+
+    '<div class="ck-tbar"><span class="ck-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12.5l5 5L20 6.5"/></svg></span>'+
+      '<div><h1>Thank you, '+data.first+'.</h1><span class="ck-ordno">Order '+data.ref+' · confirmation sent to '+data.email+'</span></div>'+
+    '</div>'+
+    '<div class="ck-tgrid">'+
+      '<div><h3>Delivery</h3><p>'+data.first+' '+data.last+'<br>'+data.address+(data.extra?'<br>'+data.extra:'')+'<br>'+data.zip+' '+data.city+'<br>'+data.country+'</p></div>'+
+      '<div><h3>Shipping method</h3><p>'+(data.ship==='exp'?'Priority delivery · 1–2 working days':'Standard delivery · 2–4 working days')+'<br>Tracked DHL Express</p></div>'+
+    '</div>'+
+    '<div class="ck-titems">'+summary+
+      '<div class="ck-trow"><span>Shipping</span><span>'+(t.ship?money(t.ship):'Free')+'</span></div>'+
+      (t.disc?'<div class="ck-trow"><span>Discount</span><span>− '+money(t.disc)+'</span></div>':'')+
+      '<div class="ck-trow total"><span>Total paid</span><span>'+money(t.total)+'</span></div>'+
+    '</div>'+
+    '<p style="font-size:12px;color:var(--cb-mute);line-height:1.6">'+(STRIPE_ENABLED?'Payment taken by Stripe.':'This storefront runs without a payment processor: no card was charged and no order will ship. Connect Stripe in the checkout code to take live payments.')+'</p>'+
+    '<div style="display:flex;gap:10px;margin-top:26px;flex-wrap:wrap">'+
+      '<button class="cb-btn" style="max-width:260px" data-nav="home">Continue shopping</button>'+
+      '<button class="cb-btn alt" style="max-width:260px" id="thanksAgain">Back to the mask</button>'+
+    '</div>'+
+  '</div>';
+  cart = [];
+  write('lumiera_cart_v3', cart);
+  renderCart();
+  const again = $('#thanksAgain');
+  if(again) again.addEventListener('click', ()=>openProduct('pro'));
+  window.scrollTo({top:0,behavior:'auto'});
+}
+
+function placeOrder(e){
+  if(e) e.preventDefault();
+  if(!ckValidate()){
+    const bad = document.querySelector('#ckForm .ck-f.bad input');
+    if(bad) bad.focus();
+    return;
+  }
+  const t = ckTotals();
+  const data = {
+    first:$('#ckFirst').value.trim(), last:$('#ckLast').value.trim(),
+    email:$('#ckEmail').value.trim(), address:$('#ckAddress').value.trim(),
+    extra:$('#ckExtra').value.trim(), city:$('#ckCity').value.trim(),
+    zip:$('#ckZip').value.trim(), country:$('#ckCountry').value,
+    ship:CK.ship, totals:t, ref:ckOrderRef()
+  };
+  if(stripeHandoff(CK.pay)) return;
+  renderThanks(data);
+}
+
+function bindCheckout(){
+  renderCheckoutSummary();
+
+  const form = $('#ckForm');
+  if(form){
+    form.addEventListener('submit', placeOrder);
+    form.addEventListener('change', e=>{
+      const t = e.target;
+      if(t.name === 'ship'){
+        CK.ship = t.value;
+        $$('.ck-opt').forEach(o=>{ if(o.querySelector('input[name="ship"]')) o.classList.toggle('on', o.querySelector('input[name="ship"]').checked); });
+        renderCheckoutSummary();
+      }
+      if(t.name === 'pay'){
+        CK.pay = t.value;
+        $$('.ck-paybox .ck-opt').forEach(o=>{
+          const inp = o.querySelector('input[name="pay"]');
+          if(inp) o.classList.toggle('on', inp.checked);
+        });
+        const cf = $('#cardFields');
+        if(cf) cf.classList.toggle('hide', CK.pay !== 'card');
+        const pm = $('#ckPayMethod'); if(pm) pm.value = CK.pay;
+        renderCheckoutSummary();
+      }
+      if(t.name === 'billing'){
+        $$('.ck-sec .ck-opt').forEach(o=>{
+          const inp = o.querySelector('input[name="billing"]');
+          if(inp) o.classList.toggle('on', inp.checked);
+        });
+      }
+    });
+  }
+
+  /* input masking */
+  const card = $('#ckCard');
+  if(card) card.addEventListener('input', ()=>{
+    card.value = card.value.replace(/\D/g,'').slice(0,19).replace(/(.{4})/g,'$1 ').trim();
+  });
+  const exp = $('#ckExp');
+  if(exp) exp.addEventListener('input', ()=>{
+    let v = exp.value.replace(/\D/g,'').slice(0,4);
+    if(v.length >= 3) v = v.slice(0,2) + ' / ' + v.slice(2);
+    exp.value = v;
+  });
+  const cvc = $('#ckCvc');
+  if(cvc) cvc.addEventListener('input', ()=>{ cvc.value = cvc.value.replace(/\D/g,'').slice(0,4); });
+
+  /* discount */
+  const apply = $('#ckApply');
+  if(apply) apply.addEventListener('click', ()=>{
+    const codeEl = $('#ckCode');
+    const code = (codeEl.value || '').trim().toUpperCase();
+    if(!code){ toast('Enter a code'); return; }
+    const codes = { LUMIERA10:0.10, WELCOME:0.05, PROTOCOL:0.15 };
+    if(codes[code]){
+      CK.discount = codes[code]; CK.code = code;
+      renderCheckoutSummary();
+      toast(code + ' applied · ' + Math.round(codes[code]*100) + '% off');
+    } else {
+      CK.discount = 0; CK.code = '';
+      renderCheckoutSummary();
+      toast('That code is not recognised');
+    }
+  });
+
+  /* express wallets */
+  $$('[data-express]').forEach(b=>b.addEventListener('click', ()=>{
+    const w = b.dataset.express;
+    if(STRIPE_ENABLED && stripeHandoff(w)) return;
+    toast(w === 'paypal' ? 'PayPal opens at the payment step' : 'Continue below to complete this order');
+    const el = $('#ckEmail');
+    if(el) el.focus();
+  }));
+
+  /* policy links */
+  $$('[data-info]').forEach(b=>b.addEventListener('click', ()=>{
+    const map = { delivery:'shipping', warranty:'returns', account:'contact', returns:'returns', privacy:'privacy', terms:'terms' };
+    openPanel(map[b.dataset.info] || 'shipping');
+  }));
+}
 
 /* ============================================================
    CART
@@ -2133,115 +3326,9 @@ function closeModal(){
 $('#modalX').addEventListener('click', closeModal);
 modal.addEventListener('click', e=>{ if(e.target === modal) closeModal(); });
 
-function openCheckout(){
-  if(!cart.length){ toast('Your bag is empty'); return; }
-  closeCart();
-  $('#modalCard').style.maxWidth = '880px';
-  const total = cartTotal();
-  openModal(
-    '<div class="co-grid">'+
-      '<form class="co-form" id="coForm" novalidate>'+
-        '<h3>Checkout</h3>'+
-        '<p class="co-sub">Free express shipping · duties included · 60-day returns</p>'+
-        '<fieldset class="co-fs">'+
-          '<legend>Contact</legend>'+
-          '<label class="field"><span>Email</span><input class="input" type="email" name="email" required placeholder="you@example.com" /></label>'+
-        '</fieldset>'+
-        '<fieldset class="co-fs">'+
-          '<legend>Delivery</legend>'+
-          '<div class="row2">'+
-            '<label class="field"><span>First name</span><input class="input" name="first" required placeholder="Camille" /></label>'+
-            '<label class="field"><span>Last name</span><input class="input" name="last" required placeholder="Roux" /></label>'+
-          '</div>'+
-          '<label class="field"><span>Address</span><input class="input" name="address" required placeholder="12 rue des Mares" /></label>'+
-          '<div class="row2">'+
-            '<label class="field"><span>City</span><input class="input" name="city" required placeholder="Paris" /></label>'+
-            '<label class="field"><span>Postcode</span><input class="input" name="zip" required placeholder="75011" /></label>'+
-          '</div>'+
-          '<label class="field"><span>Country</span><select class="input" name="country">'+
-            ['France','Germany','Belgium','Netherlands','Luxembourg','Spain','Italy','Portugal','Ireland','Switzerland','United Kingdom','Morocco','United Arab Emirates','United States'].map(c=>'<option>'+c+'</option>').join('')+
-          '</select></label>'+
-        '</fieldset>'+
-        '<fieldset class="co-fs">'+
-          '<legend>Payment</legend>'+
-          '<div class="paysel" id="paySel">'+
-            '<label class="on"><input type="radio" name="pay" value="card" checked> Credit or debit card</label>'+
-            '<label><input type="radio" name="pay" value="klarna"> Klarna · 4 interest-free payments of '+money(total/4)+'</label>'+
-            '<label><input type="radio" name="pay" value="apple"> Apple Pay</label>'+
-          '</div>'+
-        '</fieldset>'+
-        '<button class="btn wide" type="submit" style="margin-top:14px">Place order · '+money(total)+'</button>'+
-        '<p class="tiny" style="text-align:center;margin-top:12px">This storefront is a demonstration. No payment is taken and no order ships.</p>'+
-      '</form>'+
-      '<aside class="co-sum">'+
-        '<h4>Order summary</h4>'+
-        cart.map(i=>{
-          const p = PRODUCTS[i.id];
-          return '<div class="co-item"><img src="'+p.img+'" alt=""><div><div class="n">'+p.short+'</div><div class="q">Qty '+i.qty+'</div></div><div>'+money(p.price*i.qty)+'</div></div>';
-        }).join('')+
-        '<div class="co-tot">'+
-          '<div class="r"><span>Subtotal</span><span>'+money(total)+'</span></div>'+
-          '<div class="r"><span>Shipping</span><span class="free">Free</span></div>'+
-          '<div class="r"><span>VAT</span><span>Included</span></div>'+
-          '<div class="r big"><span>Total</span><b>'+money(total)+'</b></div>'+
-        '</div>'+
-        '<div class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Secure checkout</div>'+
-      '</aside>'+
-    '</div>'
-  );
 
-  $$('#paySel label').forEach(l=>{
-    l.addEventListener('click', ()=>{
-      $$('#paySel label').forEach(x=>x.classList.remove('on'));
-      l.classList.add('on');
-    });
-  });
 
-  $('#coForm').addEventListener('submit', placeOrder);
-}
 
-function placeOrder(e){
-  e.preventDefault();
-  const f = e.target;
-  const data = Object.fromEntries(new FormData(f).entries());
-  if(!data.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)){
-    f.email.focus(); toast('Please enter a valid email address'); return;
-  }
-  const required = ['first','last','address','city','zip'];
-  for(const k of required){
-    if(!data[k] || !String(data[k]).trim()){ f[k].focus(); toast('Please complete the delivery details'); return; }
-  }
-  const total = cartTotal();
-  const ref = 'LUM-' + String(Math.floor(100000 + Math.random()*900000));
-  const w = deliveryWindow();
-  const method = data.pay === 'klarna' ? 'Klarna 4×' : data.pay === 'apple' ? 'Apple Pay' : 'Card';
-
-  try{
-    const orders = read('lumiera_orders_v3', []);
-    orders.unshift({
-      ref, total, method, date:new Date().toISOString(),
-      email:(data.email||'').toLowerCase(), name:data.first+' '+data.last,
-      city:data.city, country:data.country,
-      items:cart.map(i=>({name:PRODUCTS[i.id].short, qty:i.qty, price:PRODUCTS[i.id].price}))
-    });
-    write('lumiera_orders_v3', orders.slice(0,25));
-  }catch(err){}
-
-  cart = []; write('lumiera_cart_v3', cart); renderCart();
-
-  openModal(
-    '<div class="success">'+
-      '<div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></div>'+
-      '<h3>Thank you, '+data.first+'.</h3>'+
-      '<p>A confirmation is on its way to '+data.email+'.</p>'+
-      '<p>Estimated arrival <b style="color:var(--ink)">'+w.a+' – '+w.b+'</b>, shipped free by DHL Express.</p>'+
-      '<div class="ref">'+ref+' · '+method+' · '+money(total)+'</div>'+
-      '<p class="tiny" style="margin-bottom:22px">This is a demonstration order: nothing was charged and nothing will ship.</p>'+
-      '<button class="btn wide" id="successShop">Continue shopping</button>'+
-    '</div>'
-  );
-  $('#successShop').addEventListener('click', ()=>{ closeModal(); goHome(); });
-}
 
 /* ============================================================
    INFO PANELS
@@ -2421,27 +3508,22 @@ $('#newsForm').addEventListener('submit', e=>{
 });
 
 /* ============================================================
-   PDP: ADD / BUY / STICKY
+   PDP: STICKY BUY BAR
 ============================================================ */
-$('#pdpAdd').addEventListener('click', ()=>addToCart(selectedId, qty));
-$('#pdpBuy').addEventListener('click', ()=>{ addToCart(selectedId, qty); setTimeout(openCheckout, 380); });
-$('#sbAdd').addEventListener('click', ()=>addToCart(selectedId, 1));
+const sbAdd = $('#sbAdd');
+if(sbAdd) sbAdd.addEventListener('click', ()=>addToCart(selectedId, 1));
 
 const sticky = $('#stickyBuy');
-if('IntersectionObserver' in window){
-  const sentinel = $('#pdpAdd');
-  const io2 = new IntersectionObserver(entries=>{
-    entries.forEach(en=>{
-      const show = currentView === 'product' && !en.isIntersecting && en.boundingClientRect.top < 0;
-      sticky.classList.toggle('on', show);
-    });
-  },{threshold:0});
-  io2.observe(sentinel);
-}
+function stickySentinel(){ return $('#addBtn') || $('#pdpTitle'); }
+
 window.addEventListener('scroll', ()=>{
+  if(!sticky) return;
   if(currentView !== 'product'){ sticky.classList.remove('on'); return; }
-  const r = $('#pdpAdd').getBoundingClientRect();
-  sticky.classList.toggle('on', r.bottom < 0 && !cartOpen && !modal.classList.contains('on'));
+  const el = stickySentinel();
+  if(!el) return;
+  const r = el.getBoundingClientRect();
+  const modalOpen = modal && modal.classList.contains('on');
+  sticky.classList.toggle('on', r.bottom < 0 && !cartOpen && !modalOpen);
 },{passive:true});
 
 /* ============================================================
@@ -2464,11 +3546,22 @@ $$('.rv').forEach(el=>io.observe(el));
 renderCart();
 selectMode('red');
 paintStars();
+renderThumbs();
+renderVariants();
 setVariant('pro');
 setGallery(0);
-if(location.hash === '#product' || location.hash.startsWith('#product')){ openProduct('pro'); }
-else if(location.hash && document.getElementById(location.hash.slice(1))){ setTimeout(()=>scrollToId(location.hash.slice(1)), 120); }
-else { history.replaceState(null,'','#home'); }
+bindReviews();
+renderFaq();
+renderRelated();
+bindCheckout();
+
+(function route(){
+  const h = location.hash.replace('#','');
+  if(h === 'product'){ openProduct('pro'); }
+  else if(h === 'checkout'){ openCheckout(); }
+  else if(h && document.getElementById(h)){ showView('home'); setTimeout(()=>scrollToId(h), 120); }
+  else { history.replaceState(null,'','#home'); }
+})();
 
 </script>
 </body>
