@@ -2911,6 +2911,11 @@ function pdDelivery(){
 }
 
 function pdWire(){
+  if(window.__pdWired){
+    pdPaintStars(); pdRenderGallery(); pdRenderVariant(); pdRenderReviews(); pdRenderFaq(); pdDelivery();
+    return;
+  }
+  window.__pdWired = 1;
   const thumbs = $('#pdThumbs');
   if(thumbs) thumbs.addEventListener('click', e=>{
     const v = e.target.closest('[data-video]');
