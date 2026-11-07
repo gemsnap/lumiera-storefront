@@ -10,7 +10,8 @@ Checkout: https://gemsnap.github.io/lumiera-storefront/#checkout
 
 ## Structure
 
-Everything ships as one `index.html` (HTML + CSS + JS, no build step, no dependencies).
+Everything ships as one `index.html` (HTML + CSS + JS, no build step, no dependencies) plus `assets/`
+for imagery, which is served from the repo so the site has no external image dependencies.
 
 - `#home` — editorial landing page: hero, wavelength tiles, bestsellers, results, mode selector, bundles, reviews, journal.
 - `#product` — CurrentBody-style product page: gallery with thumbnails, claims, "Pick your product" variant cards,
@@ -33,6 +34,7 @@ All copy is data at the bottom of `index.html`:
 | Wavelengths, modes | `MODES` array |
 | Legal / policy panels | `PANELS` object |
 | Delivery windows | `deliveryWindow()` |
+| Imagery | `assets/` (lifestyle, mask-neck, flat, modes, kit, detail, routine, skin-closeup, dermatologist) |
 
 Discount codes live in `bindCheckout()`: `LUMIERA10` (10%), `WELCOME` (5%), `PROTOCOL` (15%).
 
