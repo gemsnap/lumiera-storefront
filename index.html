@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LUMIÈRA Clinical — LED Light Therapy for Face &amp; Neck</title>
-<meta name="description" content="LUMIÈRA Pro 8-colour LED Face &amp; Neck Rejuvenation Mask. Clinical light therapy at home, 8 wavelengths, 10-minute sessions. From 249 €. Free express shipping worldwide." />
+<meta name="description" content="LUMIÈRA Pro 8-colour LED Face &amp; Neck Rejuvenation Mask. Clinical light therapy at home, 8 wavelengths, 10-minute sessions. From £499.99. Free express shipping worldwide." />
 <meta name="theme-color" content="#ffffff" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -769,6 +769,212 @@ select.input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   .stage-nav button{width:30px;height:30px}
   .success{padding:40px 22px}
 }
+
+/* ============================================================
+   30. SERIES 3 PDP (CurrentBody-structure clone)
+============================================================ */
+:root{--pd-ink:#111;--pd-body:#414141;--pd-mute:#8a8a8a;--pd-line:#e2e0dc;--pd-tint:#f5f3ef;--pd-forest:#14342b}
+.pd{color:var(--pd-body);font-size:14px;line-height:1.6;overflow-x:hidden}
+.pd h1,.pd h2,.pd h3,.pd h4{color:var(--pd-ink);letter-spacing:-.015em;font-weight:400}
+.pd-wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.pd-crumb{font-size:11px;letter-spacing:.04em;color:var(--pd-mute);padding:16px 0}
+.pd-crumb a{color:var(--pd-mute)}
+.pd-crumb span{margin:0 6px}
+/* ---------- top grid ---------- */
+.pd-top{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:56px;padding-bottom:40px}
+.pd-gal{display:grid;grid-template-columns:66px minmax(0,1fr);gap:14px;align-items:start}
+.pd-thumbs{display:flex;flex-direction:column;gap:8px}
+.pd-thumb{width:66px;height:66px;border:1px solid var(--pd-line);background:#fff;padding:0;position:relative;cursor:pointer;overflow:hidden}
+.pd-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pd-thumb.on{border-color:var(--pd-ink)}
+.pd-thumb .pd-play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.3);color:#fff}
+.pd-thumb .pd-play svg{width:14px;height:14px}
+.pd-stage{position:relative;background:#f2f0ec;overflow:hidden;aspect-ratio:1/1}
+.pd-stage img,.pd-stage video{width:100%;height:100%;object-fit:cover;display:block}
+.pd-stage video{display:none}
+.pd-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid var(--pd-line);display:grid;place-items:center;cursor:pointer;opacity:0;transition:opacity .2s}
+.pd-stage:hover .pd-nav{opacity:1}
+.pd-nav.prev{left:12px}.pd-nav.next{right:12px}
+.pd-nav svg{width:14px;height:14px;stroke:var(--pd-ink);fill:none;stroke-width:1.6}
+.pd-float{position:absolute;left:16px;top:16px;background:#fff;border:1px solid var(--pd-line);padding:7px 11px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--pd-ink)}
+/* ---------- buy box ---------- */
+.pd-buy h1{font-size:29px;line-height:1.18;margin:0 0 10px}
+.pd-sub{font-size:15px;color:var(--pd-body);margin:0 0 14px}
+.pd-rate{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--pd-body);margin-bottom:18px}
+.pd-rate .stars svg{width:13px;height:13px;fill:#111}
+.pd-rate a{color:var(--pd-body);text-decoration:underline;text-underline-offset:3px}
+.pd-usp{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--pd-line);border-bottom:1px solid var(--pd-line);margin-bottom:22px}
+.pd-usp div{padding:14px 6px 12px;text-align:center;border-right:1px solid var(--pd-line)}
+.pd-usp div:last-child{border-right:0}
+.pd-usp img{width:26px;height:26px;object-fit:contain;margin:0 auto 7px;display:block}
+.pd-usp span{display:block;font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--pd-ink);line-height:1.3}
+.pd-lbl{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--pd-mute);margin:0 0 9px;display:flex;justify-content:space-between;align-items:center}
+.pd-lbl button{background:none;border:0;font:inherit;letter-spacing:0;text-transform:none;color:var(--pd-ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-size:11.5px}
+.pd-vars{display:grid;gap:8px;margin-bottom:18px}
+.pd-var{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;border:1px solid var(--pd-line);background:#fff;padding:8px;cursor:pointer;text-align:left;position:relative}
+.pd-var.on{border-color:var(--pd-ink);box-shadow:inset 0 0 0 1px var(--pd-ink)}
+.pd-var img{width:64px;height:64px;object-fit:contain;background:#faf9f7}
+.pd-var b{display:block;font-weight:400;font-size:13px;color:var(--pd-ink);line-height:1.3}
+.pd-var small{display:block;font-size:11.5px;color:var(--pd-mute);margin-top:3px}
+.pd-var .pd-varprice{font-size:13px;color:var(--pd-ink);margin-top:4px;display:flex;gap:7px;align-items:baseline}
+.pd-var .pd-varprice s{color:var(--pd-mute);font-size:11.5px}
+.pd-var .pd-tag{position:absolute;right:8px;top:8px;background:var(--pd-forest);color:#fff;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 6px}
+.pd-price{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.pd-price b{font-size:26px;font-weight:400;color:var(--pd-ink);letter-spacing:-.02em}
+.pd-price s{color:var(--pd-mute);font-size:14px}
+.pd-price em{font-style:normal;background:#f0ede7;color:var(--pd-ink);font-size:11px;padding:3px 7px}
+.pd-klarna{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--pd-body);margin-bottom:16px}
+.pd-klarna b{background:#ffb3c7;color:#111;font-size:10px;padding:2px 6px;border-radius:3px;letter-spacing:.02em}
+.pd-buyrow{display:grid;grid-template-columns:104px 1fr;gap:10px;margin-bottom:10px}
+.pd-qty{display:grid;grid-template-columns:32px 1fr 32px;border:1px solid var(--pd-ink);align-items:center;height:52px}
+.pd-qty button{background:none;border:0;font-size:16px;cursor:pointer;color:var(--pd-ink);height:100%}
+.pd-qty span{text-align:center;font-size:14px;color:var(--pd-ink)}
+.pd-atc{height:52px;border:0;background:var(--pd-ink);color:#fff;font-size:14px;letter-spacing:.01em;border-radius:999px;cursor:pointer;transition:opacity .18s}
+.pd-atc:hover{opacity:.86}
+.pd-ship{font-size:12px;color:var(--pd-body);border:1px solid var(--pd-line);padding:12px 14px;margin-bottom:20px}
+.pd-ship b{color:var(--pd-ink);font-weight:400}
+.pd-ship .pd-row{display:flex;justify-content:space-between;gap:12px;padding:5px 0;color:var(--pd-body)}
+.pd-know{border-top:1px solid var(--pd-line);padding-top:18px}
+.pd-know h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px}
+.pd-know ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.pd-know li{font-size:12.5px;line-height:1.65;color:var(--pd-body);padding-left:14px;position:relative}
+.pd-know li:before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;background:var(--pd-ink);border-radius:50%}
+.pd-know li b{color:var(--pd-ink);font-weight:500}
+/* ---------- icon marquee ---------- */
+.pd-icons{border-top:1px solid var(--pd-line);border-bottom:1px solid var(--pd-line);background:var(--pd-tint);overflow:hidden}
+.pd-icons-track{display:flex;gap:0;animation:pdmarq 42s linear infinite;width:max-content}
+.pd-icons-track>div{display:flex;align-items:center;gap:9px;padding:16px 30px;border-right:1px solid rgba(0,0,0,.07);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--pd-ink);white-space:nowrap}
+.pd-icons-track img{width:22px;height:22px;object-fit:contain}
+@keyframes pdmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.pd-icons:hover .pd-icons-track{animation-play-state:paused}
+/* ---------- generic section ---------- */
+.pd-sec{padding:88px 0}
+.pd-sec.tint{background:var(--pd-tint)}
+.pd-sec.dark{background:#0f0f0f;color:#d8d5cf}
+.pd-sec.dark h2,.pd-sec.dark h3{color:#fff}
+.pd-head{max-width:760px;margin:0 auto 44px;text-align:center}
+.pd-head.left{margin-left:0;text-align:left}
+.pd-kick{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pd-mute);margin-bottom:14px}
+.pd-head h2{font-size:33px;line-height:1.2;margin:0 0 14px}
+.pd-head p{margin:0;font-size:14.5px;color:var(--pd-body);line-height:1.7}
+/* ---------- why / factors ---------- */
+.pd-factors{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:44px}
+.pd-factor{border-top:1px solid var(--pd-line);padding-top:16px}
+.pd-factor b{display:block;color:var(--pd-ink);font-weight:400;font-size:15px;margin-bottom:6px}
+.pd-factor p{margin:0;font-size:12.5px;line-height:1.65}
+.pd-note{font-size:11px;color:var(--pd-mute);line-height:1.6;margin-top:26px}
+/* ---------- before / after ---------- */
+.pd-ba{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pd-ba figure{margin:0;background:#fff;border:1px solid var(--pd-line)}
+.pd-ba img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover}
+.pd-ba figcaption{padding:16px 16px 20px;font-size:12.5px;line-height:1.6}
+.pd-ba b{display:block;font-size:13px;color:var(--pd-ink);font-weight:500;margin-bottom:6px}
+.pd-ba .pd-src{display:block;font-size:10.5px;color:var(--pd-mute);margin-top:10px;letter-spacing:.03em}
+.pd-ba q{display:block;margin-top:9px;font-style:italic;color:var(--pd-body);font-size:12px}
+/* ---------- wavelengths ---------- */
+.pd-waves{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;max-width:1000px;margin:0 auto}
+.pd-wave{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:20px 0;border-bottom:1px solid var(--pd-line);align-items:start}
+.pd-dot{width:26px;height:26px;border-radius:50%;margin-top:2px}
+.pd-wave b{display:block;color:var(--pd-ink);font-weight:400;font-size:15px;margin-bottom:3px}
+.pd-wave .nm{color:var(--pd-mute);font-size:11.5px;letter-spacing:.04em;margin-bottom:5px;display:block}
+.pd-wave p{margin:0;font-size:12.5px;line-height:1.6}
+/* ---------- film ---------- */
+.pd-film{position:relative;margin-top:56px;background:#000;overflow:hidden;aspect-ratio:16/9}
+.pd-film video{width:100%;height:100%;object-fit:cover;display:block}
+.pd-film .pd-filmcap{position:absolute;left:0;right:0;bottom:0;padding:22px 26px;background:linear-gradient(transparent,rgba(0,0,0,.66));color:#fff;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+/* ---------- mydose dark ---------- */
+.pd-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.pd-steps{counter-reset:s;margin:0;padding:0;list-style:none;display:grid;gap:18px;margin-top:28px}
+.pd-steps li{counter-increment:s;position:relative;padding-left:44px;font-size:13.5px;line-height:1.65;color:#cfcbc4}
+.pd-steps li:before{content:counter(s);position:absolute;left:0;top:-2px;width:26px;height:26px;border:1px solid rgba(255,255,255,.34);border-radius:50%;display:grid;place-items:center;font-size:11px;color:#fff}
+.pd-split .pd-media{background:#1a1a1a;aspect-ratio:4/3;overflow:hidden}
+.pd-split .pd-media img,.pd-split .pd-media video{width:100%;height:100%;object-fit:cover}
+/* ---------- trials ---------- */
+.pd-trials{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pd-trial{background:#fff;border:1px solid var(--pd-line);padding:20px}
+.pd-trial .pd-tstate{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--pd-mute);margin-bottom:12px}
+.pd-trial b{display:block;font-size:14px;color:var(--pd-ink);font-weight:400;line-height:1.35;margin-bottom:8px}
+.pd-trial p{margin:0;font-size:12px;line-height:1.6;color:var(--pd-body)}
+.pd-trial .pd-res{display:block;margin-top:12px;padding-top:12px;border-top:1px solid var(--pd-line);font-size:11.5px;color:var(--pd-ink)}
+/* ---------- how to ---------- */
+.pd-how{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--pd-line);border:1px solid var(--pd-line)}
+.pd-how>div{background:#fff;padding:26px 24px}
+.pd-how .pd-num{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pd-mute);display:block;margin-bottom:12px}
+.pd-how b{display:block;color:var(--pd-ink);font-weight:400;font-size:15px;line-height:1.4;margin-bottom:6px}
+.pd-how p{margin:0;font-size:12.5px;line-height:1.6}
+/* ---------- presets ---------- */
+.pd-presets{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pd-preset{border:1px solid var(--pd-line);background:#fff;overflow:hidden}
+.pd-preset img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.pd-preset .pd-pbody{padding:16px}
+.pd-preset b{display:block;color:var(--pd-ink);font-weight:500;font-size:14px;margin-bottom:5px}
+.pd-preset .pd-wl{display:block;font-size:10.5px;letter-spacing:.03em;color:var(--pd-mute);margin-bottom:8px}
+.pd-preset p{margin:0;font-size:12px;line-height:1.55}
+/* ---------- reviews ---------- */
+.pd-revtop{display:grid;grid-template-columns:250px 1fr 250px;gap:44px;align-items:center;border-bottom:1px solid var(--pd-line);padding-bottom:32px;margin-bottom:32px}
+.pd-score b{font-size:46px;font-weight:300;line-height:1;color:var(--pd-ink);display:block;letter-spacing:-.03em}
+.pd-score .stars{margin:10px 0 6px}
+.pd-score .stars svg{width:14px;height:14px;fill:#111}
+.pd-score span{font-size:12px;color:var(--pd-mute)}
+.pd-bars{display:grid;gap:9px}
+.pd-bar{display:grid;grid-template-columns:44px 1fr 46px;gap:12px;align-items:center;font-size:11.5px;color:var(--pd-body)}
+.pd-bar .pd-track{height:6px;background:#e9e6e0;border-radius:99px;overflow:hidden}
+.pd-bar .pd-fill{height:100%;background:var(--pd-ink);border-radius:99px;width:0;transition:width 1s var(--ease)}
+.pd-ratings{display:grid;gap:6px;font-size:11.5px;color:var(--pd-body)}
+.pd-ratings div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--pd-line);padding-bottom:6px}
+.pd-ratings b{font-weight:400;color:var(--pd-ink)}
+.pd-revgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.pd-rev{border:1px solid var(--pd-line);background:#fff;padding:22px;display:flex;flex-direction:column;gap:10px}
+.pd-rev .stars svg{width:12px;height:12px;fill:#111}
+.pd-rev h4{margin:0;font-size:14px;font-weight:500;line-height:1.4}
+.pd-rev p{margin:0;font-size:12.5px;line-height:1.65;color:var(--pd-body)}
+.pd-revmeta{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--pd-mute);margin-top:auto;padding-top:12px;border-top:1px solid var(--pd-line)}
+.pd-revmeta b{font-weight:400;color:var(--pd-ink)}
+.pd-chip{display:inline-block;font-size:10px;letter-spacing:.04em;color:var(--pd-mute);border:1px solid var(--pd-line);padding:2px 6px;margin-right:5px}
+.pd-revsrc{font-size:10.5px;color:var(--pd-mute);margin-top:22px;line-height:1.6}
+/* ---------- faq ---------- */
+.pd-faq{max-width:880px;margin:0 auto;border-top:1px solid var(--pd-line)}
+.pd-q{border-bottom:1px solid var(--pd-line)}
+.pd-q button{width:100%;display:flex;justify-content:space-between;gap:20px;align-items:center;background:none;border:0;padding:20px 2px;font:inherit;font-size:14px;color:var(--pd-ink);text-align:left;cursor:pointer}
+.pd-q .pd-ic{flex:0 0 auto;width:14px;height:14px;position:relative}
+.pd-q .pd-ic:before,.pd-q .pd-ic:after{content:"";position:absolute;background:var(--pd-ink)}
+.pd-q .pd-ic:before{left:0;top:6px;width:14px;height:1px}
+.pd-q .pd-ic:after{left:6px;top:0;width:1px;height:14px;transition:transform .2s}
+.pd-q.open .pd-ic:after{transform:scaleY(0)}
+.pd-q .pd-a{max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}
+.pd-q .pd-a div{padding:0 40px 20px 2px;font-size:13px;line-height:1.75;color:var(--pd-body)}
+/* ---------- compare table ---------- */
+.pd-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+.pd-table th,.pd-table td{border:1px solid var(--pd-line);padding:12px 14px;text-align:left;vertical-align:top}
+.pd-table th{background:var(--pd-tint);font-weight:400;color:var(--pd-ink);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.pd-table td b{display:block;color:var(--pd-ink);font-weight:400;margin-bottom:2px}
+/* ---------- related ---------- */
+.pd-rel{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pd-relcard{border:1px solid var(--pd-line);background:#fff;padding:0;cursor:pointer;text-align:left}
+.pd-relcard img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#f7f5f2}
+.pd-relcard .pd-rb{padding:14px 14px 18px}
+.pd-relcard b{display:block;font-size:13px;color:var(--pd-ink);font-weight:400;line-height:1.35;margin-bottom:4px}
+.pd-relcard .pd-rr{font-size:11px;color:var(--pd-mute)}
+.pd-relcard .pd-rp{font-size:13px;color:var(--pd-ink);margin-top:6px}
+@media(max-width:1080px){
+  .pd-top{grid-template-columns:1fr;gap:30px}
+  .pd-factors,.pd-ba,.pd-trials,.pd-how,.pd-presets,.pd-rel{grid-template-columns:1fr 1fr}
+  .pd-waves{grid-template-columns:1fr;gap:0}
+  .pd-split{grid-template-columns:1fr;gap:32px}
+  .pd-revtop{grid-template-columns:1fr;gap:24px}
+  .pd-revgrid{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .pd-wrap{padding:0 16px}
+  .pd-sec{padding:56px 0}
+  .pd-head h2{font-size:25px}
+  .pd-gal{grid-template-columns:1fr}
+  .pd-thumbs{flex-direction:row;order:2;overflow:auto}
+  .pd-factors,.pd-ba,.pd-trials,.pd-how,.pd-presets,.pd-rel{grid-template-columns:1fr}
+  .pd-usp{grid-template-columns:1fr 1fr}
+  .pd-buyrow{grid-template-columns:88px 1fr}
+}
+
 </style>
 <style>
 /* ============================================================
@@ -1260,9 +1466,9 @@ body.checkout-mode{padding-top:0}
           <button aria-haspopup="true">Shop <svg class="chev" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 1l4 4 4-4"/></svg></button>
           <div class="dd">
             <div class="dd-label">The range</div>
-            <a href="#product" data-product="pro">Face &amp; Neck Set <span class="meta">279 €</span></a>
-            <a href="#product" data-product="essential">Essential Mask <span class="meta">249 €</span></a>
-            <a href="#product" data-product="twin">Twin Ritual Set <span class="meta">449 €</span></a>
+            <a href="#product" data-product="mask">Face &amp; Neck Set <span class="meta">£499.99</span></a>
+            <a href="#product" data-product="kit">Essential Mask <span class="meta">£499.99</span></a>
+            <a href="#product" data-product="special">Twin Ritual Set <span class="meta">£854.99</span></a>
             <a href="#bundles" data-nav="home">Compare all sets <span class="meta">3</span></a>
           </div>
         </li>
@@ -1331,10 +1537,10 @@ body.checkout-mode{padding-top:0}
         <div class="hero-buy">
           <div class="hero-price">
             <span class="from">From</span>
-            <span class="amt">249,00 €</span>
+            <span class="amt">£499.99</span>
           </div>
           <div class="hero-cta">
-            <button class="btn" data-product="pro">Shop the mask
+            <button class="btn" data-product="mask">Shop the mask
               <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
             </button>
             <a href="#science" class="btn ghost" data-nav="home">The science</a>
@@ -1518,9 +1724,9 @@ body.checkout-mode{padding-top:0}
       <div class="sec-head rv">
         <div class="sec-copy">
           <span class="kicker">Reviews</span>
-          <h2>4.7 out of 5, from 160 buyers.</h2>
+          <h2>4.6 out of 5, from 4,383 reviews.</h2>
         </div>
-        <a href="#product" class="sec-link" data-product="pro">Read all reviews
+        <a href="#product" class="sec-link" data-product="mask">Read all reviews
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
         </a>
       </div>
@@ -1600,392 +1806,195 @@ body.checkout-mode{padding-top:0}
 </div>
 
 <div class="view" id="view-product">
+<div class="pd">
 
-  <!-- breadcrumb -->
-  <div class="cb-crumb">
-    <div class="cb-wrap">
-      <a href="#home" data-nav="home">Home</a><span>/</span>
-      <a href="#home" data-nav="home">LUMIÈRA Clinical</a><span>/</span>
-      <span id="crumbName">Face &amp; Neck Set</span>
-    </div>
+ <div class="pd-crumb"><div class="pd-wrap"><a href="#home" data-nav="home">Home</a><span>/</span><a href="#home" data-nav="home">LED Light Therapy</a><span>/</span><span>Series 3 Face Mask</span></div></div>
+
+ <section class="pd-wrap pd-top">
+  <div class="pd-gal">
+   <div class="pd-thumbs" id="pdThumbs"><button class="pd-thumb on" data-i="0" aria-label="View image 1"><img src="assets/cbv/1_a0ed7735-65e6-4fa2-95b6-790a90a67da7.webp" alt="Worn · full face coverage" loading="lazy" /></button><button class="pd-thumb" data-i="1" aria-label="View image 2"><img src="assets/cbv/Front_Transparent.webp" alt="Series 3 mask" loading="lazy" /></button><button class="pd-thumb" data-i="2" aria-label="View image 3"><img src="assets/cbv/2_7758a6d3-28bd-4314-8803-bc961a5f2477.webp" alt="750 certified LEDs" loading="lazy" /></button><button class="pd-thumb" data-i="3" aria-label="View image 4"><img src="assets/cbv/4_23548709-8c1f-496b-8e72-1e899f0cabc3.webp" alt="Flexible silicone fit" loading="lazy" /></button><button class="pd-thumb" data-i="4" aria-label="View image 5"><img src="assets/cbv/5_8fe32e9f-6b80-43e2-a131-7bf169aa0c5b.webp" alt="Eye inserts and straps" loading="lazy" /></button><button class="pd-thumb" data-i="5" aria-label="View image 6"><img src="assets/cbv/7_68411855-45e1-412b-b352-feda97c6aa89.webp" alt="Controller and storage bag" loading="lazy" /></button><button class="pd-thumb" data-i="6" aria-label="View image 7"><img src="assets/cbv/8_dbb530ad-f17b-4a6b-8257-94f5503039ad.webp" alt="In the box" loading="lazy" /></button><button class="pd-thumb" data-i="7" aria-label="View image 8"><img src="assets/cbv/ROW_MODEL_10.webp" alt="Worn with the neck piece" loading="lazy" /></button><button class="pd-thumb" data-video="1" aria-label="Play product film"><img src="assets/cbv/1_a0ed7735-65e6-4fa2-95b6-790a90a67da7.webp" alt="Product film" loading="lazy" /><span class="pd-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l11 7-11 7z"/></svg></span></button></div>
+   <div class="pd-stage">
+    <img id="pdStageImg" src="assets/cbv/1_a0ed7735-65e6-4fa2-95b6-790a90a67da7.webp" alt="LED Red Light Therapy Face Mask: Series 3" fetchpriority="high" />
+    <video id="pdVideo" src="assets/film1s.mp4" playsinline controls preload="none"></video>
+    <div class="pd-float" id="pdTag">Worn · full face coverage</div>
+    <button class="pd-nav prev" id="pdPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8"/></svg></button>
+    <button class="pd-nav next" id="pdNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 4l8 8-8 8"/></svg></button>
+   </div>
   </div>
 
-  <!-- ============ PDP TOP ============ -->
-  <section class="cb-pdp">
-    <div class="cb-wrap cb-pdp-grid">
+  <div class="pd-buy">
+   <h1 id="pdpTitle">LED Red Light Therapy Face Mask: Series 3</h1>
+   <p class="pd-sub">Personalised LED face mask for advanced anti-ageing, clearing and brightening</p>
+   <div class="pd-rate"><span class="stars" data-stars="4.6"></span><span><b style="font-weight:500;color:#111">4.6</b> · 4,383 reviews</span><a href="#pdReviews">Read reviews</a></div>
+   <div class="pd-usp"><div><img src="assets/cbv/Veritacewhite_1.webp" alt="" width="22" height="22" loading="lazy" /><span>Veritace® guarantee</span></div><div><img src="assets/cbv/MyDosewhite_1.webp" alt="" width="22" height="22" loading="lazy" /><span>MyDose™ technology</span></div><div><img src="assets/cbv/Best-fit_For_Every_Facewhite_d52e420e-5de6-47bf-b63b-3a7910483b0e.webp" alt="" width="22" height="22" loading="lazy" /><span>Best-fit for every face</span></div><div><img src="assets/cbv/Targeted_LED_Therapywhite_d45b546d-a2c3-4e1e-9d19-cd8f1a282cec.webp" alt="" width="22" height="22" loading="lazy" /><span>Clinically proven wavelengths</span></div><div><img src="assets/cbv/Sessions_Durationwhite.webp" alt="" width="22" height="22" loading="lazy" /><span>10-minute sessions</span></div><div><img src="assets/cbv/LED_Bulbswhite.webp" alt="" width="22" height="22" loading="lazy" /><span>750 Veritace®-certified LEDs</span></div><div><img src="assets/cbv/Results_Seen_Inwhite.webp" alt="" width="22" height="22" loading="lazy" /><span>Results in 8 weeks*</span></div></div>
 
-      <!-- gallery -->
-      <div class="cb-gallery">
-        <div class="cb-thumbs" id="thumbs"></div>
-        <div class="cb-stage">
-          <img id="stageImg" src="" alt="LUMIÈRA Pro LED mask" />
-          <div class="cb-stage-tag" id="stageTag">Worn · face + neck</div>
-          <button class="cb-galnav prev" id="galPrev" aria-label="Previous image">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M15 4l-8 8 8 8"/></svg>
-          </button>
-          <button class="cb-galnav next" id="galNext" aria-label="Next image">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 4l8 8-8 8"/></svg>
-          </button>
-          <div class="cb-floatbadge">
-            <b>MyDose™</b><span>auto-calculated dose</span>
-          </div>
-        </div>
+   <p class="pd-lbl">Pick your product <button id="pdBoxToggle">What's in the box?</button></p>
+   <div class="pd-vars" id="pdVars"><button class="pd-var on" data-var="mask"><img src="assets/cbv/Front_Transparent.webp" alt="LED Red Light Therapy Face Mask: Series 3" loading="lazy" /><span><b>LED Red Light Therapy Face Mask: Series 3</b><small>Mask only · 750 Veritace®-certified LEDs</small><span class="pd-varprice">£499.99</span></span></button><button class="pd-var" data-var="kit"><span class="pd-tag">Save £94.99</span><img src="assets/cbv/CB-S3-FN-transparent.webp" alt="LED Face & Neck Kit: Series 3" loading="lazy" /><span><b>LED Face & Neck Kit: Series 3</b><small>Mask + Neck & Décolletage Mask</small><span class="pd-varprice">£854.99 <s>£949.98</s></span></span></button><button class="pd-var" data-var="special"><img src="assets/cbv/CB-S3-5PKHydrogels-GTSerum-transparent.webp" alt="Special LED Kit: Series 3" loading="lazy" /><span><b>Special LED Kit: Series 3</b><small>Mask + hydrogel masks + serum</small><span class="pd-varprice">£556.99 <s>£585.93</s></span></span></button></div>
 
-        <div class="cb-trust">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg><span>Free express<br>shipping</span></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><span>Veritace®<br>certified</span></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 9h16M4 15h16"/><path d="M8 4v16M16 4v16"/></svg><span>2-year<br>warranty</span></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/><path d="M8 12h8M12 8v8"/></svg><span>60-day<br>returns</span></div>
-        </div>
-      </div>
+   <div class="pd-price"><b id="pdPrice">£499.99</b><s id="pdCompare" style="display:none"></s><em id="pdSave" style="display:none"></em></div>
+   <div class="pd-klarna"><b>Klarna.</b><span>4 interest-free payments of <span id="pdKlarna">£125.00</span></span></div>
 
-      <!-- buy column -->
-      <div class="cb-buy">
-        <div class="cb-vendor">LUMIÈRA CLINICAL</div>
-        <h1 class="cb-h1" id="pdpTitle">Pro LED Red Light Therapy Face &amp; Neck Mask: Series 3</h1>
-        <p class="cb-sub">Personalised LED mask for advanced anti-ageing, clearing and brightening. Eight clinically studied wavelengths, dosed automatically, in ten minutes a day.</p>
+   <div class="pd-buyrow">
+    <div class="pd-qty"><button id="pdMinus" aria-label="Decrease">−</button><span id="pdQtyv">1</span><button id="pdPlus" aria-label="Increase">+</button></div>
+    <button class="pd-atc" id="pdAtc">Add to basket</button>
+   </div>
 
-        <ul class="cb-claims">
-          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8.5l3 3 7-7"/></svg>8 clinically studied wavelengths</li>
-          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8.5l3 3 7-7"/></svg>MyDose™ automatic dosing</li>
-          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8.5l3 3 7-7"/></svg>Veritace® tested, LED by LED</li>
-          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8.5l3 3 7-7"/></svg>120 medical-grade LED bulbs</li>
-        </ul>
+   <div class="pd-ship">
+    <div class="pd-row"><span>Order in <b id="pdCountdown">19h</b> for delivery by <b id="pdEta">Thu 12 Nov</b></span></div>
+    <div class="pd-row"><span>Express delivery</span><span>£12.50</span></div>
+    <div class="pd-row"><span>Standard delivery</span><span>£4.00</span></div>
+    <div class="pd-row"><span>60-day returns · 2-year warranty</span><span>Included</span></div>
+   </div>
 
-        <a class="cb-rating" href="#reviews">
-          <span class="stars" data-rating="4.7"></span>
-          <b>4.7</b><span class="cb-rcount">160 reviews</span>
-        </a>
-
-        <!-- pick your product -->
-        <div class="cb-pick">
-          <div class="cb-pick-head">
-            <span>Pick your product</span>
-            <button type="button" id="boxToggle">What's in the box?</button>
-          </div>
-          <div id="optList"></div>
-          <div class="cb-boxlist" id="boxList" hidden></div>
-        </div>
-
-        <!-- price -->
-        <div class="cb-price-row" id="pdpPriceRow">
-          <span class="cb-price p">279,00 €</span>
-          <s class="cb-compare" id="pdpCompare" hidden></s>
-          <span class="cb-save" id="pdpSave" hidden></span>
-        </div>
-        <div class="cb-klarna">
-          or 4 interest-free payments of <b id="pdpSplit">69,75 €</b> with <b>Klarna</b>
-        </div>
-
-        <div class="cb-atc">
-          <div class="cb-qty">
-            <button id="qMinus" aria-label="Decrease quantity">−</button>
-            <span id="qVal">1</span>
-            <button id="qPlus" aria-label="Increase quantity">+</button>
-          </div>
-          <button class="cb-btn" id="addBtn">Add to basket · <span id="addPrice">279,00 €</span></button>
-        </div>
-        <button class="cb-btn alt" id="buyNowBtn">Buy it now</button>
-
-        <div class="cb-pay">
-          <span class="cb-paylabel">We accept</span>
-          <div class="cb-payicons">
-            <i>VISA</i><i>Mastercard</i><i>AMEX</i><i>PayPal</i><i>Klarna</i><i>Apple&nbsp;Pay</i><i>G Pay</i>
-          </div>
-        </div>
-
-        <div class="cb-perks">
-          <div><span class="cb-ico">◷</span><p><b>Free express delivery</b><br><span id="etaText">Tue 10 Nov – Thu 12 Nov</span></p></div>
-          <div><span class="cb-ico">↺</span><p><b>60-day money-back guarantee</b><br>Use it daily. Send it back if it isn't for you.</p></div>
-          <div><span class="cb-ico">✦</span><p><b>2-year warranty</b><br>Registered in the box, no card needed.</p></div>
-        </div>
-
-        <div class="cb-acc">
-          <details open>
-            <summary>Delivery &amp; returns</summary>
-            <p>Free express shipping worldwide, dispatched from Paris within 24 hours. Delivery in 2–4 working days with DHL. Duties and taxes are included at checkout for the EU, UK, Switzerland, the US, the UAE and Morocco.</p>
-            <p>Sixty days to change your mind. Return the mask in its box and we refund the full amount, shipping included.</p>
-          </details>
-          <details>
-            <summary>How to use</summary>
-            <p>Cleanse and dry your face. Fit the mask, select a mode with the controller or the app, and run one ten-minute session. Five sessions a week for the first eight weeks, then three to maintain. Eye protectors are included and required.</p>
-          </details>
-          <details>
-            <summary>Specifications</summary>
-            <p>120 LEDs · 8 wavelengths (415, 440, 520, 590, 630, 660, 850, 940 nm) · 40 mW/cm² irradiance at 630 nm · USB-C, 3,000 mAh, roughly 14 sessions per charge · medical-grade silicone, 218 g · 10-minute session timer · IPX4.</p>
-          </details>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ WAVELENGTH BAR ============ -->
-  <section class="cb-waves" aria-label="Wavelengths">
-    <div class="cb-wave" style="--c:#3E62C4"><b>Blue</b><span>415 nm</span></div>
-    <div class="cb-wave" style="--c:#3F9E5B"><b>Green</b><span>520 nm</span></div>
-    <div class="cb-wave" style="--c:#D9A227"><b>Yellow</b><span>590 nm</span></div>
-    <div class="cb-wave" style="--c:#D8453B"><b>Red</b><span>630 nm</span></div>
-    <div class="cb-wave" style="--c:#A33A32"><b>Near-infrared</b><span>850 nm</span></div>
-    <div class="cb-wave" style="--c:#6E2A25"><b>Deep NIR</b><span>940 nm</span></div>
-  </section>
-
-  <!-- ============ USP MARQUEE ============ -->
-  <div class="cb-usp">
-    <div class="cb-usp-track">
-      <span>VERITACE® GUARANTEE</span><i>◆</i><span>MYDOSE™ TECHNOLOGY</span><i>◆</i><span>BEST-FIT FOR EVERY FACE</span><i>◆</i><span>8 CLINICAL WAVELENGTHS</span><i>◆</i><span>TEN-MINUTE SESSIONS</span><i>◆</i><span>120 TESTED LEDs</span><i>◆</i><span>RESULTS IN 8 WEEKS*</span><i>◆</i>
-      <span>VERITACE® GUARANTEE</span><i>◆</i><span>MYDOSE™ TECHNOLOGY</span><i>◆</i><span>BEST-FIT FOR EVERY FACE</span><i>◆</i><span>8 CLINICAL WAVELENGTHS</span><i>◆</i><span>TEN-MINUTE SESSIONS</span><i>◆</i><span>120 TESTED LEDs</span><i>◆</i><span>RESULTS IN 8 WEEKS*</span><i>◆</i>
-    </div>
+   <div class="pd-know">
+    <h3>What you need to know</h3>
+    <ul>
+     <li>Red light therapy reverses visible signs of ageing, <b>reducing wrinkles by 37% and improving plumpness by 57% in 8 weeks*</b>.</li>
+     <li><b>MyDose™</b> gives you full control over every LED. You choose the wavelengths, MyDose™ calculates the optimal dose for your skin.</li>
+     <li>6 clinically proven wavelengths: red (633 nm), near-infrared (830 nm), deep near-infrared (1072 nm), blue (415 nm), green (532 nm) and yellow (590 nm).</li>
+     <li>4 clinician-approved preset modes, or build personalised treatments for targeted anti-ageing, clearing and brightening.</li>
+     <li>Best-fit flexible silicone shape with a chin strap for maximum light coverage.</li>
+     <li>Pair with the LUMIÈRA app on iOS or Android to save and share protocols.</li>
+     <li><b>Veritace®</b> guarantees clinical quality: every single LED is tested to emit the exact light proven in the research.</li>
+    </ul>
+    <div id="pdBox" style="display:none;margin-top:18px;border-top:1px solid var(--pd-line);padding-top:14px"></div>
+   </div>
   </div>
+ </section>
 
-  <!-- ============ OUR OPINION ============ -->
-  <section class="cb-sec cb-opinion">
-    <div class="cb-wrap cb-2col">
-      <div class="cb-media">
-        <img src="assets/detail.jpg" alt="LUMIÈRA Pro mask detail" loading="lazy" />
-      </div>
-      <div class="cb-copy">
-        <span class="cb-kicker">Our opinion</span>
-        <h2>Power isn't the whole story. Dose is.</h2>
-        <p>Most LED masks advertise more bulbs and more milliwatts. What actually changes skin is the right wavelength reaching the right depth for the right amount of time. Overdose it and you get heat and irritation. Underdose it and nothing happens at all.</p>
-        <p>The Pro is built around that balance. Veritace® testing checks every single LED against the wavelength used in the published research, and MyDose™ works out the session time from the mode you pick, so you cannot get it wrong.</p>
-        <ul class="cb-list">
-          <li>Eight wavelengths, including two invisible near-infrared bands</li>
-          <li>Flexible silicone that sits flat on the face and wraps the jaw</li>
-          <li>Neck piece included: the décolleté ages first and is the hardest to treat</li>
-        </ul>
-      </div>
+ <div class="pd-icons"><div class="pd-icons-track" id="pdIconTrack"><div><img loading="lazy" src="assets/cbv/Veritacewhite_1.webp" alt="" width="22" height="22" loading="lazy" /><span>Veritace® guarantee</span></div><div><img loading="lazy" src="assets/cbv/MyDosewhite_1.webp" alt="" width="22" height="22" loading="lazy" /><span>MyDose™ technology</span></div><div><img loading="lazy" src="assets/cbv/Best-fit_For_Every_Facewhite_d52e420e-5de6-47bf-b63b-3a7910483b0e.webp" alt="" width="22" height="22" loading="lazy" /><span>Best-fit for every face</span></div><div><img loading="lazy" src="assets/cbv/Targeted_LED_Therapywhite_d45b546d-a2c3-4e1e-9d19-cd8f1a282cec.webp" alt="" width="22" height="22" loading="lazy" /><span>Clinically proven wavelengths</span></div><div><img loading="lazy" src="assets/cbv/Sessions_Durationwhite.webp" alt="" width="22" height="22" loading="lazy" /><span>10-minute sessions</span></div><div><img loading="lazy" src="assets/cbv/LED_Bulbswhite.webp" alt="" width="22" height="22" loading="lazy" /><span>750 Veritace®-certified LEDs</span></div><div><img loading="lazy" src="assets/cbv/Results_Seen_Inwhite.webp" alt="" width="22" height="22" loading="lazy" /><span>Results in 8 weeks*</span></div></div></div>
+
+ <section class="pd-sec">
+  <div class="pd-wrap">
+   <div class="pd-head"><span class="pd-kick">Why Series 3</span><h2>How to choose the best LED face mask</h2>
+   <p>More power doesn't always mean better results. Effective treatment depends on a precise balance of wavelength accuracy, coverage consistency, power and LED quality. Series 3 is engineered around all four.</p></div>
+   <div class="pd-factors">
+    <div class="pd-factor"><b>Wavelength accuracy</b><p>Reaching the exact skin depth needed to achieve results, at 633, 830, 1072, 415, 532 and 590 nm.</p></div>
+    <div class="pd-factor"><b>Coverage consistency</b><p>750 LEDs positioned so light reaches the full treatment area evenly, chin to hairline.</p></div>
+    <div class="pd-factor"><b>Power, balanced</b><p>Delivered over time for effective sessions without irritating the skin. 10 minutes, 3 to 5 times a week.</p></div>
+    <div class="pd-factor"><b>LED quality</b><p>Veritace® tests every single LED so it emits the correct wavelength at the same strength, every time.</p></div>
+   </div>
+   <p class="pd-note">*Results proven via independent testing. Near-infrared (830 nm) and deep near-infrared (1072 nm) do not emit a visible colour and are invisible to the human eye when in use.</p>
+  </div>
+ </section>
+
+ <section class="pd-sec tint">
+  <div class="pd-wrap">
+   <div class="pd-head"><span class="pd-kick">Before and after</span><h2>See the difference an independently tested mask makes</h2><p>We don't just promise results, we prove them. Four verified buyers, four protocols, five sessions a week.</p></div>
+   <div class="pd-ba"><figure><img src="assets/cbv/Anti_ageing-2.webp" alt="Before and after, Fine lines and wrinkles" loading="lazy" /><figcaption><b>Fine lines and wrinkles</b>Jill used the Advanced Anti-ageing preset, 5x a week for 8 weeks<span class="pd-src">CurrentBody verified buyer</span><q>I'm so pleased with the difference around my eyes. The area looks smoother and more refreshed, and I've definitely noticed my fine lines look softer.</q></figcaption></figure><figure><img src="assets/cbv/Yellow_light.webp" alt="Before and after, Redness" loading="lazy" /><figcaption><b>Redness</b>Amy used the yellow wavelength (590 nm), 5x a week for 16 weeks<span class="pd-src">CurrentBody verified buyer</span><q>My skin looks so much brighter and more even. I’ve noticed a real difference in how fresh and healthy my complexion looks.</q></figcaption></figure><figure><img src="assets/cbv/Yellow_light_2.webp" alt="Before and after, Dark spots" loading="lazy" /><figcaption><b>Dark spots</b>Gulamira used the Balance &amp; Brighten preset, 5x a week for 8 weeks<span class="pd-src">CurrentBody verified buyer</span><q>The biggest change for me has been my dark spots. They look less noticeable and my skin tone looks much more even.</q></figcaption></figure><figure><img src="assets/cbv/Blue_and_red_light.webp" alt="Before and after, Spots and blemishes" loading="lazy" /><figcaption><b>Spots and blemishes</b>Ayo used the Advanced Clearing preset, 5x a week for 8 weeks<span class="pd-src">CurrentBody verified buyer</span><q>My breakouts feel so much calmer. My skin looks clearer and feels much more balanced.</q></figcaption></figure></div>
+  </div>
+ </section>
+
+ <section class="pd-sec">
+  <div class="pd-wrap">
+   <div class="pd-head"><span class="pd-kick">Clinically proven wavelengths</span><h2>Six wavelengths, four preset modes</h2><p>Advanced Anti-Ageing, Advanced Clearing, Complexion Corrector and Brighten &amp; Balance. Or build your own in the LUMIÈRA app.</p></div>
+   <div class="pd-waves"><div class="pd-wave"><span class="pd-dot" style="background:#f04438"></span><div><b>Red</b><span class="nm">633 nm</span><p>Boosts collagen production to visibly reduce fine lines and wrinkles.</p></div></div><div class="pd-wave"><span class="pd-dot" style="background:#7b2d26"></span><div><b>Near-infrared</b><span class="nm">830 nm</span><p>Visibly firms and tightens skin.</p></div></div><div class="pd-wave"><span class="pd-dot" style="background:#3b1f1a"></span><div><b>Deep near-infrared</b><span class="nm">1072 nm</span><p>Visibly smooths and renews from within.</p></div></div><div class="pd-wave"><span class="pd-dot" style="background:#2f6fdf"></span><div><b>Blue</b><span class="nm">415 nm</span><p>Reduces the appearance of spots and irritation.</p></div></div><div class="pd-wave"><span class="pd-dot" style="background:#3f9b6e"></span><div><b>Green</b><span class="nm">532 nm</span><p>Brightens skin and reduces the appearance of pigmentation.</p></div></div><div class="pd-wave"><span class="pd-dot" style="background:#e0b53a"></span><div><b>Yellow</b><span class="nm">590 nm</span><p>Visibly calms redness and irritation.</p></div></div></div>
+   <div class="pd-film"><video src="assets/film2s.mp4" playsinline muted loop autoplay preload="metadata"></video><div class="pd-filmcap">Series 3 in use · 10-minute session</div></div>
+   <p class="pd-note">Near-infrared (830 nm) and deep near-infrared (1072 nm) do not emit a visible colour and are invisible to the human eye when in use. *Proven via independent clinical testing.</p>
+  </div>
+ </section>
+
+ <section class="pd-sec dark">
+  <div class="pd-wrap pd-split">
+   <div>
+    <span class="pd-kick" style="color:#8d8a84">Fully customisable</span>
+    <h2 style="font-size:32px;line-height:1.2;margin:0 0 14px">Your skin can only absorb so much light</h2>
+    <p style="color:#cfcbc4;font-size:14px;line-height:1.75;margin:0">MyDose™ ensures only the exact amount clinically proven to achieve results reaches your skin. Build personalised protocols in the app.</p>
+    <ol class="pd-steps">
+     <li>Select your wavelengths and their placement to match your skin concerns and goals.</li>
+     <li>MyDose™ automatically calculates the optimal amount of light energy for every session.</li>
+     <li>Save and share your personalised treatments with friends and family.</li>
+    </ol>
+    <p style="margin:26px 0 0;color:#fff;font-size:13px">MyDose™ sets the dose. Veritace® makes sure your mask delivers it.</p>
+   </div>
+   <div class="pd-media"><video src="assets/film1s.mp4" playsinline muted loop autoplay preload="metadata" style="width:100%;height:100%;object-fit:cover"></video></div>
+  </div>
+ </section>
+
+ <section class="pd-sec tint">
+  <div class="pd-wrap">
+   <div class="pd-head"><span class="pd-kick">Research &amp; testing</span><h2>Independent testing, not marketing</h2><p>Four studies, run at SGS, the University of Manchester and under dermatological control.</p></div>
+   <div class="pd-trials"><div class="pd-trial"><div class="pd-tstate"><span>TRIAL 03</span><span>Complete</span></div><b>SGS testing, 2024</b><p>Veritace®-tested LEDs (633 nm / 830 nm / 1072 nm) across 35 adults over 56 days. Significant measured improvements in wrinkles, hydration, firmness and skin tone.</p><span class="pd-res">Skin brightness +26.8% (633 nm) and elasticity +57.1% (830 nm), both within 4 weeks.</span></div><div class="pd-trial"><div class="pd-tstate"><span>TRIAL 04</span><span>Ongoing</span></div><b>University of Manchester</b><p>University-led investigation into Veritace®-tested LEDs (633 nm / 830 nm / 1072 nm) and photo-ageing reversal. 20+ participants over 12 weeks, including clinical assessment and skin biopsies.</p></div><div class="pd-trial"><div class="pd-tstate"><span>TRIAL 01</span><span>Complete</span></div><b>Wavelength efficacy, 2026</b><p>Three 8-week independent studies isolating the individual benefits of deep near-infrared (1072 nm), green (532 nm) and yellow (590 nm) light.</p><span class="pd-res">Pigmentation −4.1% (532 nm), redness −8.6% (590 nm), wrinkle volume −37.1% (1072 nm).</span></div><div class="pd-trial"><div class="pd-tstate"><span>TRIAL 02</span><span>Complete</span></div><b>Dermatological study, 2025</b><p>Veritace®-tested LEDs under dermatological control across 31 subjects over 56 days, face, neck and chest.</p><span class="pd-res">Hydration +35.3%, water loss −20.0%, firmness +17.0%, elasticity +15.4%.</span></div></div>
+  </div>
+ </section>
+
+ <section class="pd-sec">
+  <div class="pd-wrap">
+   <div class="pd-head"><span class="pd-kick">How to use</span><h2>Six steps, ten minutes</h2><p>Use 3 to 5 times a week. Visible results from 4 weeks.</p></div>
+   <div class="pd-how">
+    <div><span class="pd-num">Step 1</span><b>Cleanse and dry</b><p>Cleanse and dry your skin. Attach the mask and adjust the double straps to fit.</p></div>
+    <div><span class="pd-num">Step 2</span><b>Pick a protocol</b><p>Connect to the app to create and save protocols, or choose one of four preset modes.</p></div>
+    <div><span class="pd-num">Step 3</span><b>Turn on</b><p>Hold the power button. The session stops itself after 10 minutes.</p></div>
+    <div><span class="pd-num">Step 4</span><b>Wipe clean</b><p>Remove the device and wipe it with a soft, damp cloth.</p></div>
+    <div><span class="pd-num">Step 5</span><b>Store safely</b><p>Keep it in the protective storage bag, away from direct sunlight.</p></div>
+    <div><span class="pd-num">Step 6</span><b>Support results</b><p>Apply a few drops of Green Tea Serum or a Hydrogel Sheet Mask.</p></div>
+   </div>
+  </div>
+ </section>
+
+ <section class="pd-sec tint">
+  <div class="pd-wrap">
+   <div class="pd-head"><span class="pd-kick">Preset modes</span><h2>Four clinician-approved protocols</h2><p>Each preset combines clinically proven wavelengths for a specific concern.</p></div>
+   <div class="pd-presets"><div class="pd-preset"><img src="assets/cbv/Anti_ageing-2.webp" alt="Advanced Anti-Ageing" loading="lazy" /><div class="pd-pbody"><b>Advanced Anti-Ageing</b><span class="pd-wl">Red 633 · NIR 830 · Deep NIR 1072</span><p>Boosts collagen to visibly firm skin and smooth the appearance of lines and wrinkles.</p></div></div><div class="pd-preset"><img src="assets/cbv/Blue_and_red_light.webp" alt="Advanced Clearing" loading="lazy" /><div class="pd-pbody"><b>Advanced Clearing</b><span class="pd-wl">Blue 415 · Red 633 · NIR 830</span><p>Calms the appearance of spots and redness and visibly reduces oiliness.</p></div></div><div class="pd-preset"><img src="assets/cbv/Yellow_light.webp" alt="Complexion Corrector" loading="lazy" /><div class="pd-pbody"><b>Complexion Corrector</b><span class="pd-wl">Yellow 590 · NIR 830</span><p>Reduces the appearance of redness and pigmentation.</p></div></div><div class="pd-preset"><img src="assets/cbv/Yellow_light_2.webp" alt="Brighten &amp; Balance" loading="lazy" /><div class="pd-pbody"><b>Brighten &amp; Balance</b><span class="pd-wl">Green 532 · NIR 830</span><p>Visibly evens skin tone and reduces the appearance of discolouration.</p></div></div></div>
+  </div>
+ </section>
+
+ <section class="pd-sec" id="pdReviews">
+  <div class="pd-wrap">
+   <div class="pd-head"><span class="pd-kick">Reviews</span><h2>4,383 reviews, 94% would recommend</h2></div>
+   <div class="pd-revtop">
+    <div class="pd-score"><b>4.6</b><span class="stars" data-stars="4.6"></span><span>Based on 4,383 reviews</span></div>
+    <div class="pd-bars">
+     <div class="pd-bar"><span>5 ★</span><span class="pd-track"><span class="pd-fill" data-pct="75"></span></span><span>3.3k</span></div>
+     <div class="pd-bar"><span>4 ★</span><span class="pd-track"><span class="pd-fill" data-pct="19"></span></span><span>815</span></div>
+     <div class="pd-bar"><span>3 ★</span><span class="pd-track"><span class="pd-fill" data-pct="4"></span></span><span>164</span></div>
+     <div class="pd-bar"><span>2 ★</span><span class="pd-track"><span class="pd-fill" data-pct="1.5"></span></span><span>60</span></div>
+     <div class="pd-bar"><span>1 ★</span><span class="pd-track"><span class="pd-fill" data-pct="1.5"></span></span><span>57</span></div>
     </div>
-  </section>
-
-  <!-- ============ GENUINE RESULTS ============ -->
-  <section class="cb-sec tint cb-results">
-    <div class="cb-wrap">
-      <div class="cb-head">
-        <span class="cb-kicker">Genuine results</span>
-        <h2>Measured over eight weeks, not imagined.</h2>
-        <p>Independent instrumental testing, 32 participants, five sessions a week. Percentages are changes in appearance measured by image analysis, not self-assessment.</p>
-      </div>
-      <div class="cb-resultgrid">
-        <figure><img src="assets/ae-before-after.jpg" alt="Before and after four weeks of use" loading="lazy" /><figcaption><b>4 weeks</b><span>before and after, continuous use</span></figcaption></figure>
-        <figure><img src="assets/ae-results.jpg" alt="Skin change over the protocol" loading="lazy" /><figcaption><b>8 weeks</b><span>texture and tone over the protocol</span></figcaption></figure>
-        <figure><img src="assets/ae-worn.jpg" alt="Mask worn during a session" loading="lazy" /><figcaption><b>10 min</b><span>per session, hands free</span></figcaption></figure>
-      </div>
-      <p class="cb-foot-note">*Appearance of wrinkles and elasticity measured instrumentally at 8 weeks. Individual results vary. Images illustrate the protocol, not individual outcomes.</p>
+    <div class="pd-ratings">
+     <div><span>Quality</span><b>4.7</b></div>
+     <div><span>Results</span><b>4.4</b></div>
+     <div><span>Ease of use</span><b>4.7</b></div>
+     <div><span>Would recommend</span><b>94%</b></div>
     </div>
-  </section>
+   </div>
+   <div class="pd-revgrid" id="pdRevGrid"></div>
+   <p class="pd-revsrc">Reviews shown are verified buyer reviews of this device as published on CurrentBody's product page. Star rating, counts and category scores are theirs.</p>
+  </div>
+ </section>
 
-  <!-- ============ CLINICAL EVIDENCE ============ -->
-  <section class="cb-sec cb-clinical">
-    <div class="cb-wrap">
-      <div class="cb-head">
-        <span class="cb-kicker">Clinical evidence</span>
-        <h2>What each wavelength is proven to do.</h2>
-      </div>
-      <div class="cb-evidence">
-        <div class="cb-ev" style="--c:#D8453B"><span class="cb-evdot"></span><div><b>Red · 630 nm</b><p>Appearance of skin brightness increased by 26.8% in 4 weeks.</p><em>SGS, 2024</em></div></div>
-        <div class="cb-ev" style="--c:#A33A32"><span class="cb-evdot"></span><div><b>Near-infrared · 850 nm</b><p>Appearance of skin elasticity improved by 57.1% in 4 weeks.</p><em>SGS, 2024</em></div></div>
-        <div class="cb-ev" style="--c:#6E2A25"><span class="cb-evdot"></span><div><b>Deep near-infrared · 940 nm</b><p>Appearance of wrinkles reduced by 37.1% in 8 weeks.</p><em>Independent testing, 2026</em></div></div>
-        <div class="cb-ev" style="--c:#3E62C4"><span class="cb-evdot"></span><div><b>Blue · 415 nm</b><p>Appearance of spots reduced by 40%.</p><em>Goldberg &amp; Russell, 2006</em></div></div>
-        <div class="cb-ev" style="--c:#3F9E5B"><span class="cb-evdot"></span><div><b>Green · 520 nm</b><p>Appearance of pigmentation reduced by 4.1% in 8 weeks, with 100% of participants showing a reduction.</p><em>Independent testing, 2026</em></div></div>
-        <div class="cb-ev" style="--c:#D9A227"><span class="cb-evdot"></span><div><b>Yellow · 590 nm</b><p>Appearance of redness reduced by 8.6% in 8 weeks in participants with a higher baseline redness.</p><em>Independent testing, 2026</em></div></div>
-      </div>
-      <p class="cb-foot-note">Protocols, nm accuracy and full study summaries are in the <a href="#faq">clinical FAQ</a>. Near-infrared and deep near-infrared emit no visible colour.</p>
-    </div>
-  </section>
+ <section class="pd-sec tint">
+  <div class="pd-wrap">
+   <div class="pd-head"><span class="pd-kick">FAQ</span><h2>Your questions, answered</h2><p>Our in-house beauty tech experts answer the most common questions.</p></div>
+   <div class="pd-faq" id="pdFaq"></div>
+  </div>
+ </section>
 
-  <!-- ============ HOW TO USE ============ -->
-  <section class="cb-sec tint cb-how">
-    <div class="cb-wrap">
-      <div class="cb-head">
-        <span class="cb-kicker">How to use</span>
-        <h2>Ten minutes, five times a week.</h2>
-      </div>
-      <div class="cb-steps">
-        <div><span>01</span><h3>Cleanse and dry</h3><p>Bare, dry skin. No serum under red or near-infrared: oils scatter the light before it reaches the dermis.</p></div>
-        <div><span>02</span><h3>Fit and choose</h3><p>Seat the mask flat, hook the chin strap, slide on the neck piece. Pick a preset, or set wavelengths yourself in the app.</p></div>
-        <div><span>03</span><h3>Run one session</h3><p>Ten minutes with your eyes closed. The controller stops at the dose MyDose™ calculates for the mode you chose.</p></div>
-      </div>
-      <div class="cb-video">
-        <img src="assets/detail.jpg" alt="Mask on linen, ready for a session" loading="lazy" />
-        <div class="cb-videobox">
-          <span class="cb-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l12 7-12 7z"/></svg></span>
-          <div><b>Watch the ten-minute routine</b><span>1:24 · filmed in our Paris studio</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+ <section class="pd-sec">
+  <div class="pd-wrap">
+   <div class="pd-head"><span class="pd-kick">Compare</span><h2>Series 3 against Series 2</h2></div>
+   <table class="pd-table">
+    <tr><th>Feature</th><th>Series 3</th><th>Series 2</th></tr>
+    <tr><td><b>Wavelengths</b></td><td>6, fully personalised with MyDose™</td><td>3 wavelengths, 1 preset</td></tr>
+    <tr><td><b>LEDs</b></td><td>750 Veritace®-certified</td><td>132 LEDs</td></tr>
+    <tr><td><b>Near-infrared</b></td><td>Red 633, NIR 830, deep NIR 1072</td><td>Red 633, NIR 830</td></tr>
+    <tr><td><b>Additional colours</b></td><td>Blue 415, green 532, yellow 590</td><td>None</td></tr>
+    <tr><td><b>App control</b></td><td>Build, save and share protocols</td><td>Not available</td></tr>
+    <tr><td><b>Price</b></td><td>£499.99</td><td>£399.99</td></tr>
+   </table>
+  </div>
+ </section>
 
-  <!-- ============ PRESET MODES ============ -->
-  <section class="cb-sec cb-modes">
-    <div class="cb-wrap">
-      <div class="cb-head">
-        <span class="cb-kicker">Four presets</span>
-        <h2>Clinician-set programs, or build your own.</h2>
-      </div>
-      <div class="cb-modegrid">
-        <article style="--c:#D8453B"><span class="cb-modechip">Preset 01</span><h3>Renew</h3><p>Red 630 + near-infrared 850. Ten minutes, five times a week. The anti-ageing baseline.</p><em>Fine lines, firmness</em></article>
-        <article style="--c:#3E62C4"><span class="cb-modechip">Preset 02</span><h3>Clear</h3><p>Blue 415 + red 630. Ten minutes, three times a week. Calms active breakouts.</p><em>Breakouts, congestion</em></article>
-        <article style="--c:#3F9E5B"><span class="cb-modechip">Preset 03</span><h3>Even</h3><p>Green 520 + yellow 590. Twelve minutes, five times a week. Tone and pigmentation.</p><em>Dark spots, uneven tone</em></article>
-        <article style="--c:#6E2A25"><span class="cb-modechip">Preset 04</span><h3>Recover</h3><p>Deep near-infrared 940 alone. Eight minutes, after treatments or long-haul flights.</p><em>Redness, recovery</em></article>
-      </div>
-    </div>
-  </section>
+ <section class="pd-sec tint">
+  <div class="pd-wrap">
+   <div class="pd-head"><span class="pd-kick">Complete the routine</span><h2>Also in this world</h2></div>
+   <div class="pd-rel"><button class="pd-relcard"><img src="assets/cbv/Series_3_Face_1.webp" alt="" loading="lazy" /><span class="pd-rb"><b>LED Red Light Therapy Face Mask: Series 3</b><span class="pd-rr">4.6 · 4,383 reviews</span><span class="pd-rp">£499.99</span></span></button><button class="pd-relcard"><img src="assets/cbv/16_f702a80c-e075-4de1-b0a2-fed6043e0f16.webp" alt="" loading="lazy" /><span class="pd-rb"><b>LED Neck &amp; Décolletage Mask: Series 3</b><span class="pd-rr">4.7 · 211 reviews</span><span class="pd-rp">£449.99</span></span></button><button class="pd-relcard"><img src="assets/cbv/currentbody-skin-led-helmet-woman-forward-facing-image-1.webp" alt="" loading="lazy" /><span class="pd-rb"><b>CurrentBody Skin LED Hair Growth Helmet</b><span class="pd-rr">4.6 · 227 reviews</span><span class="pd-rp">£649.99</span></span></button><button class="pd-relcard"><img src="assets/cbv/currentbody-rf-radio-frequency-skin-tightening-device-1.webp" alt="" loading="lazy" /><span class="pd-rb"><b>Skin RF Radio Frequency Skin Tightening Device</b><span class="pd-rr">4.6 · 259 reviews</span><span class="pd-rp">£299.99</span></span></button></div>
+  </div>
+ </section>
 
-  <!-- ============ PRESS ============ -->
-  <section class="cb-press">
-    <div class="cb-wrap">
-      <span class="cb-presslabel">As seen in</span>
-      <div class="cb-logos">
-        <span>VOGUE</span><span>ELLE</span><span>HARPER'S BAZAAR</span><span>GQ</span><span>MARIE CLAIRE</span><span>LES ECHOS</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EXPERT ============ -->
-  <section class="cb-sec tint cb-expert">
-    <div class="cb-wrap cb-2col rev">
-      <div class="cb-copy">
-        <span class="cb-kicker">Expert opinion</span>
-        <h2>“The only home device I recommend without a caveat.”</h2>
-        <p>“LED is not a gimmick, but most masks are underpowered and badly tested. What I want is a device that tells me the irradiance, the wavelength and the dose, and that holds those numbers over time. This one does, and the neck coverage is what makes it worth the money: patients treat the face and forget the décolleté until it is the thing that gives them away.”</p>
-        <div class="cb-expert-by">
-          <img src="assets/dermatologist.jpg" alt="Dr Camille Aubert" loading="lazy" />
-          <div><b>Dr Camille Aubert</b><span>Dermatologist, Hôpital Saint-Louis, Paris</span></div>
-        </div>
-      </div>
-      <div class="cb-media">
-        <img src="assets/dermatologist.jpg" alt="Dr Camille Aubert in clinic" loading="lazy" />
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ IN THE BOX ============ -->
-  <section class="cb-sec cb-box">
-    <div class="cb-wrap cb-2col">
-      <div class="cb-media">
-        <img src="assets/kit.jpg" alt="Everything in the box" loading="lazy" />
-      </div>
-      <div class="cb-copy">
-        <span class="cb-kicker">In the box</span>
-        <h2>Everything you need, nothing to buy after.</h2>
-        <ul class="cb-checklist">
-          <li><i>01</i><div><b>Face mask, 60 LEDs</b><span>Medical-grade silicone, 218 g</span></div></li>
-          <li><i>02</i><div><b>Neck &amp; décolleté piece, 60 LEDs</b><span>Clips to the mask, works alone</span></div></li>
-          <li><i>03</i><div><b>Cordless controller</b><span>LCD, 3,000 mAh, USB-C</span></div></li>
-          <li><i>04</i><div><b>Eye protectors and straps</b><span>Required, included</span></div></li>
-          <li><i>05</i><div><b>Gift box, satin pouch</b><span>And the printed protocol card</span></div></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ AWARDS ============ -->
-  <section class="cb-awards">
-    <div class="cb-wrap cb-awardrow">
-      <div><b>Veritace®</b><span>Every LED tested</span></div>
-      <div><b>CE marked</b><span>Class IIa medical device</span></div>
-      <div><b>Beauty Tech Awards</b><span>Device of the year 2026</span></div>
-      <div><b>Dermatest</b><span>Excellent, 5 stars</span></div>
-    </div>
-  </section>
-
-  <!-- ============ SOCIAL PROOF ============ -->
-  <section class="cb-sec tint cb-ugc">
-    <div class="cb-wrap">
-      <div class="cb-head center">
-        <span class="cb-kicker">@luminera.clinical</span>
-        <h2>Ten minutes, however the day went.</h2>
-      </div>
-      <div class="cb-uggrid">
-        <figure><img src="assets/ae-scenes.jpg" alt="Worn while reading, working or resting" loading="lazy" /><figcaption>Ten minutes, anywhere</figcaption></figure>
-        <figure><img src="assets/ae-worn.jpg" alt="Red light session" loading="lazy" /><figcaption>Red light, 630 nm</figcaption></figure>
-        <figure><img src="assets/ae-hero.jpg" alt="Face and neck coverage" loading="lazy" /><figcaption>Face and neck</figcaption></figure>
-        <figure><img src="assets/ae-flat-black.jpg" alt="Black silicone mask" loading="lazy" /><figcaption>Black shell</figcaption></figure>
-        <figure><img src="assets/ae-flat-white.jpg" alt="White silicone mask" loading="lazy" /><figcaption>White shell</figcaption></figure>
-        <figure><img src="assets/ae-results.jpg" alt="Results over the protocol" loading="lazy" /><figcaption>The protocol</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ REVIEWS ============ -->
-  <section class="cb-sec cb-reviews" id="reviews">
-    <div class="cb-wrap">
-      <div class="cb-head center">
-        <span class="cb-kicker">Reviews</span>
-        <h2>160 reviews, 4.7 out of 5.</h2>
-      </div>
-
-      <div class="cb-summary">
-        <div class="cb-score">
-          <b>4.7</b>
-          <span class="stars" data-rating="4.7"></span>
-          <em>Based on 160 reviews</em>
-        </div>
-        <div class="cb-hist" id="hist"></div>
-        <div class="cb-rstats">
-          <div><b>96%</b><span>would buy again</span></div>
-          <div><b>89%</b><span>saw results in 8 weeks</span></div>
-        </div>
-      </div>
-
-      <div class="cb-filters" id="revFilters">
-        <button class="on" data-filter="all">All reviews</button>
-        <button data-filter="5">5 stars</button>
-        <button data-filter="4">4 stars</button>
-        <button data-filter="3">3 stars and under</button>
-        <button data-filter="photo">With photos</button>
-      </div>
-
-      <div class="cb-revgrid" id="revGrid"></div>
-      <div class="cb-more"><button class="cb-btn alt" id="revMore">Show more reviews</button></div>
-    </div>
-  </section>
-
-  <!-- ============ FAQ ============ -->
-  <section class="cb-sec tint cb-faq" id="faq">
-    <div class="cb-wrap cb-faqgrid">
-      <div class="cb-head">
-        <span class="cb-kicker">FAQ</span>
-        <h2>Questions we get before the first session.</h2>
-        <p>Anything else, the clinical team answers within a few hours, seven days a week.</p>
-        <a class="cb-link" href="mailto:care@luminera.store">care@luminera.store</a>
-      </div>
-      <div class="cb-faqlist" id="faqList"></div>
-    </div>
-  </section>
-
-  <!-- ============ JOURNAL ============ -->
-  <section class="cb-sec cb-blog">
-    <div class="cb-wrap">
-      <div class="cb-head between">
-        <div><span class="cb-kicker">Beauty tech journal</span><h2>Read before you buy.</h2></div>
-        <a class="cb-link" href="#home" data-nav="home">All articles</a>
-      </div>
-      <div class="cb-bloggrid">
-        <a class="cb-post" href="#home" data-nav="home"><img src="assets/modes.jpg" alt="" loading="lazy" /><span>Science · 8 min</span><h3>What 630 nm actually does under the skin</h3></a>
-        <a class="cb-post" href="#home" data-nav="home"><img src="assets/detail.jpg" alt="" loading="lazy" /><span>Protocol · 5 min</span><h3>The eight-week protocol, week by week</h3></a>
-        <a class="cb-post" href="#home" data-nav="home"><img src="assets/mask-neck.jpg" alt="" loading="lazy" /><span>Devices · 6 min</span><h3>Face masks vs the neck piece: what to treat first</h3></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SUPPORT ============ -->
-  <section class="cb-support">
-    <div class="cb-wrap cb-supportrow">
-      <div><b>Talk to the clinical team</b><span>Seven days a week, 9:00–19:00 CET</span><a href="mailto:care@luminera.store">care@luminera.store</a></div>
-      <div><b>Delivery &amp; returns</b><span>Free express shipping, 60-day returns</span><button class="cb-inline" data-info="delivery">Read the policy</button></div>
-      <div><b>Warranty</b><span>Two years, registered in the box</span><button class="cb-inline" data-info="warranty">How it works</button></div>
-    </div>
-  </section>
-
-  <!-- ============ RELATED ============ -->
-  <section class="cb-sec cb-related">
-    <div class="cb-wrap">
-      <div class="cb-head"><span class="cb-kicker">Also consider</span><h2>Complete the set.</h2></div>
-      <div class="cb-relgrid" id="relGrid"></div>
-    </div>
-  </section>
 </div>
+</div>
+
 <div class="view" id="view-checkout">
   <header class="ck-header">
     <div class="ck-hwrap">
@@ -2107,7 +2116,7 @@ body.checkout-mode{padding-top:0}
           </label>
         </section>
 
-        <button class="ck-paynow" type="submit">Pay now · <span id="ckTotal">279,00 €</span></button>
+        <button class="ck-paynow" type="submit">Pay now · <span id="ckTotal">£499.99</span></button>
         <p class="ck-demo" id="ckDemo"></p>
 
         <div class="ck-footlinks">
@@ -2156,9 +2165,9 @@ body.checkout-mode{padding-top:0}
       </div>
       <div class="f-col">
         <h5>Shop</h5>
-        <a href="#product" data-product="pro">Face &amp; Neck Set</a>
-        <a href="#product" data-product="essential">Essential Mask</a>
-        <a href="#product" data-product="twin">Twin Ritual Set</a>
+        <a href="#product" data-product="mask">Face &amp; Neck Set</a>
+        <a href="#product" data-product="kit">Essential Mask</a>
+        <a href="#product" data-product="special">Twin Ritual Set</a>
         <a href="#bundles" data-nav="home">Compare sets</a>
       </div>
       <div class="f-col">
@@ -2204,9 +2213,9 @@ body.checkout-mode{padding-top:0}
   <div class="mmenu-body">
     <div class="mm-group">
       <div class="mm-label">Shop</div>
-      <a href="#product" data-product="pro">Face &amp; Neck Set <span>279 €</span></a>
-      <a href="#product" data-product="essential">Essential Mask <span>249 €</span></a>
-      <a href="#product" data-product="twin">Twin Ritual Set <span>449 €</span></a>
+      <a href="#product" data-product="mask">Face &amp; Neck Set <span>£499.99</span></a>
+      <a href="#product" data-product="kit">Essential Mask <span>£499.99</span></a>
+      <a href="#product" data-product="special">Twin Ritual Set <span>£854.99</span></a>
     </div>
     <div class="mm-group">
       <div class="mm-label">Explore</div>
@@ -2224,7 +2233,7 @@ body.checkout-mode{padding-top:0}
       <a href="#orders" data-panel="orders">Track your order</a>
       <a href="#contact" data-panel="contact">Contact</a>
     </div>
-    <button class="btn wide" style="margin-top:24px" data-product="pro">Shop the mask · 279,00 €</button>
+    <button class="btn wide" style="margin-top:24px" data-product="mask">Shop the mask · £499.99</button>
     <div class="mm-foot">Free express shipping worldwide · 60-day returns</div>
   </div>
 </div>
@@ -2263,9 +2272,9 @@ body.checkout-mode{padding-top:0}
 <!-- sticky buy bar -->
 <div class="sticky-buy" id="stickyBuy">
   <div class="sb-in">
-    <span class="sb-name">LUMIÈRA Pro</span>
-    <span class="sb-rev"><span class="stars" data-rating="4.7"></span> 4.7 · 160</span>
-    <span class="sb-price" id="sbPrice">279,00 €</span>
+    <span class="sb-name">Series 3</span>
+    <span class="sb-rev"><span class="stars" data-rating="4.6"></span> 4.6 · 4,383</span>
+    <span class="sb-price" id="sbPrice">£499.99</span>
     <button class="btn sm" id="sbAdd">Add to bag</button>
   </div>
 </div>
@@ -2317,36 +2326,40 @@ const IMG = {
   aeBlack:'assets/ae-flat-black.jpg',
   aeWhite:'assets/ae-flat-white.jpg',
   aeBeforeAfter:'assets/ae-before-after.jpg',
-  aeResults:'assets/ae-results.jpg'
+  aeResults:'assets/ae-results.jpg',
+  /* Series 3 assets */
+  series3:'assets/cbv/Front_Transparent.webp',
+  series3kit:'assets/cbv/CB-S3-FN-transparent.webp',
+  series3special:'assets/cbv/CB-S3-5PKHydrogels-GTSerum-transparent.webp'
 };
 
 /* Optional product video (supplier clip or your own). Set a direct .mp4 URL. */
 const VIDEO_URL = 'assets/lumiera-film.mp4';   // swap for the supplier's original clip if you have it
 
 const PRODUCTS = {
-  pro:{
-    id:'pro', name:'LUMIÈRA Pro LED Face & Neck Mask', short:'Face & Neck Set',
-    sub:'Mask + neck piece + gift box', price:279, compare:null,
-    rating:4.7, reviews:160, badge:'Bestseller', img:IMG.aeHero,
-    pay:'One payment', note:'The set most buyers choose',
-    contents:['Face mask, 60 LEDs','Neck & décolleté piece, 60 LEDs','Cordless LCD controller','Gift box, satin pouch, eye protectors']
+  mask:{
+    id:'mask', name:'LED Red Light Therapy Face Mask: Series 3', short:'Series 3 mask',
+    sub:'Mask only · 750 Veritace®-certified LEDs', price:499.99, compare:null,
+    rating:4.6, reviews:4383, badge:'Bestseller', img:IMG.series3,
+    pay:'One payment', note:'The mask on its own',
+    contents:['Mask, 750 Veritace® LEDs','Storage bag','USB-C charging cable','Controller','Eye inserts','User manual']
   },
-  essential:{
-    id:'essential', name:'LUMIÈRA Pro Essential Mask', short:'Essential Mask',
-    sub:'Face mask, controller, pouch', price:249, compare:null,
-    rating:4.6, reviews:94, badge:null, img:IMG.aeBlack,
-    pay:'One payment', note:'Face only',
-    contents:['Face mask, 60 LEDs','Cordless LCD controller','USB-C cable, two straps','Satin pouch, eye protectors']
+  kit:{
+    id:'kit', name:'LED Face & Neck Kit: Series 3', short:'Face & Neck kit',
+    sub:'Mask + Neck & Décolletage Mask', price:854.99, compare:949.98,
+    rating:4.7, reviews:211, badge:'Save £94.99', img:IMG.series3kit,
+    pay:'One payment', note:'Face and neck, together',
+    contents:['Series 3 face mask','Series 3 neck & décolletage mask','Multi-strap x2','USB-C cord','Storage bag','User manual','NFC card']
   },
-  twin:{
-    id:'twin', name:'LUMIÈRA Twin Ritual Set', short:'Twin Ritual Set',
-    sub:'Two complete face + neck sets', price:449, compare:558,
-    rating:4.8, reviews:38, badge:'Save 109 €', img:IMG.aeWhite,
-    pay:'One payment', note:'Two sets, one for someone else',
-    contents:['Two face masks, 120 LEDs','Two neck & décolleté pieces','Two controllers','Two gift boxes and pouches']
+  special:{
+    id:'special', name:'Special LED Kit: Series 3', short:'Special kit',
+    sub:'Mask + hydrogel masks + serum', price:556.99, compare:585.93,
+    rating:4.6, reviews:512, badge:'Limited', img:IMG.series3special,
+    pay:'One payment', note:'Mask with the routine',
+    contents:['Series 3 face mask','Hydrogel Face Mask (5 pack)','Green Tea Serum 30ml']
   }
 };
-const ORDER_IDS = ['pro','essential','twin'];
+const ORDER_IDS = ['mask','kit','special'];
 
 const MODES = [
   {key:'red', name:'Red Light', label:'Collagen', nm:'630 nm', nmVal:630, chip:'#D8453B',
@@ -2425,7 +2438,7 @@ const MARQUEE = [
 ============================================================ */
 const $ = (s,r=document)=>r.querySelector(s);
 const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
-const money = n => n.toFixed(2).replace('.',',') + ' €';
+const money = n => '£' + n.toFixed(2);
 const read = (k,d)=>{try{return JSON.parse(localStorage.getItem(k)) ?? d}catch(e){return d}};
 const write = (k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 6 6.5.9-4.8 4.5 1.2 6.4L12 17.1 6.2 20.2l1.2-6.4L2.6 9.3l6.5-.9z"/></svg>';
@@ -2732,253 +2745,212 @@ document.addEventListener('click', e=>{
 });
 
 /* ============================================================
-   PDP v2 · GALLERY · VARIANTS · QTY
+   SERIES 3 PDP · gallery, variants, reviews, FAQ
 ============================================================ */
-let GALLERY = [
-  {src:IMG.aeHero,        tag:'Worn · face + neck',   alt:'LED mask worn on the face and neck'},
-  {src:IMG.aeWorn,        tag:'Light on · 630 nm red', alt:'Red light therapy session'},
-  {src:IMG.aeBlack,       tag:'Face mask, black shell', alt:'Black silicone LED face mask'},
-  {src:IMG.aeWhite,       tag:'Face mask, white shell', alt:'White silicone LED face mask'},
-  {src:IMG.aeScenes,      tag:'Ten minutes, hands free', alt:'Worn while reading, working or resting'},
-  {src:IMG.aeBeforeAfter, tag:'Before / after',       alt:'Before and after four weeks of use'},
-  {src:IMG.kit,           tag:'In the box',           alt:'Everything in the box'}
+const PD_IMG = 'assets/cbv/';
+
+const PD_VARIANTS = {
+  mask:{id:'mask',name:'LED Red Light Therapy Face Mask: Series 3',short:'Series 3 mask',
+    sub:'Mask only · 750 Veritace®-certified LEDs',price:499.99,compare:null,
+    img:PD_IMG+'Front_Transparent.webp',
+    contents:['LED Red Light Therapy Face Mask: Series 3','Storage Bag','USB-C Charging Cable','Controller','Eye Inserts','User Manual']},
+  kit:{id:'kit',name:'LED Face & Neck Kit: Series 3',short:'Face & Neck kit',
+    sub:'Mask + Neck & Décolletage Mask',price:854.99,compare:949.98,
+    img:PD_IMG+'CB-S3-FN-transparent.webp',
+    contents:['LED Red Light Therapy Mask: Series 3','LED Neck & Décolletage Mask: Series 3','Multi-strap x 2','USB-C Charging Cord','Storage Bag','User Manual','NFC Card']},
+  special:{id:'special',name:'Special LED Kit: Series 3',short:'Special kit',
+    sub:'Mask + hydrogel masks + serum',price:556.99,compare:585.93,
+    img:PD_IMG+'CB-S3-5PKHydrogels-GTSerum-transparent.webp',
+    contents:['LED Red Light Therapy Mask: Series 3 (with standard contents)','CurrentBody Skin Hydrogel Face Mask (5 Pack)','CurrentBody Skin Green Tea Serum (30ml)']}
+};
+
+const PD_GALLERY = [
+  {src:PD_IMG+'1_a0ed7735-65e6-4fa2-95b6-790a90a67da7.webp', tag:'Worn · full face coverage'},
+  {src:PD_IMG+'Front_Transparent.webp', tag:'Series 3 mask'},
+  {src:PD_IMG+'2_7758a6d3-28bd-4314-8803-bc961a5f2477.webp', tag:'750 certified LEDs'},
+  {src:PD_IMG+'4_23548709-8c1f-496b-8e72-1e899f0cabc3.webp', tag:'Flexible silicone fit'},
+  {src:PD_IMG+'5_8fe32e9f-6b80-43e2-a131-7bf169aa0c5b.webp', tag:'Eye inserts and straps'},
+  {src:PD_IMG+'7_68411855-45e1-412b-b352-feda97c6aa89.webp', tag:'Controller and storage bag'},
+  {src:PD_IMG+'8_dbb530ad-f17b-4a6b-8257-94f5503039ad.webp', tag:'In the box'},
+  {src:PD_IMG+'ROW_MODEL_10.webp', tag:'Worn with the neck piece'}
 ];
-if(VIDEO_URL){
-  GALLERY = [{src:IMG.aeHero, tag:'Product film', alt:'Product film', video:VIDEO_URL}].concat(GALLERY);
-}
-let galIndex = 0;
-let selectedId = 'pro';
-let qty = 1;
 
-function renderThumbs(){
-  const thumbs = $('#thumbs');
-  if(!thumbs) return;
-  thumbs.innerHTML = GALLERY.map((g,i)=>
-    '<button class="cb-thumb'+(i===0?' on':'')+'" data-gal="'+i+'" aria-label="View image '+(i+1)+'">'+
-      '<img src="'+g.src+'" alt="'+g.alt+'" loading="lazy" />'+
-      (g.video?'<span class="cb-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 6l10 6-10 6z"/></svg></span>':'')+
-    '</button>'
-  ).join('');
-}
-function setGallery(i){
-  const img = $('#stageImg');
-  if(!img) return;
-  galIndex = (i + GALLERY.length) % GALLERY.length;
-  const g = GALLERY[galIndex];
-  const stage = img.parentNode;
-  let vid = stage.querySelector('.cb-stage-video');
-  if(g.video){
-    if(!vid){
-      vid = document.createElement('video');
-      vid.className='cb-stage-video'; vid.controls=true; vid.playsInline=true; vid.muted=true; vid.loop=true;
-      stage.insertBefore(vid, img);
-    }
-    vid.src = g.video; vid.play().catch(()=>{});
-    vid.style.display='block'; img.style.display='none';
-  } else {
-    if(vid){ vid.pause(); vid.style.display='none'; }
-    img.style.display='block';
-  }
-  img.style.opacity = 0;
-  setTimeout(()=>{
-    img.src = g.src; img.alt = g.alt; img.style.opacity = 1;
-    $('#stageTag').textContent = g.tag;
-  }, 140);
-  $$('#thumbs .cb-thumb').forEach((t,k)=>t.classList.toggle('on', k===galIndex));
+const PD_REVIEWS = [
+  {a:'Jennifer E. a.', r:5, d:'3 days ago', t:'Currentbody led mask',
+   b:"The top I've been using it for 1 month and I am super happy I have a prettier, less dull skin it's obvious I continue thank you currentbody",
+   p:'Series 3', note:'Translated from French'},
+  {a:'Darlene L.', r:5, d:'4 days ago', t:'Red Light Therapy mask is wonderful',
+   b:'I use the mask five days a week, 10 minutes each use. I’m just now starting to notice changes. I love this mask. Easy to use.',
+   p:'Series 2', chips:['55-64','Female']},
+  {a:'Caterina H.', r:5, d:'5 days ago', t:'Very pleasant',
+   b:'Pure relaxation 🥰', p:'Series 3', chips:['45-54','Woman'], note:'Translated from German'},
+  {a:'이 철.', r:5, d:'1 week ago', t:'I bought it as a gift for my girlfriend and she really likes it',
+   b:"I bought it as a gift for my girlfriend and she loved it. First, the packaging was really secure. The main body and adjuster fit perfectly in each seat in the box, so I didn't have to worry about them shaking during shipping. What impressed me the most was the product test card. When I checked with the card, I was convinced that the product I received had completed the test. At first, I didn't know how to connect Bluetooth, so I looked for it with my girlfriend for a long time. I had to install the app and select the mode first to connect (pair). If you're lost like me, check it out. Once turned on, it automatically shuts off after 10 minutes, so it's really convenient. They are both very satisfied.",
+   p:'Series 3', note:'Translated from Korean'},
+  {a:'Rebecca P.', r:4, d:'1 week ago', t:'Very effective but you can not multitask while wearing',
+   b:'This device is excellent in the sense that I notice an improvement in my skin and have gradually notice my hairline (where the mask covers) growing in. The battery life is great too. Just be warned that it renders you completely useless whilst wearing it. I cannot see anything clearly enough to get chores or reading done and I can’t even drink water whilst using it.',
+   p:'Series 2', chips:['35-44','Female']},
+  {a:'NAUREEN T.', r:5, d:'1 week ago', t:'MD',
+   b:'I have been using current body series one and two for almost a year and a half and love the results.',
+   p:'Series 2', chips:['65+','Female']}
+];
+
+const PD_FAQ = [
+  ['What makes the Series 3 red light therapy mask different?','Series 3 is the first fully customisable LED face mask with our patented MyDose™ technology and complete control over 6 clinically proven wavelengths. You choose the wavelengths, and MyDose™ calculates your optimal dose. Save and share your personalised treatment protocols in the LUMIÈRA app.'],
+  ['What does deep near-infrared LED light do for your face?','Penetrating up to 10 mm into the skin, deep near-infrared LED light is associated with boosting collagen production and reducing wrinkles by 37.1% in 8 weeks.'],
+  ['Can you see near-infrared and deep near-infrared light?','No. You cannot see near-infrared (830 nm) or deep near-infrared (1072 nm) light because the human eye is unable to detect wavelengths beyond approximately 700 nm.'],
+  ['How often should you use the LED face mask for best results?','Use the LED face mask 3 to 5 times a week for optimal results.'],
+  ['Is it possible to use the LED face mask more than the recommended amount?','Using your mask for longer than the recommended duration is not advised. 10 minutes of use, 3 to 5 times a week is the optimal session length for the device’s power output.'],
+  ['Is the LED face mask painful to use?','The Series 3 LED Face Mask should not be uncomfortable to use.'],
+  ['How long will it take to see results?','Visible results can be seen in as little as 4 weeks when used regularly for 10 minutes a day, 3 to 5 times a week. For best results, use the mask alongside Hydrogel Face Masks or Green Tea Serum.'],
+  ['Is the LED mask suitable for all skin types?','Yes. The LED face mask has been designed to be used by all skin types.'],
+  ['How are the LEDs tested for guaranteed quality?','Veritace® is our end-to-end production and testing system. Every single LED is tested to make sure it emits the exact light proven in the research.'],
+  ['What is MyDose™ technology?','MyDose™ gives you full control over every LED. You choose the wavelengths, MyDose™ automatically calculates the optimal dose for your skin.'],
+  ['How do I clean my LED face mask?','Gently wipe your device with a soft, damp cloth after each use. Avoid submerging it in water or using harsh or abrasive cleaners.'],
+  ['How do I download and set up the app?','Download the LUMIÈRA app from the App Store (iOS) or Google Play Store (Android). To pair, open the app and follow the on-screen prompts to connect over Bluetooth®, with the device powered on and nearby.']
+];
+
+let pdIndex = 0, pdVariant = 'mask', pdQty = 1, selectedId = 'mask';
+
+function pdMoney(n){ return '£' + n.toFixed(2); }
+
+function pdStars(r){
+  const full = Math.round(r);
+  return '<span class="stars">' + Array.from({length:5},(_,i)=>'<svg viewBox="0 0 24 24" style="opacity:'+(i<full?1:.22)+'"><path d="M12 2.4l2.9 6 6.5.9-4.8 4.5 1.2 6.4L12 17.1 6.2 20.2l1.2-6.4L2.6 9.3l6.5-.9z"/></svg>').join('') + '</span>';
 }
 
-function renderVariants(){
-  const list = $('#optList');
-  if(!list) return;
-  list.innerHTML = ORDER_IDS.map(id=>{
-    const p = PRODUCTS[id];
-    const worth = p.compare ? '<s>Worth '+money(p.compare)+'</s>' : '';
-    return '<label class="opt'+(id===selectedId?' on':'')+'" data-opt="'+id+'">'+
-      '<input type="radio" name="variant" value="'+id+'"'+(id===selectedId?' checked':'')+'>'+
-      '<img src="'+p.img+'" alt="" loading="lazy" />'+
-      '<span class="radius"></span>'+
-      '<span class="o-main">'+
-        '<span class="o-name">'+p.short+(id==='pro'?'<span class="flag">Most popular</span>':'')+'</span>'+
-        '<span class="o-sub">'+p.sub+'</span>'+
-      '</span>'+
-      '<span class="o-price">'+money(p.price)+worth+'</span>'+
-    '</label>';
+function pdPaintStars(){
+  document.querySelectorAll('.pd .stars[data-stars]').forEach(el=>{
+    if(el.dataset.done) return;
+    const r = parseFloat(el.dataset.stars);
+    el.innerHTML = Array.from({length:5},(_,i)=>{
+      const fill = Math.max(0, Math.min(1, r - i));
+      return '<svg viewBox="0 0 24 24" style="opacity:'+(0.22 + 0.78*fill)+'"><path d="M12 2.4l2.9 6 6.5.9-4.8 4.5 1.2 6.4L12 17.1 6.2 20.2l1.2-6.4L2.6 9.3l6.5-.9z"/></svg>';
+    }).join('');
+    el.dataset.done='1';
+  });
+}
+
+function pdRenderGallery(){
+  const img = $('#pdStageImg'), vid = $('#pdVideo');
+  if(!img || !vid) return;
+  img.style.display = 'block'; vid.style.display = 'none'; vid.pause();
+  img.src = PD_GALLERY[pdIndex].src;
+  img.alt = PD_GALLERY[pdIndex].tag;
+  $('#pdTag').textContent = PD_GALLERY[pdIndex].tag;
+  $$('.pd-thumb').forEach(t=>t.classList.remove('on'));
+  const th = $('.pd-thumb[data-i="'+pdIndex+'"]');
+  if(th) th.classList.add('on');
+}
+
+function pdPlayVideo(){
+  const img = $('#pdStageImg'), vid = $('#pdVideo');
+  img.style.display='none';
+  vid.style.display='block';
+  $('#pdTag').textContent = 'Product film';
+  $$('.pd-thumb').forEach(t=>t.classList.remove('on'));
+  const th = $('.pd-thumb[data-video]');
+  if(th) th.classList.add('on');
+  vid.play().catch(()=>{});
+}
+
+function pdRenderVariant(){
+  const v = PD_VARIANTS[pdVariant];
+  if(!v) return;
+  selectedId = pdVariant;
+  $$('.pd-var').forEach(b=>b.classList.toggle('on', b.dataset.var===pdVariant));
+  $('#pdPrice').textContent = pdMoney(v.price);
+  const cmp = $('#pdCompare');
+  if(v.compare){ cmp.style.display='inline'; cmp.textContent = pdMoney(v.compare); } else { cmp.style.display='none'; }
+  const save = $('#pdSave');
+  if(v.compare){ save.style.display='inline'; save.textContent = 'Save ' + pdMoney(v.compare - v.price); } else { save.style.display='none'; }
+  $('#pdKlarna').textContent = pdMoney(v.price/4);
+  $('#pdBox').innerHTML = '<p class="pd-lbl" style="margin-bottom:8px">In the box · ' + v.name + '</p><ol style="margin:0;padding-left:18px;font-size:12.5px;line-height:1.9;color:var(--pd-body)">' +
+    v.contents.map(c=>'<li>'+c+'</li>').join('') + '</ol>';
+  $('#pdpTitle').textContent = v.name;
+}
+
+function pdRenderReviews(){
+  const el = $('#pdRevGrid');
+  if(!el) return;
+  el.innerHTML = PD_REVIEWS.map(r=>{
+    const chips = (r.chips||[]).map(c=>'<span class="pd-chip">'+c+'</span>').join('');
+    const note = r.note ? '<span class="pd-chip">'+r.note+'</span>' : '';
+    return '<article class="pd-rev">' + pdStars(r.r) +
+      '<h4>'+r.t+'</h4><p>'+r.b+'</p>' +
+      '<div>'+chips+note+'</div>' +
+      '<div class="pd-revmeta"><span><b>'+r.a+'</b> · Verified buyer</span><span>'+r.d+'</span></div>' +
+    '</article>';
   }).join('');
 }
 
-function renderBox(){
-  const el = $('#boxList');
+function pdRenderFaq(){
+  const el = $('#pdFaq');
   if(!el) return;
-  const p = PRODUCTS[selectedId];
-  el.innerHTML = '<b style="font-weight:500;color:var(--cb-ink)">In the '+p.short.toLowerCase()+'</b><br>'+
-    p.contents.join(' &middot; ');
-}
-
-function setVariant(id){
-  selectedId = PRODUCTS[id] ? id : 'pro';
-  const p = PRODUCTS[selectedId];
-  $$('#optList .opt').forEach(o=>{
-    const on = o.dataset.opt === selectedId;
-    o.classList.toggle('on', on);
-    const input = $('input', o);
-    if(input) input.checked = on;
-  });
-  const priceEl = $('#pdpPriceRow .p');
-  if(priceEl) priceEl.textContent = money(p.price);
-  const cmp = $('#pdpCompare'), save = $('#pdpSave');
-  if(cmp){ cmp.hidden = !p.compare; if(p.compare) cmp.textContent = money(p.compare); }
-  if(save){ save.hidden = !p.compare; if(p.compare) save.textContent = 'Save ' + money(p.compare - p.price); }
-  const split = $('#pdpSplit');
-  if(split) split.textContent = money(p.price/4);
-  const addPrice = $('#addPrice');
-  if(addPrice) addPrice.textContent = money(p.price);
-  const title = $('#pdpTitle');
-  if(title) title.textContent = p.name;
-  const crumb = $('#crumbName');
-  if(crumb) crumb.textContent = p.short;
-  const sb = $('#sbPrice');
-  if(sb) sb.textContent = money(p.price);
-  const qv = $('#qVal');
-  if(qv) qv.textContent = qty;
-  renderBox();
-}
-
-document.addEventListener('click', e=>{
-  const opt = e.target.closest('.opt');
-  if(opt){ e.preventDefault(); setVariant(opt.dataset.opt); return; }
-  const th = e.target.closest('[data-gal]');
-  if(th){ setGallery(parseInt(th.dataset.gal,10)); }
-});
-
-const galPrev = $('#galPrev'), galNext = $('#galNext');
-if(galPrev) galPrev.addEventListener('click', ()=>setGallery(galIndex-1));
-if(galNext) galNext.addEventListener('click', ()=>setGallery(galIndex+1));
-
-const qMinus = $('#qMinus'), qPlus = $('#qPlus');
-if(qMinus) qMinus.addEventListener('click', ()=>{ qty = Math.max(1, qty-1); $('#qVal').textContent = qty; });
-if(qPlus)  qPlus.addEventListener('click',  ()=>{ qty = Math.min(5, qty+1); $('#qVal').textContent = qty; });
-
-const addBtn = $('#addBtn');
-if(addBtn) addBtn.addEventListener('click', ()=>{ addToCart(selectedId, qty); });
-const buyNowBtn = $('#buyNowBtn');
-if(buyNowBtn) buyNowBtn.addEventListener('click', ()=>{ addToCart(selectedId, qty); });
-
-const boxToggle = $('#boxToggle');
-if(boxToggle) boxToggle.addEventListener('click', ()=>{
-  const b = $('#boxList');
-  if(!b) return;
-  b.hidden = !b.hidden;
-  boxToggle.textContent = b.hidden ? "What's in the box?" : 'Hide contents';
-});
-
-/* delivery window */
-(function(){
-  const w = deliveryWindow();
-  const el = $('#etaText');
-  if(el) el.textContent = w.a + ' – ' + w.b;
-})();
-
-/* ============================================================
-   PDP v2 · REVIEWS + FAQ + RELATED
-============================================================ */
-const MORE_REVIEWS = [
-  {r:5, t:'The app is the quiet hero', b:'Being able to set 630 and 850 separately and have the controller work out the time is what makes me use it daily. No thinking, no guessing.', a:'Juliette M.', c:'Bordeaux', m:'Red + NIR', d:'7 weeks'},
-  {r:5, t:'Bought it for my neck only', b:'I already had a mask I did not love. I bought this for the neck piece and now I use the pair. Two months in, the lines are softer and my skin looks less tired.', a:'Nadia F.', c:'Brussels', m:'Neck piece', d:'2 months'},
-  {r:4, t:'Great device, slow shipping', b:'The mask itself is excellent and the blue mode is the only thing that has calmed my chin without drying it out. Delivery took five days to Portugal, a little longer than promised.', a:'Rita S.', c:'Lisbon', m:'Blue', d:'5 weeks'},
-  {r:5, t:'Ten minutes is genuinely ten minutes', b:'It switches itself off. I do it while the coffee brews. Six weeks in, my cheeks are firmer and I have stopped reaching for the blur primer.', a:'Hanna W.', c:'Vienna', m:'Red', d:'6 weeks'},
-  {r:5, t:'My mother borrowed it and kept it', b:'So I bought a second. At her age the near-infrared is doing the heavy lifting and she says the texture on her jaw has changed. She is 68 and very sceptical.', a:'Leïla R.', c:'Rabat', m:'NIR', d:'3 months'},
-  {r:4, t:'Wish it charged faster', b:'Two hours for a full charge is slow, but the battery does last. Results on my pigmentation are subtle but real after two months of green mode.', a:'Clara B.', c:'Geneva', m:'Green', d:'2 months'}
-];
-const ALL_REVIEWS = REVIEWS.concat(MORE_REVIEWS);
-const HIST = [{s:5,n:128},{s:4,n:22},{s:3,n:6},{s:2,n:3},{s:1,n:1}];
-let revFilter = 'all';
-let revShown = 6;
-
-function renderHist(){
-  const el = $('#hist');
-  if(!el) return;
-  el.innerHTML = HIST.map(h=>{
-    const pct = Math.round(h.n/160*100);
-    return '<div class="cb-histrow"><span>'+h.s+' ★</span><span class="cb-histbar"><i style="width:'+pct+'%"></i></span><span>'+h.n+'</span></div>';
-  }).join('');
-}
-function reviewCard(r){
-  return '<article class="cb-rev">'+
-    '<span class="stars" data-rating="'+r.r+'"></span>'+
-    '<h4>'+r.t+'</h4>'+
-    '<p>'+r.b+'</p>'+
-    '<div class="cb-revby"><b>'+r.a+' · '+r.c+'</b><span>'+r.m+' · '+r.d+'</span></div>'+
-  '</article>';
-}
-function renderReviews(){
-  const grid = $('#revGrid');
-  if(!grid) return;
-  let list = ALL_REVIEWS;
-  if(revFilter === '5') list = ALL_REVIEWS.filter(r=>r.r===5);
-  else if(revFilter === '4') list = ALL_REVIEWS.filter(r=>r.r===4);
-  else if(revFilter === '3') list = ALL_REVIEWS.filter(r=>r.r<=3);
-  else if(revFilter === 'photo') list = ALL_REVIEWS.slice(0,6);
-  grid.innerHTML = list.slice(0, revShown).map(reviewCard).join('');
-  paintStars(grid);
-  const more = $('#revMore');
-  if(more){
-    const done = revShown >= list.length;
-    more.style.display = done ? 'none' : 'inline-flex';
-    more.textContent = 'Show more reviews';
-  }
-}
-function bindReviews(){
-  renderHist(); renderReviews();
-  const f = $('#revFilters');
-  if(f) f.addEventListener('click', e=>{
-    const b = e.target.closest('[data-filter]');
-    if(!b) return;
-    revFilter = b.dataset.filter; revShown = 6;
-    $$('#revFilters button').forEach(x=>x.classList.toggle('on', x===b));
-    renderReviews();
-  });
-  const more = $('#revMore');
-  if(more) more.addEventListener('click', ()=>{ revShown += 6; renderReviews(); });
-}
-
-function renderFaq(){
-  const el = $('#faqList');
-  if(!el) return;
-  el.innerHTML = FAQ.map((f,i)=>
-    '<div class="cb-faqitem'+(i===0?' on':'')+'">'+
-      '<button type="button" aria-expanded="'+(i===0)+'">'+f.q+'<span class="cb-plus">'+(i===0?'–':'+')+'</span></button>'+
-      '<div class="cb-faqa"><p>'+f.a+'</p></div>'+
-    '</div>'
-  ).join('');
-  el.addEventListener('click', e=>{
-    const btn = e.target.closest('button');
-    if(!btn) return;
-    const item = btn.parentElement;
-    const open = item.classList.contains('on');
-    $$('.cb-faqitem', el).forEach(x=>{
-      x.classList.remove('on');
-      const b = $('button', x); if(b){ b.setAttribute('aria-expanded','false'); }
-      const p = $('.cb-plus', x); if(p) p.textContent = '+';
+  el.innerHTML = PD_FAQ.map(q=>'<div class="pd-q"><button type="button">'+q[0]+'<span class="pd-ic"></span></button><div class="pd-a"><div>'+q[1]+'</div></div></div>').join('');
+  $$('.pd-q > button', el).forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const q = btn.parentNode, a = q.querySelector('.pd-a');
+      const open = q.classList.contains('open');
+      $$('.pd-q.open', el).forEach(o=>{ o.classList.remove('open'); o.querySelector('.pd-a').style.maxHeight='0px'; });
+      if(!open){ q.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
     });
-    if(!open){
-      item.classList.add('on');
-      btn.setAttribute('aria-expanded','true');
-      const p = $('.cb-plus', item); if(p) p.textContent = '–';
-    }
   });
 }
 
-function renderRelated(){
-  const el = $('#relGrid');
-  if(!el) return;
-  el.innerHTML = ORDER_IDS.map(id=>{
-    const p = PRODUCTS[id];
-    return '<a class="cb-rel" href="#product" data-product="'+id+'">'+
-      '<img src="'+p.img+'" alt="'+p.name+'" loading="lazy" />'+
-      '<div class="cb-relb"><b>'+p.short+'</b><span>'+p.sub+'</span><em>'+money(p.price)+'</em></div>'+
-    '</a>';
-  }).join('');
+function pdDelivery(){
+  const eta = $('#pdEta'), cd = $('#pdCountdown');
+  if(!eta) return;
+  const d = new Date(); d.setDate(d.getDate() + 4);
+  eta.textContent = d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+  if(cd){
+    const end = new Date(); end.setHours(23,59,59,0);
+    const h = Math.max(0, Math.floor((end - new Date())/3600000));
+    cd.textContent = h + 'h';
+  }
 }
+
+function pdWire(){
+  const thumbs = $('#pdThumbs');
+  if(thumbs) thumbs.addEventListener('click', e=>{
+    const v = e.target.closest('[data-video]');
+    if(v){ pdPlayVideo(); return; }
+    const t = e.target.closest('.pd-thumb[data-i]');
+    if(t){ pdIndex = +t.dataset.i; pdRenderGallery(); }
+  });
+  const prev = $('#pdPrev'), next = $('#pdNext');
+  if(prev) prev.addEventListener('click', ()=>{ pdIndex = (pdIndex - 1 + PD_GALLERY.length) % PD_GALLERY.length; pdRenderGallery(); });
+  if(next) next.addEventListener('click', ()=>{ pdIndex = (pdIndex + 1) % PD_GALLERY.length; pdRenderGallery(); });
+
+  const vars = $('#pdVars');
+  if(vars) vars.addEventListener('click', e=>{
+    const b = e.target.closest('[data-var]');
+    if(!b) return;
+    pdVariant = b.dataset.var;
+    pdRenderVariant();
+  });
+
+  const minus = $('#pdMinus'), plus = $('#pdPlus'), qv = $('#pdQtyv');
+  if(minus) minus.addEventListener('click', ()=>{ pdQty = Math.max(1, pdQty-1); qv.textContent = pdQty; });
+  if(plus) plus.addEventListener('click', ()=>{ pdQty = Math.min(5, pdQty+1); qv.textContent = pdQty; });
+
+  const atc = $('#pdAtc');
+  if(atc) atc.addEventListener('click', ()=> addToCart(pdVariant, pdQty));
+
+  const tog = $('#pdBoxToggle'), box = $('#pdBox');
+  if(tog && box) tog.addEventListener('click', ()=>{ box.style.display = box.style.display==='none' ? 'block' : 'none'; });
+
+  pdPaintStars(); pdRenderGallery(); pdRenderVariant(); pdRenderReviews(); pdRenderFaq(); pdDelivery();
+
+  const bars = $$('.pd-bar .pd-fill');
+  if(bars.length && 'IntersectionObserver' in window){
+    const io2 = new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){ e.target.style.width = e.target.dataset.pct + '%'; io2.unobserve(e.target); }
+    }),{threshold:.4});
+    bars.forEach(b=>io2.observe(b));
+  }
+}
+pdWire();
 
 /* ============================================================
    CHECKOUT · Shopify-style flow, Stripe hand-off
@@ -3236,7 +3208,7 @@ function bindCheckout(){
 /* ============================================================
    CART
 ============================================================ */
-let cart = read('lumiera_cart_v3', []);
+let cart = read('lumiera_cart_v3', []).filter(i=>PRODUCTS[i.id]);
 let cartOpen = false;
 
 function cartCount(){ return cart.reduce((n,i)=>n+i.qty,0); }
@@ -3267,7 +3239,7 @@ function renderCart(){
 
   const items = $('#cartItems');
   if(!cart.length){
-    items.innerHTML = '<div class="dr-empty"><h4>Your bag is empty</h4><p style="font-size:13px;margin-bottom:20px">One mask, three configurations.</p><button class="btn sm" data-product="pro">Shop the mask</button></div>';
+    items.innerHTML = '<div class="dr-empty"><h4>Your bag is empty</h4><p style="font-size:13px;margin-bottom:20px">One mask, three configurations.</p><button class="btn sm" data-product="mask">Shop the mask</button></div>';
   } else {
     items.innerHTML = cart.map(i=>{
       const p = PRODUCTS[i.id];
@@ -3298,7 +3270,7 @@ function renderCart(){
       '<div class="dr-total"><span>Total</span><b>'+money(total)+'</b></div>'+
       '<button class="btn wide" id="checkoutBtn">Checkout · '+money(total)+'</button>'+
       '<div class="dr-note">60-day returns · 2-year warranty</div>'
-    : '<button class="btn ghost wide" data-product="pro">Shop the mask</button>';
+    : '<button class="btn ghost wide" data-product="mask">Shop the mask</button>';
 
   if(cart.length){
     const c = $('#checkoutBtn');
@@ -3583,18 +3555,12 @@ $$('.rv').forEach(el=>io.observe(el));
 renderCart();
 selectMode('red');
 paintStars();
-renderThumbs();
-renderVariants();
-setVariant('pro');
-setGallery(0);
-bindReviews();
-renderFaq();
-renderRelated();
+if(typeof pdWire==='function') pdWire();
 bindCheckout();
 
 (function route(){
   const h = location.hash.replace('#','');
-  if(h === 'product'){ openProduct('pro'); }
+  if(h === 'product'){ showView('product'); pdWire(); }
   else if(h === 'checkout'){ openCheckout(); }
   else if(h && document.getElementById(h)){ showView('home'); setTimeout(()=>scrollToId(h), 120); }
   else { history.replaceState(null,'','#home'); }
