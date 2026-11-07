@@ -811,6 +811,10 @@ select.input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
 .cb-stage-tag{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.94);color:var(--cb-ink);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px}
 .cb-galnav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;border:0;opacity:0;transition:opacity .2s}
 .cb-stage:hover .cb-galnav{opacity:1}
+.cb-stage-video{width:100%;aspect-ratio:1/1;object-fit:cover;display:none;background:#000}
+.cb-thumb{position:relative}
+.cb-thumb-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.28);color:#fff}
+.cb-thumb-play svg{width:16px;height:16px}
 .cb-galnav svg{width:18px;height:18px;color:var(--cb-ink)}
 .cb-galnav.prev{left:14px}.cb-galnav.next{right:14px}
 .cb-floatbadge{position:absolute;right:16px;bottom:16px;background:var(--cb-ink);color:#fff;padding:10px 14px;display:flex;flex-direction:column;line-height:1.2}
@@ -1762,9 +1766,9 @@ body.checkout-mode{padding-top:0}
         <p>Independent instrumental testing, 32 participants, five sessions a week. Percentages are changes in appearance measured by image analysis, not self-assessment.</p>
       </div>
       <div class="cb-resultgrid">
-        <figure><img src="assets/skin-closeup.jpg" alt="Skin texture after eight weeks" loading="lazy" /><figcaption><b>−37%</b><span>visible wrinkle depth</span></figcaption></figure>
-        <figure><img src="assets/routine.jpg" alt="Skin tone after eight weeks" loading="lazy" /><figcaption><b>+27%</b><span>brightness and evenness</span></figcaption></figure>
-        <figure><img src="assets/lifestyle.jpg" alt="Firmness after eight weeks" loading="lazy" /><figcaption><b>+57%</b><span>skin elasticity</span></figcaption></figure>
+        <figure><img src="assets/ae-before-after.jpg" alt="Before and after four weeks of use" loading="lazy" /><figcaption><b>4 weeks</b><span>before and after, continuous use</span></figcaption></figure>
+        <figure><img src="assets/ae-results.jpg" alt="Skin change over the protocol" loading="lazy" /><figcaption><b>8 weeks</b><span>texture and tone over the protocol</span></figcaption></figure>
+        <figure><img src="assets/ae-worn.jpg" alt="Mask worn during a session" loading="lazy" /><figcaption><b>10 min</b><span>per session, hands free</span></figcaption></figure>
       </div>
       <p class="cb-foot-note">*Appearance of wrinkles and elasticity measured instrumentally at 8 weeks. Individual results vary. Images illustrate the protocol, not individual outcomes.</p>
     </div>
@@ -1893,12 +1897,12 @@ body.checkout-mode{padding-top:0}
         <h2>Ten minutes, however the day went.</h2>
       </div>
       <div class="cb-uggrid">
-        <figure><img src="assets/routine.jpg" alt="Morning session" loading="lazy" /><figcaption>@amandine.p</figcaption></figure>
-        <figure><img src="assets/lifestyle.jpg" alt="Night routine" loading="lazy" /><figcaption>@lea.studio</figcaption></figure>
-        <figure><img src="assets/mask-neck.jpg" alt="Face and neck set" loading="lazy" /><figcaption>@margaux.b</figcaption></figure>
-        <figure><img src="assets/modes.jpg" alt="Choosing a wavelength" loading="lazy" /><figcaption>@studio.lumen</figcaption></figure>
-        <figure><img src="assets/flat.jpg" alt="On the dressing table" loading="lazy" /><figcaption>@claralr</figcaption></figure>
-        <figure><img src="assets/kit.jpg" alt="Unboxing" loading="lazy" /><figcaption>@nine.rue</figcaption></figure>
+        <figure><img src="assets/ae-scenes.jpg" alt="Worn while reading, working or resting" loading="lazy" /><figcaption>Ten minutes, anywhere</figcaption></figure>
+        <figure><img src="assets/ae-worn.jpg" alt="Red light session" loading="lazy" /><figcaption>Red light, 630 nm</figcaption></figure>
+        <figure><img src="assets/ae-hero.jpg" alt="Face and neck coverage" loading="lazy" /><figcaption>Face and neck</figcaption></figure>
+        <figure><img src="assets/ae-flat-black.jpg" alt="Black silicone mask" loading="lazy" /><figcaption>Black shell</figcaption></figure>
+        <figure><img src="assets/ae-flat-white.jpg" alt="White silicone mask" loading="lazy" /><figcaption>White shell</figcaption></figure>
+        <figure><img src="assets/ae-results.jpg" alt="Results over the protocol" loading="lazy" /><figcaption>The protocol</figcaption></figure>
       </div>
     </div>
   </section>
@@ -2305,28 +2309,39 @@ const IMG = {
   maskneck:'assets/mask-neck.jpg',
   flat:'assets/flat.jpg',
   modes:'assets/modes.jpg',
-  kit:'assets/kit.jpg'
+  kit:'assets/kit.jpg',
+  /* real product photography from the supplier listing */
+  aeHero:'assets/ae-hero.jpg',
+  aeWorn:'assets/ae-worn.jpg',
+  aeScenes:'assets/ae-scenes.jpg',
+  aeBlack:'assets/ae-flat-black.jpg',
+  aeWhite:'assets/ae-flat-white.jpg',
+  aeBeforeAfter:'assets/ae-before-after.jpg',
+  aeResults:'assets/ae-results.jpg'
 };
+
+/* Optional product video (supplier clip or your own). Set a direct .mp4 URL. */
+const VIDEO_URL = '';   // e.g. 'assets/lumiera-demo.mp4'
 
 const PRODUCTS = {
   pro:{
     id:'pro', name:'LUMIÈRA Pro LED Face & Neck Mask', short:'Face & Neck Set',
     sub:'Mask + neck piece + gift box', price:279, compare:null,
-    rating:4.7, reviews:160, badge:'Bestseller', img:IMG.maskneck,
+    rating:4.7, reviews:160, badge:'Bestseller', img:IMG.aeHero,
     pay:'One payment', note:'The set most buyers choose',
     contents:['Face mask, 60 LEDs','Neck & décolleté piece, 60 LEDs','Cordless LCD controller','Gift box, satin pouch, eye protectors']
   },
   essential:{
     id:'essential', name:'LUMIÈRA Pro Essential Mask', short:'Essential Mask',
     sub:'Face mask, controller, pouch', price:249, compare:null,
-    rating:4.6, reviews:94, badge:null, img:IMG.flat,
+    rating:4.6, reviews:94, badge:null, img:IMG.aeBlack,
     pay:'One payment', note:'Face only',
     contents:['Face mask, 60 LEDs','Cordless LCD controller','USB-C cable, two straps','Satin pouch, eye protectors']
   },
   twin:{
     id:'twin', name:'LUMIÈRA Twin Ritual Set', short:'Twin Ritual Set',
     sub:'Two complete face + neck sets', price:449, compare:558,
-    rating:4.8, reviews:38, badge:'Save 109 €', img:IMG.kit,
+    rating:4.8, reviews:38, badge:'Save 109 €', img:IMG.aeWhite,
     pay:'One payment', note:'Two sets, one for someone else',
     contents:['Two face masks, 120 LEDs','Two neck & décolleté pieces','Two controllers','Two gift boxes and pouches']
   }
@@ -2719,13 +2734,18 @@ document.addEventListener('click', e=>{
 /* ============================================================
    PDP v2 · GALLERY · VARIANTS · QTY
 ============================================================ */
-const GALLERY = [
-  {src:IMG.lifestyle, tag:'Worn · face + neck', alt:'Mask worn on face and neck'},
-  {src:IMG.maskneck,  tag:'Face + neck pieces',  alt:'Face and neck pieces'},
-  {src:IMG.flat,      tag:'Shell detail',        alt:'Mask shell detail'},
-  {src:IMG.modes,     tag:'Eight light modes',   alt:'Eight light modes'},
-  {src:IMG.kit,       tag:'In the box',          alt:'Everything in the box'}
+let GALLERY = [
+  {src:IMG.aeHero,        tag:'Worn · face + neck',   alt:'LED mask worn on the face and neck'},
+  {src:IMG.aeWorn,        tag:'Light on · 630 nm red', alt:'Red light therapy session'},
+  {src:IMG.aeBlack,       tag:'Face mask, black shell', alt:'Black silicone LED face mask'},
+  {src:IMG.aeWhite,       tag:'Face mask, white shell', alt:'White silicone LED face mask'},
+  {src:IMG.aeScenes,      tag:'Ten minutes, hands free', alt:'Worn while reading, working or resting'},
+  {src:IMG.aeBeforeAfter, tag:'Before / after',       alt:'Before and after four weeks of use'},
+  {src:IMG.kit,           tag:'In the box',           alt:'Everything in the box'}
 ];
+if(VIDEO_URL){
+  GALLERY = [{src:IMG.aeHero, tag:'Product film', alt:'Product film', video:VIDEO_URL}].concat(GALLERY);
+}
 let galIndex = 0;
 let selectedId = 'pro';
 let qty = 1;
@@ -2734,7 +2754,10 @@ function renderThumbs(){
   const thumbs = $('#thumbs');
   if(!thumbs) return;
   thumbs.innerHTML = GALLERY.map((g,i)=>
-    '<button class="cb-thumb'+(i===0?' on':'')+'" data-gal="'+i+'" aria-label="View image '+(i+1)+'"><img src="'+g.src+'" alt="'+g.alt+'" loading="lazy" /></button>'
+    '<button class="cb-thumb'+(i===0?' on':'')+'" data-gal="'+i+'" aria-label="View image '+(i+1)+'">'+
+      '<img src="'+g.src+'" alt="'+g.alt+'" loading="lazy" />'+
+      (g.video?'<span class="cb-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 6l10 6-10 6z"/></svg></span>':'')+
+    '</button>'
   ).join('');
 }
 function setGallery(i){
@@ -2742,6 +2765,20 @@ function setGallery(i){
   if(!img) return;
   galIndex = (i + GALLERY.length) % GALLERY.length;
   const g = GALLERY[galIndex];
+  const stage = img.parentNode;
+  let vid = stage.querySelector('.cb-stage-video');
+  if(g.video){
+    if(!vid){
+      vid = document.createElement('video');
+      vid.className='cb-stage-video'; vid.controls=true; vid.playsInline=true; vid.muted=true; vid.loop=true;
+      stage.insertBefore(vid, img);
+    }
+    vid.src = g.video; vid.play().catch(()=>{});
+    vid.style.display='block'; img.style.display='none';
+  } else {
+    if(vid){ vid.pause(); vid.style.display='none'; }
+    img.style.display='block';
+  }
   img.style.opacity = 0;
   setTimeout(()=>{
     img.src = g.src; img.alt = g.alt; img.style.opacity = 1;
